@@ -1,0 +1,81 @@
+# ─────────────────────────────────────────────────────────────
+#  Claude Trader — configuración
+#  Simulación educativa (paper trading). No se mueve dinero real.
+# ─────────────────────────────────────────────────────────────
+
+capital_eur: 200            # capital ficticio inicial
+
+market:
+  calendar: NYSE            # mercado de referencia (horario y festivos)
+  timezone: America/New_York
+  benchmark: SPY            # índice contra el que nos comparamos
+  fx_ticker: "EURUSD=X"     # la cuenta está en EUR, los activos cotizan en USD
+
+# Universo de activos (líquidos, con acciones fraccionadas asumidas)
+universe:
+  # Índices y regiones
+  - SPY
+  - QQQ
+  - IWM
+  - DIA
+  - EFA
+  - EEM
+  - VGK
+  - EWJ
+  # Renta fija y materias primas
+  - TLT
+  - IEF
+  - GLD
+  - SLV
+  - USO
+  # Sectores
+  - XLK
+  - XLF
+  - XLE
+  - XLV
+  - XLY
+  - XLP
+  - XLI
+  - XLU
+  - XLB
+  - XLRE
+  - XLC
+  - SMH
+  # Grandes compañías
+  - AAPL
+  - MSFT
+  - NVDA
+  - AMZN
+  - GOOGL
+  - META
+
+costs:
+  commission_pct: 0.001     # 0,10 % por operación
+  slippage_pct: 0.0005      # 0,05 % de deslizamiento
+  fx_fee_pct: 0.0015        # 0,15 % por cambio de divisa EUR<->USD
+
+strategy:
+  top_k: 4                  # máximo de posiciones simultáneas
+  min_prob: 0.51            # probabilidad mínima para entrar (los modelos dan valores cercanos a 0,5)
+  no_edge_fallback: benchmark  # si el campeón no demuestra ventaja (score <= 0): benchmark | cash | trade
+  keep_rank: 6              # una posición se mantiene mientras siga en el top-6
+  keep_prob: 0.50           # ...y con probabilidad >= 0,50
+  stop_loss_pct: 0.06       # vende si cae un 6 % desde la entrada
+  take_profit_pct: 0.12     # vende si sube un 12 % desde la entrada
+  min_trade_eur: 5          # no hace operaciones menores de 5 €
+  rebalance_tolerance: 0.05 # reequilibra si el peso se desvía > 5 puntos
+
+model:
+  horizon_days: 5           # predice si el activo batirá a la media en 5 días
+  history_years: 6          # años de historia que se descargan
+  train_window_days: 756    # ventana de entrenamiento (~3 años)
+  wf_folds: 6               # bloques de validación walk-forward
+  fold_days: 21             # tamaño de cada bloque (~1 mes)
+  promote_margin: 0.0005    # mejora mínima (score) para cambiar de campeón
+  max_experiments: 6        # experimentos activos como máximo
+
+claude:
+  enabled: true             # requiere el secreto ANTHROPIC_API_KEY
+  daily_model: claude-haiku-5-5
+  review_model: claude-sonnet-5-5
+  max_tokens: 1800
