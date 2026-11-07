@@ -82,6 +82,7 @@ def cmd_context(a) -> None:
         "historial_modelos": ((store.read_json("models.json", {}) or {}).get("history") or [])[-15:],
         "experimentos": store.read_json("experiments.json", []),
         "propuestas": (store.read_json("proposals.json", []) or [])[-15:],
+        "investigacion_replay": store.read_json("research/summary.json", {}),
         "lecciones": (store.STATE / "lessons.md").read_text(encoding="utf-8") if (store.STATE / "lessons.md").exists() else "",
         "diario_reciente": store.read_journal(12),
         "ultima_ejecucion": store.read_json("last_runs.json", {}),

@@ -26,6 +26,7 @@ def build(cfg: dict) -> None:
         "journal": store.read_journal(40)[::-1],
         "lessons": (store.STATE / "lessons.md").read_text(encoding="utf-8") if (store.STATE / "lessons.md").exists() else "",
         "runs": store.read_json("last_runs.json", {}),
+        "research": store.read_json("research/summary.json", {}),
     }
     store.DOCS.mkdir(parents=True, exist_ok=True)
     (store.DOCS / "data.json").write_text(json.dumps(data, ensure_ascii=False, default=str), encoding="utf-8")
@@ -81,6 +82,7 @@ th{color:var(--mute);font-weight:500}td.n{font-family:"IBM Plex Mono",monospace;
   <div class="card"><h2>Objetivo próxima apertura</h2><div class="tw"><table id="tgt"></table></div></div>
   <div class="card"><h2>Modelos (walk-forward)</h2><div class="tw"><table id="mdl"></table></div><div class="sub" id="mdlnote" style="margin-top:8px"></div></div>
   <div class="card"><h2>Predicciones en vivo</h2><div id="live" class="sub"></div></div>
+  <div class="card"><h2>Investigación (replay histórico)</h2><div class="tw"><table id="rs"></table></div><div class="sub" id="rsnote" style="margin-top:8px"></div></div>
   <div class="card"><h2>Lecciones</h2><div id="les" class="j b"></div></div>
  </div>
 </div>
@@ -121,6 +123,12 @@ const ev=(D.models.last_eval)||{};
 $("mdl").innerHTML="<tr><th>Experimento</th><th class=n>Score</th><th class=n>Acierto</th><th class=n>AUC</th></tr>"+Object.entries(ev).sort((a,b)=>b[1].score-a[1].score).map(([n,e])=>`<tr><td class="${n===D.models.champion?"champ":""}">${n===D.models.champion?"★ ":""}${n}</td><td class="n ${cls(e.score)}">${pct(e.score)}</td><td class=n>${(e.hit*100).toFixed(0)} %</td><td class=n>${(+e.auc).toFixed(3)}</td></tr>`).join("");
 $("mdlnote").textContent=(D.models.reason?"Último cambio: "+D.models.reason+". ":"")+"Score = exceso medio a 5 días de las elegidas, en datos no vistos.";
 const L=D.live||{};$("live").innerHTML=L.n?`${L.n} predicciones evaluadas · acierto ${(L.hit_rate*100).toFixed(0)} % · elegidas: acierto ${(L.sel_hit_rate*100||0).toFixed(0)} %, exceso medio ${pct(L.sel_excess)}`:"Las predicciones se evalúan 5 sesiones después de hacerse.";
+const R=D.research||{};
+if(R.top){const st={"aprobada":"pos","en competición":"pos","suspende examen":"neg"};
+$("rs").innerHTML="<tr><th>Variante</th><th class=n>Pasado</th><th class=n>Examen</th></tr>"+R.top.slice(0,6).map(e=>`<tr><td class="${e.name===R.champion.name?"champ":""}">${e.name===R.champion.name?"★ ":""}${e.name}<div class="sub">${e.origin}${e.status?" · <span class='"+(st[e.status]||"")+"'>"+e.status+"</span>":""}</div></td><td class="n ${cls(e.research.score)}">${pct(e.research.score)}</td><td class="n ${e.holdout?cls(e.holdout.score):""}">${e.holdout?pct(e.holdout.score):"—"}</td></tr>`).join("");
+const g=(R.strategy_grid||[])[0];
+$("rsnote").innerHTML=`${R.totals.trials} variantes probadas · ${R.totals.holdout_tests} exámenes · ${R.totals.promoted} promovidas. Exceso semanal vs SPY, neto de costes. Búsqueda ${R.totals.research_window[0]}→${R.totals.research_window[1]}; examen ${R.totals.holdout_window[0]}→${R.totals.holdout_window[1]}.`+(g?` Mejor estrategia en el pasado: top ${g.top_k}, p≥${g.min_prob}.`:"");}
+else{$("rs").innerHTML="<tr><td class=sub>La primera sesión de investigación se ejecuta esta noche.</td></tr>";}
 $("les").innerHTML=D.lessons?(window.marked?marked.parse(D.lessons):D.lessons):"<span class=sub>Las lecciones aparecen tras la primera revisión semanal.</span>";
 $("jr").innerHTML=D.journal.length?D.journal.map(j=>`<div class="j ${j.author==="claude"?"claude":""}"><div class="m">${fmtTs(j.ts)} · ${j.kind} · ${j.author==="claude"?"Claude":"sistema"}</div><div class="b">${window.marked?marked.parse(j.text||""):j.text}</div></div>`).join(""):"<span class=sub>Sin entradas todavía.</span>";
 </script>

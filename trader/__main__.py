@@ -391,6 +391,35 @@ def phase_explore(cfg: dict, date: str) -> None:
                           + (f"\n\nEntran a competir: {', '.join(kept)}." if kept else "\n\nNinguna mejora al campeón.")})
 
 
+def phase_research(cfg: dict, date: str) -> None:
+    """Replay histórico nocturno: busca variantes en el pasado y examina las mejores."""
+    from . import research
+
+    panel, _ = load_panel(cfg)
+    s = research.run(cfg, panel, date, log=log)
+    if not s:
+        log("investigación sin campeón de referencia")
+        return
+    ch = s["champion"]
+    best = s["top"][0] if s["top"] else None
+    g = s["strategy_grid"][0] if s["strategy_grid"] else None
+    lines = [f"Replay histórico: {s['trials_this_run']} variantes probadas en {s['minutes']} min "
+             f"(total acumulado {s['totals']['trials']}).",
+             f"- Campeón `{ch['name']}`: {ch['research']['score']:+.3%}/semana en investigación, "
+             f"{(ch.get('holdout') or {}).get('score', float('nan')):+.3%} en examen final."]
+    if best:
+        lines.append(f"- Mejor del ranking: `{best['name']}` ({best['origin']}) {best['research']['score']:+.3%}/semana, "
+                     f"t={best['research']['t_stat']:+.2f}.")
+    if s["promoted"]:
+        lines.append(f"- **Aprueban el examen final y entran a competir en vivo:** {', '.join(s['promoted'])}.")
+    if g:
+        lines.append(f"- Mejor estrategia en el pasado con el campeón: top_k={g['top_k']}, min_prob={g['min_prob']} "
+                     f"({g['score']:+.3%}/semana, t={g['t_stat']:+.2f}); actual: top_k={s['current_strategy']['top_k']}, "
+                     f"min_prob={s['current_strategy']['min_prob']}.")
+    store.append_journal({"ts": now_iso(), "kind": "investigación", "author": "sistema", "text": "\n".join(lines)})
+    log("investigación terminada")
+
+
 def _lessons_text() -> str:
     p = store.STATE / "lessons.md"
     return p.read_text(encoding="utf-8")[-4000:] if p.exists() else ""
@@ -406,7 +435,7 @@ def _add_lessons(date: str, lessons: list[str]) -> None:
 # ─────────────────────────── main ───────────────────────────
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="trader")
-    ap.add_argument("--phase", default="auto", choices=["auto", "open", "mid", "close", "review", "explore"])
+    ap.add_argument("--phase", default="auto", choices=["auto", "open", "mid", "close", "review", "explore", "research"])
     ap.add_argument("--force", action="store_true", help="ejecuta aunque ya se haya hecho hoy o el mercado esté cerrado")
     ap.add_argument("--now", help="hora simulada ISO (pruebas)")
     a = ap.parse_args(argv)
@@ -421,7 +450,7 @@ def main(argv=None) -> int:
         if phase is None:
             log(f"fuera de ventana de mercado ({now.astimezone(clock.NY):%a %H:%M} NY); nada que hacer")
             return 0
-    elif phase not in ("review", "explore") and not a.force and clock.session(now, cfg["market"]["calendar"]) is None:
+    elif phase not in ("review", "explore", "research") and not a.force and clock.session(now, cfg["market"]["calendar"]) is None:
         log("hoy no hay mercado (usa --force para forzar)")
         return 0
     runs = store.read_json("last_runs.json", {}) or {}
@@ -430,7 +459,7 @@ def main(argv=None) -> int:
         return 0
     log(f"fase {phase} · {date}")
     {"open": phase_open, "mid": phase_mid, "close": phase_close, "review": phase_review,
-     "explore": phase_explore}[phase](cfg, date)
+     "explore": phase_explore, "research": phase_research}[phase](cfg, date)
     runs[phase] = date
     runs[f"{phase}_ts"] = now_iso()
     store.write_json("last_runs.json", runs)

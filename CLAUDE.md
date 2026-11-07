@@ -8,6 +8,11 @@ Objetivo: **aprender**. Tu papel es el de analista y responsable de mejora conti
 - **GitHub Actions** (automático, con datos reales): opera la cartera 3 veces por sesión,
   reentrena y compara modelos cada cierre (walk-forward) y, los sábados, explora
   variantes aleatorias del campeón. Es el **juez**: nada cambia sin pasar por él.
+- **Investigación nocturna** (GitHub, automático): replay histórico. Recorre ~100 semanas
+  del pasado decidiendo sin ver el futuro, prueba decenas de variantes y solo promueve a
+  competir en vivo las que además aprueban un **examen final** (últimos ~6 meses) que la
+  búsqueda nunca ve. Resultados en `state/research/summary.json` (`investigacion_replay`
+  en el contexto), incluida una **rejilla de estrategia** (top_k × min_prob) sobre el pasado.
 - **Tú (tareas programadas de Claude)**: escribes la nota diaria tras el cierre y la
   revisión semanal del sábado, extraes lecciones y dejas **propuestas**. El siguiente
   cierre de GitHub las valida y las aplica o rechaza (resultado en `state/proposals.json`).
@@ -47,7 +52,8 @@ python -m trader.tools info                      # variables y rangos permitidos
 
 1. Analiza la semana y el histórico: rentabilidad vs SPY, acierto de las elegidas,
    **calibración** (`predicciones_en_vivo.calibration`: ¿las probabilidades altas aciertan más?),
-   evolución de puntuaciones (`historial_modelos`), resultado de la exploración del sábado
+   evolución de puntuaciones (`historial_modelos`), resultado de la investigación con
+   replay (ranking, exámenes aprobados/suspendidos, rejilla), de la exploración del sábado
    y de las propuestas anteriores (¿funcionaron?).
 2. Revisa y depura las lecciones: si una lección quedó desmentida, añade otra que lo diga.
 3. Propón mejoras **concretas y justificadas por lo observado**:
@@ -55,8 +61,12 @@ python -m trader.tools info                      # variables y rangos permitidos
      `{"name","algo":"lgbm|logit","features":[...],"params":{...},"rationale"}` y
      `python -m trader.tools propose-model --file exp.json --title "..."`.
      Que sean distintos de los existentes y de los ya rechazados.
-   - Como mucho **1 ajuste de estrategia**, y solo con evidencia de ≥20 operaciones
-     cerradas: `python -m trader.tools propose-strategy --param P --value V --title "..." --reason "..."`.
+   - Usa la investigación como fuente principal de evidencia: ¿qué tipo de variantes
+     ganan en el pasado y cuáles suspenden el examen? Propón modelos en las direcciones
+     que funcionan (no copies variantes ya probadas en el ranking).
+   - Como mucho **1 ajuste de estrategia**, solo si lo respaldan ≥20 operaciones cerradas
+     **o** la rejilla de estrategia del replay (≥80 periodos, t ≥ 1 y mejor que la actual
+     con claridad, no por décimas): `python -m trader.tools propose-strategy --param P --value V --title "..." --reason "..."`.
    - Retira experimentos que lleven ≥3 semanas claramente por debajo:
      `python -m trader.tools retire --name X --reason "..."`.
 4. Escribe la revisión (máx. ~600 palabras) con `python -m trader.tools review --file revision.md`:

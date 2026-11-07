@@ -67,13 +67,25 @@ strategy:
 
 model:
   horizon_days: 5           # predice si el activo batirá a la media en 5 días
-  history_years: 6          # años de historia que se descargan
+  history_years: 7          # años de historia que se descargan
   train_window_days: 756    # ventana de entrenamiento (~3 años)
   wf_folds: 6               # bloques de validación walk-forward
   fold_days: 21             # tamaño de cada bloque (~1 mes)
   promote_margin: 0.0005    # mejora mínima (score) para cambiar de campeón
   max_experiments: 8        # experimentos activos como máximo (se retiran los peores)
   explore_trials: 4         # variantes aleatorias que se prueban cada sábado
+
+research:                   # replay histórico nocturno (acelera el aprendizaje)
+  research_days: 504        # ventana de búsqueda (~2 años), sin mirar al futuro
+  holdout_days: 126         # examen final (~6 meses): la búsqueda nunca lo ve
+  refit_every: 4            # reentrena cada 4 periodos de 5 sesiones (~1 mes)
+  time_budget_min: 20       # minutos por sesión de investigación
+  promote_margin: 0.0005    # mejora mínima por periodo sobre el campeón (~2,5 %/año)
+  min_t_stat: 1.0           # consistencia mínima en investigación
+  max_holdout_tests: 3      # exámenes finales por noche como máximo
+  leaderboard_size: 60
+  grid_top_k: [2, 3, 4, 5, 6]
+  grid_min_prob: [0.50, 0.51, 0.53, 0.55]
 
 claude:
   enabled: true             # requiere el secreto ANTHROPIC_API_KEY

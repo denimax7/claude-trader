@@ -25,6 +25,12 @@ Laboratorio de **inversión simulada** que opera solo, analiza sus decisiones co
  SÁBADO   │  Exploración automática: 4 variantes aleatorias del campeón;       │
  8:17 ES  │  las que le ganan entran a competir                                │
           └────────────────────────────────────────────────────────────────────┘
+          ┌──────────── Investigación nocturna (GitHub, 3:23 ES) ─────────────┐
+          │  Replay histórico: se coloca semana a semana en el pasado sin ver  │
+          │  el futuro, prueba ~60-80 variantes por noche sobre ~2 años y solo │
+          │  promueve las que también aprueban un EXAMEN FINAL (últimos 6      │
+          │  meses) que la búsqueda nunca ve. Las promovidas compiten en vivo. │
+          └────────────────────────────────────────────────────────────────────┘
           ┌──────── Tareas programadas de Claude (incluidas en el plan) ──────┐
  L-V      │  Nota diaria: tesis, post-mortems y lecciones                      │
  23:12 ES │                                                                    │
@@ -54,6 +60,8 @@ En hora de España: **~15:35, ~18:45 y ~21:45** (de lunes a viernes, festivos de
 2. **Cada día**: los experimentos compiten; si un aspirante supera al campeón con margen, lo sustituye.
 3. **Cada sábado**: exploración automática de variantes del campeón (sin Claude).
 4. **Cada sábado**: Claude revisa errores, calibración y el resultado de sus propuestas anteriores, depura las lecciones (`state/lessons.md`) y propone modelos nuevos, ajustes de estrategia (dentro de límites seguros) o retiradas. Todo pasa por `state/proposals.json` y lo valida el siguiente cierre.
+
+5. **Cada noche**: la investigación con replay histórico acelera todo lo anterior: en vez de esperar semanas reales, evalúa cada variante en ~100 semanas pasadas. Para no sobreajustar, separa una ventana de búsqueda (~2 años) de un examen final (~6 meses) y, aun aprobando, la variante tiene que ganar después en vivo.
 
 Las instrucciones que siguen las sesiones de Claude están en [`CLAUDE.md`](CLAUDE.md). La clave `ANTHROPIC_API_KEY` es **opcional**: si existe, el cierre también escribe una nota vía API.
 
