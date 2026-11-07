@@ -1,2 +1,3 @@
 {"ts": "2026-11-07T11:08:31+00:00", "kind": "modelo", "author": "sistema", "text": "**Nuevo campeón: `base_lgbm`** — primer campeón."}
 {"ts": "2026-11-07T11:08:33+00:00", "kind": "cierre", "author": "sistema", "text": "**Resumen**: cartera 200.00 € (+0.00%) vs benchmark -0.30%.\n\n**Objetivo para mañana**: SMH (p=0.76), NVDA (p=0.71), GOOGL (p=0.69), XLE (p=0.68)"}
+{"ts": "2026-11-07T11:16:24+00:00", "kind": "exploración", "author": "sistema", "text": "Exploración semanal frente a `base_lgbm` (score +0.0009):\n- `auto_20261107_1` (logit, 22 var.) score -0.0062\n- `auto_20261107_2` (logit, 23 var.) score -0.0066\n- `auto_20261107_3` (logit, 23 var.) score -0.0065\n- `auto_20261107_4` (lgbm, 22 var.) score +0.0019\n\nEntran a competir: auto_20261107_4."}

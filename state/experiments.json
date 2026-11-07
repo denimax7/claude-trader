@@ -65,5 +65,54 @@
     "status": "activo",
     "created": "2026-11-07T11:08:29+00:00",
     "last_score": -0.00745
+  },
+  {
+    "name": "auto_20261107_4",
+    "algo": "lgbm",
+    "features": [
+      "ret_1",
+      "ret_5",
+      "ret_10",
+      "ret_63",
+      "ret_126",
+      "ret_252",
+      "vol_21",
+      "vol_63",
+      "sma20_gap",
+      "sma50_gap",
+      "sma200_gap",
+      "rsi_14",
+      "dd_252",
+      "volz_21",
+      "xs_rank_21",
+      "xs_rank_63",
+      "xs_rank_126",
+      "rel_bench_21",
+      "rel_bench_63",
+      "mkt_ret_21",
+      "mkt_vol_21",
+      "mkt_sma200_gap"
+    ],
+    "params": {
+      "n_estimators": 250,
+      "learning_rate": 0.05786290582573637,
+      "num_leaves": 15,
+      "min_child_samples": 67,
+      "subsample": 0.8,
+      "colsample_bytree": 0.6159637979572179,
+      "reg_lambda": 1.5118480700002497,
+      "max_depth": 7
+    },
+    "created_by": "exploración",
+    "rationale": "Variante aleatoria de base_lgbm.",
+    "status": "activo",
+    "created": "2026-11-07T11:16:24+00:00",
+    "first_eval": {
+      "score": 0.0019352906241269163,
+      "hit": 0.49404761904761907,
+      "auc": 0.5029277808803304,
+      "n_days": 126,
+      "evaluated_at": "2026-11-07T11:16:24+00:00"
+    }
   }
 ]
