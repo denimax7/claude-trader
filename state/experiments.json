@@ -114,5 +114,81 @@
       "n_days": 126,
       "evaluated_at": "2026-11-07T11:16:24+00:00"
     }
+  },
+  {
+    "name": "r261107_114",
+    "algo": "logit",
+    "features": [
+      "dd_252",
+      "mkt_ret_21",
+      "ret_10",
+      "sma200_gap",
+      "volz_21"
+    ],
+    "params": {
+      "C": 0.7720366861168032
+    },
+    "created_by": "investigación",
+    "rationale": "Mutación de r261107_107 encontrada por replay histórico.",
+    "status": "activo",
+    "created": "2026-11-07T11:45:32+00:00",
+    "research": {
+      "n": 100,
+      "score": 0.009237047951150774,
+      "excess_annual": 0.46554721673799904,
+      "t_stat": 2.9148692267828475,
+      "hit": 0.5,
+      "total_ret": 2.343430539534068,
+      "bench_ret": 0.42926394777480414,
+      "max_dd_vs_bench": -0.23505297849190454
+    },
+    "holdout": {
+      "n": 26,
+      "score": 0.0029634062778050464,
+      "excess_annual": 0.14935567640137432,
+      "t_stat": 0.45329869824433955,
+      "hit": 0.5384615384615384,
+      "total_ret": 0.0946498625843708,
+      "bench_ret": 0.02925426982356205,
+      "max_dd_vs_bench": -0.16247538115872773
+    }
+  },
+  {
+    "name": "r261107_107",
+    "algo": "logit",
+    "features": [
+      "dd_252",
+      "ret_10",
+      "ret_5",
+      "sma200_gap",
+      "sma50_gap"
+    ],
+    "params": {
+      "C": 0.7720366861168032
+    },
+    "created_by": "investigación",
+    "rationale": "Mutación de r261107_64 encontrada por replay histórico.",
+    "status": "activo",
+    "created": "2026-11-07T11:45:32+00:00",
+    "research": {
+      "n": 100,
+      "score": 0.008727800414626187,
+      "excess_annual": 0.4398811408971598,
+      "t_stat": 2.7262606375655767,
+      "hit": 0.51,
+      "total_ret": 2.191388830967386,
+      "bench_ret": 0.42926394777480414,
+      "max_dd_vs_bench": -0.16469164772164058
+    },
+    "holdout": {
+      "n": 26,
+      "score": 0.0020670957499343045,
+      "excess_annual": 0.10418162579668895,
+      "t_stat": 0.33730546205918055,
+      "hit": 0.5769230769230769,
+      "total_ret": 0.07075882992933669,
+      "bench_ret": 0.02925426982356205,
+      "max_dd_vs_bench": -0.15160591640240983
+    }
   }
 ]
