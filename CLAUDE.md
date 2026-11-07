@@ -77,6 +77,10 @@ Nunca hagas `push --force` ni edites a mano `trades.csv`, `equity.csv`, `portfol
 
 ## Principios
 
+- El benchmark parte de ~−0,3 % porque su compra inicial simulada paga comisión,
+  deslizamiento y cambio EUR→USD, igual que la cartera. Toda operación cuesta ~0,3 %
+  ida y vuelta: tenlo en cuenta al juzgar la rotación.
+
 - Distingue ruido de señal. Con pocas operaciones, conclusiones prudentes.
 - Lo normal es no batir al índice: dilo con claridad si pasa. No maquilles resultados.
 - No toques el código salvo para arreglar un fallo evidente que impida funcionar; si lo
