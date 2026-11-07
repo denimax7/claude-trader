@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Trader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--ink:#1b1b18;--mute:#6b6a63;--line:#e4e2da;--pos:#1f7a4d;--neg:#b23a2e;--acc:#c2591d;--bench:#8a8a80}
+@media (prefers-color-scheme:dark){:root{--bg:#141412;--card:#1d1d1a;--ink:#ecebe5;--mute:#9a998f;--line:#2e2e2a;--pos:#4fbf86;--neg:#ef7d6f;--acc:#e8844a;--bench:#77776e}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 60px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:20px}
+h1{font-size:22px;margin:0;font-weight:600;letter-spacing:-.01em}h1 span{color:var(--acc)}
+.sub{color:var(--mute);font-size:13px}.tag{font:500 11px "IBM Plex Mono",monospace;border:1px solid var(--line);padding:2px 8px;border-radius:99px;color:var(--mute)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:16px}
+.k{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.k .l{font-size:12px;color:var(--mute)}.k .v{font:500 24px "IBM Plex Mono",monospace;margin-top:4px}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.grid>div{min-width:0}.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px;min-width:0}
+.card h2{font-size:14px;margin:0 0 12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:6px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--mute);font-weight:500}td.n{font-family:"IBM Plex Mono",monospace;text-align:right}th.n{text-align:right}
+.tw{overflow-x:auto}.pos{color:var(--pos)}.neg{color:var(--neg)}
+.j{border-left:3px solid var(--line);padding:2px 0 2px 12px;margin-bottom:16px}.j.claude{border-color:var(--acc)}
+.j .m{font-size:12px;color:var(--mute)}.j .b{font-size:14px}.j .b p{margin:6px 0}
+.chartbox{position:relative;height:300px}
+.note{font-size:12px;color:var(--mute);margin-top:24px;text-align:center}
+.champ{color:var(--acc);font-weight:600}
+</style>
+</head>
+<body><div class="wrap">
+<header><div><h1>Claude <span>Trader</span></h1><div class="sub">Laboratorio de inversión simulada · aprende de sus errores</div></div>
+<div class="sub" id="upd"></div></header>
+<div class="kpis" id="kpis"></div>
+<div class="grid">
+ <div>
+  <div class="card"><h2>Cartera vs benchmark (EUR)</h2><div class="chartbox"><canvas id="ch"></canvas></div></div>
+  <div class="card"><h2>Posiciones</h2><div class="tw"><table id="pos"></table></div></div>
+  <div class="card"><h2>Operaciones</h2><div class="tw"><table id="trd"></table></div></div>
+ </div>
+ <div>
+  <div class="card"><h2>Objetivo próxima apertura</h2><div class="tw"><table id="tgt"></table></div></div>
+  <div class="card"><h2>Modelos (walk-forward)</h2><div class="tw"><table id="mdl"></table></div><div class="sub" id="mdlnote" style="margin-top:8px"></div></div>
+  <div class="card"><h2>Predicciones en vivo</h2><div id="live" class="sub"></div></div>
+  <div class="card"><h2>Lecciones</h2><div id="les" class="j b"></div></div>
+ </div>
+</div>
+<div class="card"><h2>Diario</h2><div id="jr"></div></div>
+<div class="note">Simulación educativa. No es asesoramiento financiero. No se invierte dinero real.</div>
+</div>
+<script>
+const D={"updated": "2026-11-07T11:08+00:00", "capital": 200, "benchmark": "SPY", "equity": [{"ts": "2026-11-07T11:08:32+00:00", "date": "2026-11-07", "phase": "close", "eq": 200.0, "bench": 199.4006}], "portfolio": {"created": "2026-11-07T11:08:28+00:00", "start_date": "2026-11-07", "capital_eur": 200.0, "cash_eur": 200.0, "positions": {}, "bench_shares": 0.3021705881954889, "realized_pnl_eur": 0.0}, "trades": [], "targets": {"date": "2026-11-06", "created": "2026-11-07T11:08:32+00:00", "model": "base_lgbm", "mode": "modelo", "weights": {"SMH": 0.25, "NVDA": 0.25, "GOOGL": 0.25, "XLE": 0.25}, "probs": {"SMH": 0.7629, "NVDA": 0.7066, "GOOGL": 0.6925, "XLE": 0.6841, "XLK": 0.6835, "QQQ": 0.5996, "EEM": 0.5741, "EWJ": 0.5648, "META": 0.56, "SLV": 0.5457, "GLD": 0.5119, "USO": 0.5118}, "executed": false}, "models": {"champion": "base_lgbm", "reason": "primer campeón", "last_eval": {"base_lgbm": {"score": 0.0009024808076793921, "hit": 0.5059523809523809, "auc": 0.5000501013437391, "n_days": 126, "evaluated_at": "2026-11-07T11:08:31+00:00"}, "momentum_logit": {"score": -0.007451292667393644, "hit": 0.4166666666666667, "auc": 0.471572733642108, "n_days": 126, "evaluated_at": "2026-11-07T11:08:31+00:00"}}, "importance": {"mkt_sma200_gap": 0.09057142857142857, "ret_252": 0.07685714285714286, "mkt_vol_21": 0.07571428571428572, "vol_63": 0.072, "mkt_ret_21": 0.05914285714285714, "rel_bench_63": 0.054, "vol_21": 0.047714285714285716, "ret_126": 0.047142857142857146, "ret_63": 0.04657142857142857, "sma200_gap": 0.04285714285714286}, "history": [{"date": "2026-11-07", "champion": "base_lgbm", "base_lgbm": 0.0009, "momentum_logit": -0.00745}], "updated": "2026-11-07T11:08:32+00:00"}, "experiments": [{"name": "base_lgbm", "algo": "lgbm", "features": ["ret_1", "ret_5", "ret_10", "ret_21", "ret_63", "ret_126", "ret_252", "vol_21", "vol_63", "sma20_gap", "sma50_gap", "sma200_gap", "rsi_14", "dd_252", "volz_21", "xs_rank_21", "xs_rank_63", "xs_rank_126", "rel_bench_21", "rel_bench_63", "mkt_ret_21", "mkt_vol_21", "mkt_sma200_gap"], "params": {"n_estimators": 250, "learning_rate": 0.03, "num_leaves": 15, "min_child_samples": 80, "subsample": 0.8, "colsample_bytree": 0.8, "reg_lambda": 2.0}, "created_by": "sistema", "rationale": "Modelo base con todas las variables.", "status": "activo", "created": "2026-11-07T11:08:29+00:00", "last_score": 0.0009}, {"name": "momentum_logit", "algo": "logit", "features": ["ret_21", "ret_63", "ret_126", "ret_252", "xs_rank_63", "xs_rank_126", "rel_bench_63", "vol_63", "sma200_gap", "mkt_sma200_gap"], "params": {"C": 0.1}, "created_by": "sistema", "rationale": "Regresión logística simple de momentum: referencia robusta.", "status": "activo", "created": "2026-11-07T11:08:29+00:00", "last_score": -0.00745}], "live": {}, "journal": [{"ts": "2026-11-07T11:08:33+00:00", "kind": "cierre", "author": "sistema", "text": "**Resumen**: cartera 200.00 € (+0.00%) vs benchmark -0.30%.\n\n**Objetivo para mañana**: SMH (p=0.76), NVDA (p=0.71), GOOGL (p=0.69), XLE (p=0.68)"}, {"ts": "2026-11-07T11:08:31+00:00", "kind": "modelo", "author": "sistema", "text": "**Nuevo campeón: `base_lgbm`** — primer campeón."}], "lessons": "", "runs": {"close": "2026-11-07", "close_ts": "2026-11-07T11:08:33+00:00"}};
+const $=id=>document.getElementById(id);
+const eur=v=>(v==null||isNaN(v))?"—":Number(v).toLocaleString("es-ES",{style:"currency",currency:"EUR"});
+const pct=v=>(v==null||isNaN(v))?"—":(v>0?"+":"")+(v*100).toFixed(2)+" %";
+const cls=v=>v>0?"pos":v<0?"neg":"";
+const fmtTs=s=>new Date(s).toLocaleString("es-ES",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"});
+$("upd").textContent="Actualizado "+fmtTs(D.updated);
+const last=D.equity[D.equity.length-1]||{eq:D.capital,bench:D.capital};
+const r=last.eq/D.capital-1, rb=last.bench/D.capital-1;
+const closed=D.trades.filter(t=>t.side==="SELL"&&t.pnl_eur!=="");
+const wins=closed.filter(t=>+t.pnl_eur>0).length;
+const k=[["Valor cartera",eur(last.eq),""],["Rentabilidad",pct(r),cls(r)],["Benchmark "+D.benchmark,pct(rb),cls(rb)],
+["Diferencia",pct(r-rb),cls(r-rb)],["Cerradas"+(closed.length?" · "+Math.round(wins/closed.length*100)+" % ganadoras":""),closed.length,""],
+["Liquidez",eur(D.portfolio.cash_eur),""]];
+$("kpis").innerHTML=k.map(([l,v,c])=>`<div class="k"><div class="l">${l}</div><div class="v ${c}">${v}</div></div>`).join("");
+const css=getComputedStyle(document.documentElement);
+if(window.Chart&&D.equity.length){new Chart($("ch"),{type:"line",data:{labels:D.equity.map(e=>e.date.slice(5)+" "+({open:"ap",mid:"med",close:"cie"}[e.phase]||"")),datasets:[
+{label:"Cartera",data:D.equity.map(e=>e.eq),borderColor:css.getPropertyValue("--acc"),borderWidth:2,pointRadius:0,tension:.2},
+{label:D.benchmark,data:D.equity.map(e=>e.bench),borderColor:css.getPropertyValue("--bench"),borderWidth:1.5,borderDash:[4,3],pointRadius:0,tension:.2}]},
+options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{legend:{labels:{color:css.getPropertyValue("--mute")}}},
+scales:{x:{ticks:{maxTicksLimit:6,color:css.getPropertyValue("--mute")},grid:{display:false}},y:{ticks:{color:css.getPropertyValue("--mute"),callback:v=>v+" €"},grid:{color:css.getPropertyValue("--line")}}}}});}
+const P=D.portfolio.positions||{};
+$("pos").innerHTML="<tr><th>Activo</th><th class=n>Coste</th><th class=n>Entrada $</th><th class=n>Último $</th><th class=n>Var.</th><th>Desde</th></tr>"+
+(Object.keys(P).length?Object.entries(P).map(([t,p])=>{const ch=p.last_price_usd/p.entry_price_usd-1;return `<tr><td><b>${t}</b></td><td class=n>${eur(p.cost_eur)}</td><td class=n>${(+p.entry_price_usd).toFixed(2)}</td><td class=n>${(+p.last_price_usd).toFixed(2)}</td><td class="n ${cls(ch)}">${pct(ch)}</td><td>${p.entry_date}</td></tr>`}).join(""):"<tr><td colspan=6 class=sub>Sin posiciones (100 % liquidez)</td></tr>");
+$("trd").innerHTML="<tr><th>Fecha</th><th>Fase</th><th>Op.</th><th>Activo</th><th class=n>Importe</th><th class=n>PnL</th><th>Motivo</th></tr>"+
+(D.trades.length?D.trades.slice(0,40).map(t=>`<tr><td>${t.date}</td><td>${t.phase}</td><td class="${t.side==="BUY"?"pos":"neg"}">${t.side==="BUY"?"Compra":"Venta"}</td><td><b>${t.ticker}</b></td><td class=n>${eur(+t.value_eur)}</td><td class="n ${cls(+t.pnl_eur)}">${t.pnl_eur!==""&&t.pnl_eur!=null?eur(+t.pnl_eur):""}</td><td class=sub>${t.reason}</td></tr>`).join(""):"<tr><td colspan=7 class=sub>Aún no hay operaciones</td></tr>");
+const T=D.targets.weights||{};
+$("tgt").innerHTML="<tr><th>Activo</th><th class=n>Peso</th><th class=n>Prob.</th></tr>"+(Object.keys(T).length?Object.entries(T).map(([t,w])=>`<tr><td><b>${t}</b></td><td class=n>${(w*100).toFixed(0)} %</td><td class=n>${((D.targets.probs||{})[t]||0).toFixed(3)}</td></tr>`).join(""):"<tr><td colspan=3 class=sub>Liquidez</td></tr>")+
+(D.targets.date?`<tr><td colspan=3 class=sub>Señal del ${D.targets.date} · modelo ${D.targets.model||""}${D.targets.mode&&D.targets.mode!=="modelo"?" · "+D.targets.mode:""}</td></tr>`:"");
+const ev=(D.models.last_eval)||{};
+$("mdl").innerHTML="<tr><th>Experimento</th><th class=n>Score</th><th class=n>Acierto</th><th class=n>AUC</th></tr>"+Object.entries(ev).sort((a,b)=>b[1].score-a[1].score).map(([n,e])=>`<tr><td class="${n===D.models.champion?"champ":""}">${n===D.models.champion?"★ ":""}${n}</td><td class="n ${cls(e.score)}">${pct(e.score)}</td><td class=n>${(e.hit*100).toFixed(0)} %</td><td class=n>${(+e.auc).toFixed(3)}</td></tr>`).join("");
+$("mdlnote").textContent=(D.models.reason?"Último cambio: "+D.models.reason+". ":"")+"Score = exceso medio a 5 días de las elegidas, en datos no vistos.";
+const L=D.live||{};$("live").innerHTML=L.n?`${L.n} predicciones evaluadas · acierto ${(L.hit_rate*100).toFixed(0)} % · elegidas: acierto ${(L.sel_hit_rate*100||0).toFixed(0)} %, exceso medio ${pct(L.sel_excess)}`:"Las predicciones se evalúan 5 sesiones después de hacerse.";
+$("les").innerHTML=D.lessons?(window.marked?marked.parse(D.lessons):D.lessons):"<span class=sub>Las lecciones aparecen tras la primera revisión semanal.</span>";
+$("jr").innerHTML=D.journal.length?D.journal.map(j=>`<div class="j ${j.author==="claude"?"claude":""}"><div class="m">${fmtTs(j.ts)} · ${j.kind} · ${j.author==="claude"?"Claude":"sistema"}</div><div class="b">${window.marked?marked.parse(j.text||""):j.text}</div></div>`).join(""):"<span class=sub>Sin entradas todavía.</span>";
+</script>
+</body></html>
