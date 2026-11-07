@@ -67,7 +67,7 @@ python -m trader.tools info                      # variables y rangos permitidos
 
 ```bash
 python -m trader.tools dashboard
-git add -A state docs reviews 2>/dev/null; git add -A state docs
+git add -A state docs; [ -d reviews ] && git add -A reviews
 git commit -m "claude: <nota diaria|revisión semanal> <fecha>"
 git pull --rebase origin main && git push origin main
 ```
