@@ -15,7 +15,10 @@ DOCS = ROOT / "docs"
 
 def load_config() -> dict:
     with open(ROOT / "config.yaml", encoding="utf-8") as f:
-        return yaml.safe_load(f)
+        cfg = yaml.safe_load(f)
+    # ajustes de estrategia aprobados en las revisiones semanales
+    cfg["strategy"].update(read_json("strategy_overrides.json", {}) or {})
+    return cfg
 
 
 def read_json(name: str, default: Any = None) -> Any:

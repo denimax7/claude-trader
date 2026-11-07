@@ -22,9 +22,15 @@ Laboratorio de **inversión simulada** que opera solo, analiza sus decisiones co
           │  5. el mejor (con margen) es el campeón → señal para mañana        │
           │  6. Claude escribe tesis, post-mortems y lecciones en el diario    │
           │                                                                    │
- SÁBADO   │  Revisión semanal: Claude analiza errores, extrae lecciones y      │
-          │  PROPONE un experimento nuevo → entra a competir, pero solo es     │
-          │  campeón si gana en validación fuera de muestra                    │
+ SÁBADO   │  Exploración automática: 4 variantes aleatorias del campeón;       │
+ 8:17 ES  │  las que le ganan entran a competir                                │
+          └────────────────────────────────────────────────────────────────────┘
+          ┌──────── Tareas programadas de Claude (incluidas en el plan) ──────┐
+ L-V      │  Nota diaria: tesis, post-mortems y lecciones                      │
+ 23:12 ES │                                                                    │
+ SÁBADO   │  Revisión semanal: analiza errores y calibración, depura           │
+ 11:23 ES │  lecciones y PROPONE hasta 2 modelos, 1 ajuste de estrategia y     │
+          │  retiradas → el siguiente cierre los valida y aplica o rechaza     │
           └────────────────────────────────────────────────────────────────────┘
                      │ commit de state/ y docs/
                      ▼
@@ -46,12 +52,15 @@ En hora de España: **~15:35, ~18:45 y ~21:45** (de lunes a viernes, festivos de
 
 1. **Cada día**: los modelos se reentrenan con los datos nuevos (incluidos los resultados de sus predicciones).
 2. **Cada día**: los experimentos compiten; si un aspirante supera al campeón con margen, lo sustituye.
-3. **Cada semana**: Claude lee el historial de errores y la calibración, escribe lecciones (`state/lessons.md`) que lee en cada nota diaria, y propone un experimento nuevo (variables y parámetros validados dentro de rangos seguros).
+3. **Cada sábado**: exploración automática de variantes del campeón (sin Claude).
+4. **Cada sábado**: Claude revisa errores, calibración y el resultado de sus propuestas anteriores, depura las lecciones (`state/lessons.md`) y propone modelos nuevos, ajustes de estrategia (dentro de límites seguros) o retiradas. Todo pasa por `state/proposals.json` y lo valida el siguiente cierre.
+
+Las instrucciones que siguen las sesiones de Claude están en [`CLAUDE.md`](CLAUDE.md). La clave `ANTHROPIC_API_KEY` es **opcional**: si existe, el cierre también escribe una nota vía API.
 
 ## Puesta en marcha (10 minutos)
 
 1. **Crea un repositorio** en GitHub con este contenido (público si quieres el panel gratis en Pages).
-2. **Secreto de Claude**: *Settings → Secrets and variables → Actions → New repository secret*
+2. **Secreto de Claude (opcional, de pago)**: *Settings → Secrets and variables → Actions → New repository secret*
    - Nombre: `ANTHROPIC_API_KEY`
    - Valor: tu clave de [console.anthropic.com](https://console.anthropic.com) (la API se factura aparte del plan de Claude; con Haiku a diario y Sonnet semanal el coste es de céntimos al día).
    - Sin clave también funciona: el diario se escribe con textos automáticos.

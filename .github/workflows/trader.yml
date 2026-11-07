@@ -2,6 +2,8 @@
 # GitHub usa UTC y no sabe de horario de verano: cada fase se programa a las dos
 # horas UTC posibles y el programa decide (por hora de Nueva York) si toca o no.
 # Hora de España: apertura ~15:35, media sesión ~18:45, antes del cierre ~21:45.
+# La nota diaria y la revisión semanal las escriben tareas programadas de Claude
+# (incluidas en el plan, sin API): ver CLAUDE.md.
 name: trader
 
 on:
@@ -9,13 +11,13 @@ on:
     - cron: "35 13,14 * * 1-5"   # apertura  (9:35 NY)
     - cron: "45 16,17 * * 1-5"   # media     (12:45 NY)
     - cron: "45 19,20 * * 1-5"   # pre-cierre (15:45 NY)
-    - cron: "17 9 * * 6"         # sábado: revisión semanal con Claude
+    - cron: "17 7 * * 6"         # sábado: exploración automática de variantes del modelo
   workflow_dispatch:
     inputs:
       phase:
         description: "Fase a ejecutar"
         type: choice
-        options: [auto, open, mid, close, review]
+        options: [auto, open, mid, close, explore, review]
         default: auto
       force:
         description: "Forzar aunque ya se haya ejecutado hoy o el mercado esté cerrado"
@@ -49,7 +51,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           PHASE="${{ inputs.phase || 'auto' }}"
-          if [ "${{ github.event.schedule }}" = "17 9 * * 6" ]; then PHASE=review; fi
+          if [ "${{ github.event.schedule }}" = "17 7 * * 6" ]; then PHASE=explore; fi
           FORCE=""
           if [ "${{ inputs.force }}" = "true" ]; then FORCE="--force"; fi
           python -m trader --phase "$PHASE" $FORCE

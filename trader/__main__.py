@@ -209,6 +209,7 @@ def phase_close(cfg: dict, date: str) -> None:
     events = pf.risk_checks(px, fx, date, "close")
     panel, _ = load_panel(cfg)
     live = score_predictions(panel)
+    ingest_proposals(cfg, panel, date)
     sig = train_and_signal(cfg, panel, date, list(pf.state["positions"]))
     snap = pf.snapshot(px, fx, date, "close")
     pf.save()
@@ -225,6 +226,7 @@ def phase_close(cfg: dict, date: str) -> None:
         "headlines": news_headlines(sorted(set(held) | set(sig["weights"]))),
         "lessons": _lessons_text(),
     }
+    store.write_json("last_close_context.json", ctx)  # la sesión diaria de Claude parte de aquí
     author, text = claude_agent.daily_note(cfg, ctx)
     store.append_journal({"ts": now_iso(), "kind": "cierre", "author": author, "text": text})
     log(f"cierre: {snap['equity_eur']:.2f} € · objetivo {list(sig['weights'])} · nota por {author}")
@@ -271,6 +273,124 @@ def phase_review(cfg: dict, date: str) -> None:
     log("revisión semanal escrita")
 
 
+def ingest_proposals(cfg: dict, panel: pd.DataFrame, date: str) -> None:
+    """Procesa las propuestas que deja Claude en state/proposals.json (ver trader/tools.py).
+
+    - model:    experimento nuevo → se valida en walk-forward y entra a competir.
+    - retire:   retira un experimento (nunca el campeón).
+    - strategy: ajusta un parámetro de estrategia dentro de límites seguros.
+    """
+    from .tools import STRATEGY_BOUNDS
+
+    props = store.read_json("proposals.json", []) or []
+    pending = [p for p in props if p.get("status") == "pendiente"]
+    if not pending:
+        return
+    exps = experiments()
+    reg = store.read_json("models.json", {}) or {}
+    champ = reg.get("champion")
+    champ_score = (reg.get("last_eval", {}).get(champ, {}) or {}).get("score", float("nan"))
+    notes = []
+    for p in pending:
+        try:
+            kind = p.get("type")
+            if kind == "model":
+                exp = validate_experiment({**p["experiment"], "created_by": p.get("author", "claude")})
+                if any(e["name"] == exp["name"] for e in exps):
+                    exp["name"] = f"{exp['name']}_{date.replace('-', '')}"[:40]
+                res = walk_forward(panel, exp, cfg)
+                exps.append({**exp, "status": "activo", "created": now_iso(), "first_eval": res})
+                p["result"] = f"en competición · primer score {res['score']:+.4f} (campeón {champ_score:+.4f})"
+            elif kind == "retire":
+                name = p["name"]
+                if name == champ:
+                    raise ValueError("no se puede retirar al campeón")
+                hit = [e for e in exps if e["name"] == name and e.get("status") == "activo"]
+                if not hit:
+                    raise ValueError(f"experimento activo '{name}' no encontrado")
+                hit[0]["status"] = "retirado"
+                p["result"] = "retirado"
+            elif kind == "strategy":
+                key, val = p["param"], p["value"]
+                if key not in STRATEGY_BOUNDS:
+                    raise ValueError(f"parámetro no ajustable: {key}")
+                lo, hi, typ = STRATEGY_BOUNDS[key]
+                if typ is str:
+                    if val not in lo:
+                        raise ValueError(f"valor no permitido: {val}")
+                else:
+                    val = typ(min(max(float(val), lo), hi))
+                ov = store.read_json("strategy_overrides.json", {}) or {}
+                old = ov.get(key, cfg["strategy"].get(key))
+                ov[key] = val
+                store.write_json("strategy_overrides.json", ov)
+                cfg["strategy"][key] = val
+                p["result"] = f"aplicado: {key} {old} → {val}"
+            else:
+                raise ValueError(f"tipo desconocido: {kind}")
+            p["status"] = "aplicada"
+        except Exception as e:  # noqa: BLE001
+            p["status"], p["result"] = "rechazada", str(e)[:200]
+        p["processed"] = now_iso()
+        notes.append(f"- `{p.get('type')}` {p.get('title', '')}: **{p['status']}** — {p['result']}")
+    store.write_json("experiments.json", exps)
+    store.write_json("proposals.json", props[-200:])
+    store.append_journal({"ts": now_iso(), "kind": "propuestas", "author": "sistema",
+                          "text": "Propuestas procesadas al cierre:\n" + "\n".join(notes)})
+    log(f"{len(pending)} propuestas procesadas")
+
+
+def phase_explore(cfg: dict, date: str) -> None:
+    """Búsqueda automática semanal: variantes aleatorias del campeón compiten en walk-forward.
+
+    Solo entran a competir las que superan al campeón en la primera validación; aun así,
+    para ser campeonas tienen que seguir ganando con margen en los cierres siguientes.
+    """
+    from .features import ALL_FEATURES
+    from .model import PARAM_BOUNDS
+
+    rng = np.random.default_rng(int(pd.Timestamp(date).strftime("%Y%m%d")))
+    exps = experiments()
+    reg = store.read_json("models.json", {}) or {}
+    champ = next((e for e in exps if e["name"] == reg.get("champion")), exps[0])
+    champ_score = (reg.get("last_eval", {}).get(champ["name"], {}) or {}).get("score", float("nan"))
+    panel, _ = load_panel(cfg)
+    n = int(cfg["model"].get("explore_trials", 4))
+    tried, kept = [], []
+    for i in range(n):
+        algo = champ["algo"] if rng.random() < 0.75 else ("logit" if champ["algo"] == "lgbm" else "lgbm")
+        feats = list(champ["features"]) if algo == champ["algo"] else list(ALL_FEATURES)
+        # mutar variables: quitar alguna y añadir otra
+        if len(feats) > 5 and rng.random() < 0.7:
+            feats.remove(rng.choice(feats))
+        extra = [f for f in ALL_FEATURES if f not in feats]
+        if extra and rng.random() < 0.7:
+            feats.append(rng.choice(extra))
+        params = dict(champ["params"]) if algo == champ["algo"] else {}
+        for k, (lo, hi, typ) in PARAM_BOUNDS[algo].items():
+            if rng.random() < 0.5:
+                base = float(params.get(k, (lo + hi) / 2))
+                if typ is int:
+                    v = round(base * float(np.exp(rng.normal(0, 0.35))))
+                else:
+                    v = base * float(np.exp(rng.normal(0, 0.35)))
+                params[k] = typ(min(max(v, lo), hi))
+        exp = validate_experiment({"name": f"auto_{date.replace('-', '')}_{i + 1}", "algo": algo,
+                                   "features": feats, "params": params, "created_by": "exploración",
+                                   "rationale": f"Variante aleatoria de {champ['name']}."})
+        res = walk_forward(panel, exp, cfg)
+        tried.append(f"`{exp['name']}` ({algo}, {len(feats)} var.) score {res['score']:+.4f}")
+        log(tried[-1])
+        if res["n_days"] and res["score"] > (champ_score if champ_score == champ_score else -1):
+            exps.append({**exp, "status": "activo", "created": now_iso(), "first_eval": res})
+            kept.append(exp["name"])
+    store.write_json("experiments.json", exps)
+    store.append_journal({"ts": now_iso(), "kind": "exploración", "author": "sistema",
+                          "text": f"Exploración semanal frente a `{champ['name']}` (score {champ_score:+.4f}):\n"
+                          + "\n".join(f"- {t}" for t in tried)
+                          + (f"\n\nEntran a competir: {', '.join(kept)}." if kept else "\n\nNinguna mejora al campeón.")})
+
+
 def _lessons_text() -> str:
     p = store.STATE / "lessons.md"
     return p.read_text(encoding="utf-8")[-4000:] if p.exists() else ""
@@ -286,7 +406,7 @@ def _add_lessons(date: str, lessons: list[str]) -> None:
 # ─────────────────────────── main ───────────────────────────
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="trader")
-    ap.add_argument("--phase", default="auto", choices=["auto", "open", "mid", "close", "review"])
+    ap.add_argument("--phase", default="auto", choices=["auto", "open", "mid", "close", "review", "explore"])
     ap.add_argument("--force", action="store_true", help="ejecuta aunque ya se haya hecho hoy o el mercado esté cerrado")
     ap.add_argument("--now", help="hora simulada ISO (pruebas)")
     a = ap.parse_args(argv)
@@ -301,7 +421,7 @@ def main(argv=None) -> int:
         if phase is None:
             log(f"fuera de ventana de mercado ({now.astimezone(clock.NY):%a %H:%M} NY); nada que hacer")
             return 0
-    elif phase != "review" and not a.force and clock.session(now, cfg["market"]["calendar"]) is None:
+    elif phase not in ("review", "explore") and not a.force and clock.session(now, cfg["market"]["calendar"]) is None:
         log("hoy no hay mercado (usa --force para forzar)")
         return 0
     runs = store.read_json("last_runs.json", {}) or {}
@@ -309,7 +429,8 @@ def main(argv=None) -> int:
         log(f"fase {phase} ya ejecutada hoy ({date}); se omite")
         return 0
     log(f"fase {phase} · {date}")
-    {"open": phase_open, "mid": phase_mid, "close": phase_close, "review": phase_review}[phase](cfg, date)
+    {"open": phase_open, "mid": phase_mid, "close": phase_close, "review": phase_review,
+     "explore": phase_explore}[phase](cfg, date)
     runs[phase] = date
     runs[f"{phase}_ts"] = now_iso()
     store.write_json("last_runs.json", runs)

@@ -72,7 +72,8 @@ model:
   wf_folds: 6               # bloques de validación walk-forward
   fold_days: 21             # tamaño de cada bloque (~1 mes)
   promote_margin: 0.0005    # mejora mínima (score) para cambiar de campeón
-  max_experiments: 6        # experimentos activos como máximo
+  max_experiments: 8        # experimentos activos como máximo (se retiran los peores)
+  explore_trials: 4         # variantes aleatorias que se prueban cada sábado
 
 claude:
   enabled: true             # requiere el secreto ANTHROPIC_API_KEY
