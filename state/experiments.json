@@ -190,5 +190,119 @@
       "bench_ret": 0.02925426982356205,
       "max_dd_vs_bench": -0.15160591640240983
     }
+  },
+  {
+    "name": "r261108_2",
+    "algo": "logit",
+    "features": [
+      "dd_252",
+      "mkt_ret_21",
+      "ret_10",
+      "sma200_gap",
+      "volz_21"
+    ],
+    "params": {
+      "C": 0.810245657626915
+    },
+    "created_by": "investigación",
+    "rationale": "Mutación de r261107_114 encontrada por replay histórico.",
+    "status": "activo",
+    "created": "2026-11-08T09:25:16+00:00",
+    "research": {
+      "n": 100,
+      "score": 0.00949920023106952,
+      "excess_annual": 0.4787596916459038,
+      "t_stat": 2.9418122363975097,
+      "hit": 0.44,
+      "total_ret": 2.429883008610389,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.17588414032158084
+    },
+    "holdout": {
+      "n": 26,
+      "score": 0.00364684504120654,
+      "excess_annual": 0.1838009900768096,
+      "t_stat": 0.5792140385751138,
+      "hit": 0.5384615384615384,
+      "total_ret": 0.11546979964315573,
+      "bench_ret": 0.02925426982356205,
+      "max_dd_vs_bench": -0.14526493953982478
+    }
+  },
+  {
+    "name": "r261108_31",
+    "algo": "logit",
+    "features": [
+      "dd_252",
+      "mkt_ret_21",
+      "ret_10",
+      "sma200_gap",
+      "volz_21"
+    ],
+    "params": {
+      "C": 1.5986666312664248
+    },
+    "created_by": "investigación",
+    "rationale": "Mutación de r261107_114 encontrada por replay histórico.",
+    "status": "activo",
+    "created": "2026-11-08T09:25:16+00:00",
+    "research": {
+      "n": 100,
+      "score": 0.00949920023106952,
+      "excess_annual": 0.4787596916459038,
+      "t_stat": 2.9418122363975097,
+      "hit": 0.44,
+      "total_ret": 2.429883008610389,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.17588414032158084
+    },
+    "holdout": {
+      "n": 26,
+      "score": 0.00364684504120654,
+      "excess_annual": 0.1838009900768096,
+      "t_stat": 0.5792140385751138,
+      "hit": 0.5384615384615384,
+      "total_ret": 0.11546979964315573,
+      "bench_ret": 0.02925426982356205,
+      "max_dd_vs_bench": -0.14526493953982478
+    }
+  },
+  {
+    "name": "r261108_175",
+    "algo": "logit",
+    "features": [
+      "dd_252",
+      "mkt_ret_21",
+      "ret_10",
+      "sma200_gap",
+      "volz_21"
+    ],
+    "params": {
+      "C": 1.1393136158281234
+    },
+    "created_by": "investigación",
+    "rationale": "Mutación de r261108_31 encontrada por replay histórico.",
+    "status": "activo",
+    "created": "2026-11-08T09:25:16+00:00",
+    "research": {
+      "n": 100,
+      "score": 0.00949920023106952,
+      "excess_annual": 0.4787596916459038,
+      "t_stat": 2.9418122363975097,
+      "hit": 0.44,
+      "total_ret": 2.429883008610389,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.17588414032158084
+    },
+    "holdout": {
+      "n": 26,
+      "score": 0.00364684504120654,
+      "excess_annual": 0.1838009900768096,
+      "t_stat": 0.5792140385751138,
+      "hit": 0.5384615384615384,
+      "total_ret": 0.11546979964315573,
+      "bench_ret": 0.02925426982356205,
+      "max_dd_vs_bench": -0.14526493953982478
+    }
   }
 ]

@@ -1,8 +1,8 @@
 {
-  "trials": 164,
-  "holdout_tests": 3,
-  "promoted": 2,
-  "last_run": "2026-11-07T11:45:33+00:00",
+  "trials": 332,
+  "holdout_tests": 6,
+  "promoted": 5,
+  "last_run": "2026-11-08T09:25:17+00:00",
   "data_asof": "2026-10-30",
   "research_window": [
     "2024-04-29",

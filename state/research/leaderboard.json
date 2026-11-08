@@ -1,5 +1,143 @@
 [
   {
+    "key": "aa28272781",
+    "name": "r261108_2",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_2",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.810245657626915
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261107_114 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.00949920023106952,
+      "excess_annual": 0.4787596916459038,
+      "t_stat": 2.9418122363975097,
+      "hit": 0.44,
+      "total_ret": 2.429883008610389,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.17588414032158084
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:10:27+00:00",
+    "created": "2026-11-08T09:10:27+00:00",
+    "holdout": {
+      "n": 26,
+      "score": 0.00364684504120654,
+      "excess_annual": 0.1838009900768096,
+      "t_stat": 0.5792140385751138,
+      "hit": 0.5384615384615384,
+      "total_ret": 0.11546979964315573,
+      "bench_ret": 0.02925426982356205,
+      "max_dd_vs_bench": -0.14526493953982478
+    },
+    "holdout_asof": "2026-10-30",
+    "status": "en competición"
+  },
+  {
+    "key": "676c8ae0a2",
+    "name": "r261108_31",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_31",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 1.5986666312664248
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261107_114 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.00949920023106952,
+      "excess_annual": 0.4787596916459038,
+      "t_stat": 2.9418122363975097,
+      "hit": 0.44,
+      "total_ret": 2.429883008610389,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.17588414032158084
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:13:43+00:00",
+    "created": "2026-11-08T09:13:43+00:00",
+    "holdout": {
+      "n": 26,
+      "score": 0.00364684504120654,
+      "excess_annual": 0.1838009900768096,
+      "t_stat": 0.5792140385751138,
+      "hit": 0.5384615384615384,
+      "total_ret": 0.11546979964315573,
+      "bench_ret": 0.02925426982356205,
+      "max_dd_vs_bench": -0.14526493953982478
+    },
+    "holdout_asof": "2026-10-30",
+    "status": "en competición"
+  },
+  {
+    "key": "46176ee6c3",
+    "name": "r261108_175",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_175",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 1.1393136158281234
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_31 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.00949920023106952,
+      "excess_annual": 0.4787596916459038,
+      "t_stat": 2.9418122363975097,
+      "hit": 0.44,
+      "total_ret": 2.429883008610389,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.17588414032158084
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:25:05+00:00",
+    "created": "2026-11-08T09:25:05+00:00",
+    "holdout": {
+      "n": 26,
+      "score": 0.00364684504120654,
+      "excess_annual": 0.1838009900768096,
+      "t_stat": 0.5792140385751138,
+      "hit": 0.5384615384615384,
+      "total_ret": 0.11546979964315573,
+      "bench_ret": 0.02925426982356205,
+      "max_dd_vs_bench": -0.14526493953982478
+    },
+    "holdout_asof": "2026-10-30",
+    "status": "en competición"
+  },
+  {
     "key": "10954495b4",
     "name": "r261107_114",
     "origin": "búsqueda",
@@ -252,6 +390,315 @@
     "created": "2026-11-07T11:30:36+00:00"
   },
   {
+    "key": "3e720f6f67",
+    "name": "r261108_78",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_78",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "sma200_gap",
+        "xs_rank_21"
+      ],
+      "params": {
+        "C": 0.36615742065404383
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_57 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.009305706823553146,
+      "excess_annual": 0.46900762390707856,
+      "t_stat": 3.0458999431629366,
+      "hit": 0.5,
+      "total_ret": 2.374434184404109,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.18226710184603867
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:16:35+00:00",
+    "created": "2026-11-08T09:16:35+00:00"
+  },
+  {
+    "key": "2fe7645db9",
+    "name": "r261108_139",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_139",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "sma200_gap",
+        "sma20_gap",
+        "xs_rank_21"
+      ],
+      "params": {
+        "C": 0.36615742065404383
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_78 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.009154640647068491,
+      "excess_annual": 0.46139388861225195,
+      "t_stat": 2.9424609891259323,
+      "hit": 0.49,
+      "total_ret": 2.3185535638798718,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.18312759818293156
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:21:38+00:00",
+    "created": "2026-11-08T09:21:38+00:00"
+  },
+  {
+    "key": "a894f3615b",
+    "name": "r261108_32",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_32",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "ret_5",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.810245657626915
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_2 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.009131760360364007,
+      "excess_annual": 0.46024072216234596,
+      "t_stat": 2.704844452657318,
+      "hit": 0.46,
+      "total_ret": 2.294912803206875,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.17588414032158084
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:13:44+00:00",
+    "created": "2026-11-08T09:13:44+00:00"
+  },
+  {
+    "key": "d8286ae4ca",
+    "name": "r261108_164",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_164",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "ret_5",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 1.5986666312664248
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_31 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.009131760360364007,
+      "excess_annual": 0.46024072216234596,
+      "t_stat": 2.704844452657318,
+      "hit": 0.46,
+      "total_ret": 2.294912803206875,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.17588414032158084
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:23:51+00:00",
+    "created": "2026-11-08T09:23:51+00:00"
+  },
+  {
+    "key": "32782bf382",
+    "name": "r261108_114",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_114",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "ret_21",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.810245657626915
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_32 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.008907679541207476,
+      "excess_annual": 0.44894704887685677,
+      "t_stat": 2.707122966054128,
+      "hit": 0.46,
+      "total_ret": 2.232748203483848,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.18952796520174142
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:19:22+00:00",
+    "created": "2026-11-08T09:19:22+00:00"
+  },
+  {
+    "key": "f33ef4fc03",
+    "name": "r261108_122",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_122",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "ret_21",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 1.9301191716091914
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_31 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.008907679541207476,
+      "excess_annual": 0.44894704887685677,
+      "t_stat": 2.707122966054128,
+      "hit": 0.46,
+      "total_ret": 2.232748203483848,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.18952796520174142
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:19:57+00:00",
+    "created": "2026-11-08T09:19:57+00:00"
+  },
+  {
+    "key": "05ba2c9431",
+    "name": "r261108_87",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_87",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "sma200_gap",
+        "xs_rank_21"
+      ],
+      "params": {
+        "C": 0.36615742065404383
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_78 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.008890070312785209,
+      "excess_annual": 0.4480595437643745,
+      "t_stat": 2.820049092283688,
+      "hit": 0.46,
+      "total_ret": 2.2368203086315672,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.18698852989099357
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:17:03+00:00",
+    "created": "2026-11-08T09:17:03+00:00"
+  },
+  {
+    "key": "cf1fff222a",
+    "name": "r261108_145",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_145",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "sma200_gap",
+        "xs_rank_21"
+      ],
+      "params": {
+        "C": 0.28082938429475324
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_78 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.008890070312785209,
+      "excess_annual": 0.4480595437643745,
+      "t_stat": 2.820049092283688,
+      "hit": 0.46,
+      "total_ret": 2.2368203086315672,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.18698852989099357
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:22:12+00:00",
+    "created": "2026-11-08T09:22:12+00:00"
+  },
+  {
+    "key": "d635f5875b",
+    "name": "r261108_57",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_57",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "sma200_gap",
+        "volz_21",
+        "xs_rank_21"
+      ],
+      "params": {
+        "C": 0.36615742065404383
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_2 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.00884172049236504,
+      "excess_annual": 0.445622712815198,
+      "t_stat": 2.866723986563351,
+      "hit": 0.46,
+      "total_ret": 2.2345286729313156,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.21447710637738648
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:15:29+00:00",
+    "created": "2026-11-08T09:15:29+00:00"
+  },
+  {
     "key": "40cdd2529a",
     "name": "r261107_158",
     "origin": "búsqueda",
@@ -299,6 +746,42 @@
     "status": "suspende examen"
   },
   {
+    "key": "ad7f6ce463",
+    "name": "r261108_103",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_103",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_1",
+        "ret_10",
+        "sma200_gap",
+        "sma50_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.6416273277995876
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_32 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.00866171480581447,
+      "excess_annual": 0.4365504262130493,
+      "t_stat": 2.717994414537748,
+      "hit": 0.48,
+      "total_ret": 2.1685786360290837,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.19267089097108503
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:18:18+00:00",
+    "created": "2026-11-08T09:18:18+00:00"
+  },
+  {
     "key": "af499e7b35",
     "name": "r261107_162",
     "origin": "búsqueda",
@@ -332,6 +815,41 @@
     "data_asof": "2026-10-30",
     "evaluated": "2026-11-07T11:45:11+00:00",
     "created": "2026-11-07T11:45:11+00:00"
+  },
+  {
+    "key": "2f4a189d69",
+    "name": "r261108_20",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_20",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "ret_21",
+        "sma200_gap",
+        "sma20_gap"
+      ],
+      "params": {
+        "C": 0.5353854029455866
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_2 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.008518702263398448,
+      "excess_annual": 0.4293425940752818,
+      "t_stat": 2.6251351103635576,
+      "hit": 0.49,
+      "total_ret": 2.1027131767789973,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.18272761275100735
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:12:21+00:00",
+    "created": "2026-11-08T09:12:21+00:00"
   },
   {
     "key": "c2bb84bff3",
@@ -507,6 +1025,105 @@
     "created": "2026-11-07T11:42:04+00:00"
   },
   {
+    "key": "20755d4295",
+    "name": "r261108_38",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_38",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.9368087013536973
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_31 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.008395726209566388,
+      "excess_annual": 0.4231446009621459,
+      "t_stat": 2.608118546284835,
+      "hit": 0.4,
+      "total_ret": 2.068893656537607,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2023537427536687
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:14:21+00:00",
+    "created": "2026-11-08T09:14:21+00:00"
+  },
+  {
+    "key": "834564c412",
+    "name": "r261108_80",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_80",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.7720366861168032
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261107_114 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.008395726209566388,
+      "excess_annual": 0.4231446009621459,
+      "t_stat": 2.608118546284835,
+      "hit": 0.4,
+      "total_ret": 2.068893656537607,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2023537427536687
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:16:48+00:00",
+    "created": "2026-11-08T09:16:48+00:00"
+  },
+  {
+    "key": "209beb9543",
+    "name": "r261108_118",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_118",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.39505703596308056
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261107_114 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.008395726209566388,
+      "excess_annual": 0.4231446009621459,
+      "t_stat": 2.608118546284835,
+      "hit": 0.4,
+      "total_ret": 2.068893656537607,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2023537427536687
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:19:54+00:00",
+    "created": "2026-11-08T09:19:54+00:00"
+  },
+  {
     "key": "8ea5011b9d",
     "name": "r261107_131",
     "origin": "búsqueda",
@@ -540,6 +1157,111 @@
     "data_asof": "2026-10-30",
     "evaluated": "2026-11-07T11:42:06+00:00",
     "created": "2026-11-07T11:42:06+00:00"
+  },
+  {
+    "key": "f60cb0938c",
+    "name": "r261108_10",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_10",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "mkt_vol_21",
+        "ret_1",
+        "ret_5",
+        "sma200_gap",
+        "sma50_gap"
+      ],
+      "params": {
+        "C": 0.26796851792853216
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261107_158 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.008370092086517629,
+      "excess_annual": 0.4218526411604885,
+      "t_stat": 2.674021951015431,
+      "hit": 0.45,
+      "total_ret": 2.08928300422809,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.17655046530655982
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:11:39+00:00",
+    "created": "2026-11-08T09:11:39+00:00"
+  },
+  {
+    "key": "21ae561862",
+    "name": "r261108_111",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_111",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "ret_21",
+        "sma200_gap",
+        "xs_rank_21"
+      ],
+      "params": {
+        "C": 0.36615742065404383
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_78 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.00834209461561604,
+      "excess_annual": 0.4204415686270484,
+      "t_stat": 2.536633095470251,
+      "hit": 0.48,
+      "total_ret": 2.0437389441902147,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.17778011151446182
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:19:20+00:00",
+    "created": "2026-11-08T09:19:20+00:00"
+  },
+  {
+    "key": "b509821470",
+    "name": "r261108_83",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_83",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "rel_bench_63",
+        "ret_10",
+        "xs_rank_21"
+      ],
+      "params": {
+        "C": 0.36615742065404383
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_78 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.008056069584176909,
+      "excess_annual": 0.4060259070425162,
+      "t_stat": 2.948444516934456,
+      "hit": 0.32,
+      "total_ret": 2.0155486480427065,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.0632790749487332
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:16:59+00:00",
+    "created": "2026-11-08T09:16:59+00:00"
   },
   {
     "key": "4a32803d7c",
@@ -615,6 +1337,74 @@
     "data_asof": "2026-10-30",
     "evaluated": "2026-11-07T11:40:05+00:00",
     "created": "2026-11-07T11:40:05+00:00"
+  },
+  {
+    "key": "824708753b",
+    "name": "r261108_44",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_44",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_1",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.810245657626915
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_2 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.008041226691005082,
+      "excess_annual": 0.4052778252266561,
+      "t_stat": 2.493246547649373,
+      "hit": 0.4,
+      "total_ret": 1.9600572843957798,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.18672112578204825
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:14:48+00:00",
+    "created": "2026-11-08T09:14:48+00:00"
+  },
+  {
+    "key": "60777e8e6b",
+    "name": "r261108_41",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_41",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "ret_126",
+        "sma200_gap"
+      ],
+      "params": {
+        "C": 3.399366148899694
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_31 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.00803416206127184,
+      "excess_annual": 0.4049217678881007,
+      "t_stat": 2.601856012812274,
+      "hit": 0.45,
+      "total_ret": 1.9742834596992602,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.23190518935470417
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:14:24+00:00",
+    "created": "2026-11-08T09:14:24+00:00"
   },
   {
     "key": "c78eab6241",
@@ -731,6 +1521,40 @@
     "created": "2026-11-07T11:40:04+00:00"
   },
   {
+    "key": "46a6be114b",
+    "name": "r261108_163",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_163",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "ret_10",
+        "sma200_gap",
+        "sma50_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.810245657626915
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_2 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007956530636735938,
+      "excess_annual": 0.40100914409149124,
+      "t_stat": 2.5160302784787163,
+      "hit": 0.45,
+      "total_ret": 1.9564237319016833,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.20034628135812016
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:23:51+00:00",
+    "created": "2026-11-08T09:23:51+00:00"
+  },
+  {
     "key": "751e04a722",
     "name": "r261107_135",
     "origin": "búsqueda",
@@ -762,6 +1586,40 @@
     "data_asof": "2026-10-30",
     "evaluated": "2026-11-07T11:42:16+00:00",
     "created": "2026-11-07T11:42:16+00:00"
+  },
+  {
+    "key": "28da7ffd96",
+    "name": "r261108_121",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_121",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "sma200_gap",
+        "volz_21",
+        "xs_rank_126"
+      ],
+      "params": {
+        "C": 0.7627252806899406
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261107_114 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007851991318518967,
+      "excess_annual": 0.3957403624533559,
+      "t_stat": 2.6041723905402705,
+      "hit": 0.44,
+      "total_ret": 1.9329847084603617,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.19178128584405518
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:19:57+00:00",
+    "created": "2026-11-08T09:19:57+00:00"
   },
   {
     "key": "e1e7478ad5",
@@ -799,6 +1657,140 @@
     "created": "2026-11-07T11:44:32+00:00"
   },
   {
+    "key": "52db3bf9c2",
+    "name": "r261108_86",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_86",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_5",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 1.5986666312664248
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_31 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007687803499630124,
+      "excess_annual": 0.38746529638135824,
+      "t_stat": 2.440350484767283,
+      "hit": 0.42,
+      "total_ret": 1.8743160233881784,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.21843696753572261
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:17:02+00:00",
+    "created": "2026-11-08T09:17:02+00:00"
+  },
+  {
+    "key": "7f596a11f4",
+    "name": "r261108_115",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_115",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_5",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.503624827006957
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_2 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007687803499630124,
+      "excess_annual": 0.38746529638135824,
+      "t_stat": 2.440350484767283,
+      "hit": 0.42,
+      "total_ret": 1.8743160233881784,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.21843696753572261
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:19:23+00:00",
+    "created": "2026-11-08T09:19:23+00:00"
+  },
+  {
+    "key": "6ad3fc2789",
+    "name": "r261108_71",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_71",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "sma200_gap"
+      ],
+      "params": {
+        "C": 1.5986666312664248
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_31 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007629020646690584,
+      "excess_annual": 0.38450264059320544,
+      "t_stat": 2.4176562280802023,
+      "hit": 0.45,
+      "total_ret": 1.8513489318466814,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2249255932111306
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:16:29+00:00",
+    "created": "2026-11-08T09:16:29+00:00"
+  },
+  {
+    "key": "aeeb40d271",
+    "name": "r261108_92",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_92",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "sma200_gap"
+      ],
+      "params": {
+        "C": 0.36615742065404383
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_78 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007629020646690584,
+      "excess_annual": 0.38450264059320544,
+      "t_stat": 2.4176562280802023,
+      "hit": 0.45,
+      "total_ret": 1.8513489318466814,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2249255932111306
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:17:15+00:00",
+    "created": "2026-11-08T09:17:15+00:00"
+  },
+  {
     "key": "6950bf9b2d",
     "name": "r261107_86",
     "origin": "búsqueda",
@@ -830,6 +1822,346 @@
     "data_asof": "2026-10-30",
     "evaluated": "2026-11-07T11:38:29+00:00",
     "created": "2026-11-07T11:38:29+00:00"
+  },
+  {
+    "key": "c758b005ea",
+    "name": "r261108_88",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_88",
+      "algo": "logit",
+      "features": [
+        "mkt_ret_21",
+        "rel_bench_21",
+        "ret_10",
+        "sma200_gap",
+        "sma50_gap",
+        "xs_rank_21"
+      ],
+      "params": {
+        "C": 0.2988082023115336
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_78 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007542726822574908,
+      "excess_annual": 0.3801534318577754,
+      "t_stat": 1.7548500763316848,
+      "hit": 0.29,
+      "total_ret": 1.7630444448724085,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.21444935284359912
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:17:04+00:00",
+    "created": "2026-11-08T09:17:04+00:00"
+  },
+  {
+    "key": "cee2af1c57",
+    "name": "r261108_11",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_11",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "ret_10",
+        "rsi_14",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.6553444570423989
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_2 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007535894453855,
+      "excess_annual": 0.379809080474292,
+      "t_stat": 2.304977569408085,
+      "hit": 0.46,
+      "total_ret": 1.8204615759206102,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2097532640431501
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:11:40+00:00",
+    "created": "2026-11-08T09:11:40+00:00"
+  },
+  {
+    "key": "9e8ee3b75d",
+    "name": "r261108_28",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_28",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_vol_21",
+        "ret_1",
+        "ret_21",
+        "sma200_gap",
+        "sma50_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.26796851792853216
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261107_162 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007524761628436076,
+      "excess_annual": 0.3792479860731782,
+      "t_stat": 2.5209093670481475,
+      "hit": 0.41,
+      "total_ret": 1.8415165173226806,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.20593492848984574
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:13:41+00:00",
+    "created": "2026-11-08T09:13:41+00:00"
+  },
+  {
+    "key": "00c21f657d",
+    "name": "r261108_75",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_75",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "ret_10",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.7595085918069547
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_2 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007520499313204787,
+      "excess_annual": 0.37903316538552123,
+      "t_stat": 2.332005098000731,
+      "hit": 0.43,
+      "total_ret": 1.8281053515237962,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2225972043386486
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:16:33+00:00",
+    "created": "2026-11-08T09:16:33+00:00"
+  },
+  {
+    "key": "da8b0e24f6",
+    "name": "r261108_94",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_94",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "ret_10",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 1.5986666312664248
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_31 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007520499313204787,
+      "excess_annual": 0.37903316538552123,
+      "t_stat": 2.332005098000731,
+      "hit": 0.43,
+      "total_ret": 1.8281053515237962,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2225972043386486
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:17:16+00:00",
+    "created": "2026-11-08T09:17:16+00:00"
+  },
+  {
+    "key": "733e019115",
+    "name": "r261108_131",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_131",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "ret_10",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.7985766049720618
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_2 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007520499313204787,
+      "excess_annual": 0.37903316538552123,
+      "t_stat": 2.332005098000731,
+      "hit": 0.43,
+      "total_ret": 1.8281053515237962,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2225972043386486
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:21:16+00:00",
+    "created": "2026-11-08T09:21:16+00:00"
+  },
+  {
+    "key": "1b10165868",
+    "name": "r261108_156",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_156",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "ret_10",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 2.8962135700754064
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_31 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007520499313204787,
+      "excess_annual": 0.37903316538552123,
+      "t_stat": 2.332005098000731,
+      "hit": 0.43,
+      "total_ret": 1.8281053515237962,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2225972043386486
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:23:08+00:00",
+    "created": "2026-11-08T09:23:08+00:00"
+  },
+  {
+    "key": "8ce00e3461",
+    "name": "r261108_167",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_167",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "ret_10",
+        "sma200_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 0.7749550285211866
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_2 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007520499313204787,
+      "excess_annual": 0.37903316538552123,
+      "t_stat": 2.332005098000731,
+      "hit": 0.43,
+      "total_ret": 1.8281053515237962,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2225972043386486
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:23:54+00:00",
+    "created": "2026-11-08T09:23:54+00:00"
+  },
+  {
+    "key": "bd92370500",
+    "name": "r261108_14",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_14",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_vol_21",
+        "ret_5",
+        "sma200_gap",
+        "sma20_gap",
+        "sma50_gap"
+      ],
+      "params": {
+        "C": 0.26796851792853216
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261107_158 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.00745234321695993,
+      "excess_annual": 0.3755980981347805,
+      "t_stat": 2.470958983492881,
+      "hit": 0.41,
+      "total_ret": 1.8170001025987155,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.1742305438612436
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:11:42+00:00",
+    "created": "2026-11-08T09:11:42+00:00"
+  },
+  {
+    "key": "7cab0aa6d8",
+    "name": "r261108_106",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261108_106",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "mkt_ret_21",
+        "sma200_gap",
+        "sma20_gap",
+        "volz_21"
+      ],
+      "params": {
+        "C": 1.5986666312664248
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261108_31 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.007416788422809901,
+      "excess_annual": 0.373806136509619,
+      "t_stat": 2.280248973053829,
+      "hit": 0.42,
+      "total_ret": 1.7948383673979715,
+      "bench_ret": 0.4292639477748055,
+      "max_dd_vs_bench": -0.2225972043386486
+    },
+    "data_asof": "2026-10-30",
+    "evaluated": "2026-11-08T09:18:21+00:00",
+    "created": "2026-11-08T09:18:21+00:00"
   },
   {
     "key": "2046104164",
@@ -865,1373 +2197,5 @@
     "data_asof": "2026-10-30",
     "evaluated": "2026-11-07T11:35:25+00:00",
     "created": "2026-11-07T11:35:25+00:00"
-  },
-  {
-    "key": "e0f4dc5241",
-    "name": "r261107_133",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_133",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_vol_21",
-        "ret_5",
-        "sma200_gap"
-      ],
-      "params": {
-        "C": 0.26796851792853216
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_79 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.007230787335663002,
-      "excess_annual": 0.3644316817174153,
-      "t_stat": 2.2485990446621247,
-      "hit": 0.43,
-      "total_ret": 1.7327062921155152,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.21829049573303183
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:42:06+00:00",
-    "created": "2026-11-07T11:42:06+00:00"
-  },
-  {
-    "key": "d5a7c28632",
-    "name": "r261107_153",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_153",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "ret_10",
-        "sma200_gap",
-        "volz_21"
-      ],
-      "params": {
-        "C": 1.3502619607990722
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_114 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.0071118273243848526,
-      "excess_annual": 0.35843609714899655,
-      "t_stat": 2.2492611575151846,
-      "hit": 0.48,
-      "total_ret": 1.7118674060019812,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.23505297849190454
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:44:21+00:00",
-    "created": "2026-11-07T11:44:21+00:00"
-  },
-  {
-    "key": "5a3b9e1970",
-    "name": "r261107_51",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_51",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "ret_21",
-        "ret_5",
-        "rsi_14",
-        "sma200_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.4582518333091435
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_41 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.00710240787175708,
-      "excess_annual": 0.3579613567365568,
-      "t_stat": 2.5251717608264963,
-      "hit": 0.46,
-      "total_ret": 1.7346924093252114,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.17639327975196772
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:35:05+00:00",
-    "created": "2026-11-07T11:35:05+00:00"
-  },
-  {
-    "key": "4b8ddff6a2",
-    "name": "r261107_118",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_118",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "ret_10",
-        "ret_126",
-        "sma200_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.7720366861168032
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_107 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.007095745534537913,
-      "excess_annual": 0.3576255749407108,
-      "t_stat": 2.2342956903884406,
-      "hit": 0.47,
-      "total_ret": 1.7096808892334519,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.166732691245979
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:41:07+00:00",
-    "created": "2026-11-07T11:41:07+00:00"
-  },
-  {
-    "key": "eb3215a49b",
-    "name": "r261107_157",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_157",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "sma200_gap",
-        "sma50_gap",
-        "volz_21"
-      ],
-      "params": {
-        "C": 0.7720366861168032
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_114 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.007089546857873777,
-      "excess_annual": 0.35731316163683835,
-      "t_stat": 2.2264019630641414,
-      "hit": 0.46,
-      "total_ret": 1.7077802789750787,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.18442548462872033
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:44:33+00:00",
-    "created": "2026-11-07T11:44:33+00:00"
-  },
-  {
-    "key": "885ca255d1",
-    "name": "r261107_36",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_36",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "mkt_vol_21",
-        "ret_10",
-        "ret_5",
-        "sma200_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.7720366861168032
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_28 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.007069265369791669,
-      "excess_annual": 0.35629097463750015,
-      "t_stat": 2.40593837263193,
-      "hit": 0.48,
-      "total_ret": 1.7330747067238956,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.1696835697976744
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:34:30+00:00",
-    "created": "2026-11-07T11:34:30+00:00"
-  },
-  {
-    "key": "c2a4005a56",
-    "name": "r261107_43",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_43",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "mkt_vol_21",
-        "ret_1",
-        "ret_10",
-        "ret_5",
-        "sma200_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.43930603782957606
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_36 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.006899183791878466,
-      "excess_annual": 0.3477188631106747,
-      "t_stat": 2.3403389937587136,
-      "hit": 0.48,
-      "total_ret": 1.6861027295812976,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.1696835697976744
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:34:45+00:00",
-    "created": "2026-11-07T11:34:45+00:00"
-  },
-  {
-    "key": "1011a7afa8",
-    "name": "r261107_76",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_76",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "ret_10",
-        "ret_21",
-        "ret_5",
-        "sma200_gap",
-        "sma50_gap",
-        "xs_rank_126"
-      ],
-      "params": {
-        "C": 0.7720366861168032
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_36 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.006898658915663066,
-      "excess_annual": 0.3476924093494186,
-      "t_stat": 2.3309999016970853,
-      "hit": 0.51,
-      "total_ret": 1.6689266187688934,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.15689495532955255
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:37:31+00:00",
-    "created": "2026-11-07T11:37:31+00:00"
-  },
-  {
-    "key": "542f9d6577",
-    "name": "r261107_163",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_163",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "ret_1",
-        "ret_21",
-        "ret_5",
-        "rsi_14",
-        "sma200_gap",
-        "sma50_gap",
-        "volz_21",
-        "xs_rank_21"
-      ],
-      "params": {
-        "C": 0.26796851792853216
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_162 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.00671174591383806,
-      "excess_annual": 0.33827199405743824,
-      "t_stat": 2.3386889446853574,
-      "hit": 0.45,
-      "total_ret": 1.6318769931241746,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.18722870333760333
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:45:12+00:00",
-    "created": "2026-11-07T11:45:12+00:00"
-  },
-  {
-    "key": "2245d44e17",
-    "name": "r261107_115",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_115",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_vol_21",
-        "sma200_gap",
-        "sma20_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.26796851792853216
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_79 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.006681503305930362,
-      "excess_annual": 0.3367477666188902,
-      "t_stat": 2.2798086065133782,
-      "hit": 0.46,
-      "total_ret": 1.6278896693275269,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.17750990857008342
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:40:56+00:00",
-    "created": "2026-11-07T11:40:56+00:00"
-  },
-  {
-    "key": "692d5adf6c",
-    "name": "r261107_19",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_19",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_sma200_gap",
-        "mkt_vol_21",
-        "ret_21",
-        "ret_5",
-        "sma200_gap",
-        "sma50_gap",
-        "xs_rank_21"
-      ],
-      "params": {
-        "C": 0.373542146774367
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_12 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.006510854724973433,
-      "excess_annual": 0.328147078138661,
-      "t_stat": 2.3278457189568957,
-      "hit": 0.42,
-      "total_ret": 1.5819735270256112,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.20190343017444468
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:32:59+00:00",
-    "created": "2026-11-07T11:32:59+00:00"
-  },
-  {
-    "key": "21e1995988",
-    "name": "r261107_52",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_52",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_sma200_gap",
-        "mkt_vol_21",
-        "ret_21",
-        "ret_63",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.373542146774367
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_19 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.006490932901698823,
-      "excess_annual": 0.32714301824562064,
-      "t_stat": 2.0278761299486687,
-      "hit": 0.32,
-      "total_ret": 1.5617372833614014,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.11798121003775985
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:35:06+00:00",
-    "created": "2026-11-07T11:35:06+00:00"
-  },
-  {
-    "key": "9e9fd91431",
-    "name": "r261107_41",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_41",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "ret_5",
-        "rsi_14",
-        "sma200_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.4582518333091435
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_28 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.006385539703865803,
-      "excess_annual": 0.3218312010748365,
-      "t_stat": 2.2223589935344843,
-      "hit": 0.44,
-      "total_ret": 1.549863604988325,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.16507404562348416
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:34:35+00:00",
-    "created": "2026-11-07T11:34:35+00:00"
-  },
-  {
-    "key": "f1ce18a649",
-    "name": "r261107_65",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_65",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "ret_5",
-        "rsi_14",
-        "sma200_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.2514727841308911
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_51 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.006385539703865803,
-      "excess_annual": 0.3218312010748365,
-      "t_stat": 2.2223589935344843,
-      "hit": 0.44,
-      "total_ret": 1.549863604988325,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.16507404562348416
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:35:58+00:00",
-    "created": "2026-11-07T11:35:58+00:00"
-  },
-  {
-    "key": "dd0e7038ac",
-    "name": "r261107_53",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_53",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "mkt_vol_21",
-        "ret_10",
-        "ret_126",
-        "ret_252",
-        "ret_5",
-        "sma200_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.7720366861168032
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_36 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.006331443827424634,
-      "excess_annual": 0.3191047689022016,
-      "t_stat": 1.8748672904883477,
-      "hit": 0.5,
-      "total_ret": 1.4715364038204406,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.153384097800927
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:35:07+00:00",
-    "created": "2026-11-07T11:35:07+00:00"
-  },
-  {
-    "key": "f4dadb9174",
-    "name": "r261107_136",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_136",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_vol_21",
-        "ret_5",
-        "sma200_gap",
-        "sma50_gap",
-        "xs_rank_63"
-      ],
-      "params": {
-        "C": 0.5581321676252196
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_28 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.0062698624433090155,
-      "excess_annual": 0.3160010671427744,
-      "t_stat": 2.002623579561088,
-      "hit": 0.51,
-      "total_ret": 1.4946616189811195,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.17206321092913202
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:42:17+00:00",
-    "created": "2026-11-07T11:42:17+00:00"
-  },
-  {
-    "key": "ffe7b1853e",
-    "name": "r261107_7",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_7",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_sma200_gap",
-        "mkt_vol_21",
-        "rel_bench_21",
-        "ret_10",
-        "ret_21",
-        "ret_5",
-        "rsi_14",
-        "sma200_gap",
-        "sma50_gap",
-        "xs_rank_21"
-      ],
-      "params": {
-        "C": 0.19557340133568743
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_4 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.0062441426804742415,
-      "excess_annual": 0.31470479109590177,
-      "t_stat": 2.0525259999657863,
-      "hit": 0.43,
-      "total_ret": 1.5005235654000573,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.17330277222072343
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:31:56+00:00",
-    "created": "2026-11-07T11:31:56+00:00"
-  },
-  {
-    "key": "98ab0e0b70",
-    "name": "r261107_39",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_39",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "mkt_vol_21",
-        "rel_bench_21",
-        "ret_21",
-        "ret_5",
-        "rsi_14",
-        "sma200_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.19557340133568743
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_7 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.006124178112065001,
-      "excess_annual": 0.308658576848076,
-      "t_stat": 1.9692870692834625,
-      "hit": 0.42,
-      "total_ret": 1.470517435565284,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.18202650489712813
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:34:33+00:00",
-    "created": "2026-11-07T11:34:33+00:00"
-  },
-  {
-    "key": "b6cbfd7965",
-    "name": "r261107_88",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_88",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "mkt_sma200_gap",
-        "rel_bench_21",
-        "ret_10",
-        "ret_21",
-        "ret_5",
-        "sma200_gap",
-        "xs_rank_63"
-      ],
-      "params": {
-        "C": 0.7720366861168032
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_82 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.005797745751715536,
-      "excess_annual": 0.292206385886463,
-      "t_stat": 1.8076883985914134,
-      "hit": 0.49,
-      "total_ret": 1.3763651270383401,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.13313049691406498
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:38:31+00:00",
-    "created": "2026-11-07T11:38:31+00:00"
-  },
-  {
-    "key": "16a402ae5b",
-    "name": "r261107_38",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_38",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_vol_21",
-        "ret_21",
-        "ret_5",
-        "sma200_gap",
-        "sma50_gap",
-        "xs_rank_63"
-      ],
-      "params": {
-        "C": 0.44346824463200135
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_19 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.005680552209518962,
-      "excess_annual": 0.2862998313597557,
-      "t_stat": 1.952883136475286,
-      "hit": 0.47,
-      "total_ret": 1.3698991398914986,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.1488660291473911
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:34:32+00:00",
-    "created": "2026-11-07T11:34:32+00:00"
-  },
-  {
-    "key": "929e6b4dde",
-    "name": "r261107_83",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_83",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "mkt_sma200_gap",
-        "rel_bench_21",
-        "ret_1",
-        "ret_10",
-        "ret_21",
-        "ret_5",
-        "sma20_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.5514036964148676
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_82 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.005600378205745034,
-      "excess_annual": 0.2822590615695497,
-      "t_stat": 1.790383606163985,
-      "hit": 0.35,
-      "total_ret": 1.3694788521250199,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.1329767990300993
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:37:53+00:00",
-    "created": "2026-11-07T11:37:53+00:00"
-  },
-  {
-    "key": "84a7dbacb1",
-    "name": "r261107_37",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_37",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_sma200_gap",
-        "mkt_vol_21",
-        "ret_5",
-        "sma200_gap",
-        "xs_rank_21"
-      ],
-      "params": {
-        "C": 0.373542146774367
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_19 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.00551200278857689,
-      "excess_annual": 0.27780494054427524,
-      "t_stat": 1.7320277336054404,
-      "hit": 0.41,
-      "total_ret": 1.309352145410605,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.23299411029992478
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:34:31+00:00",
-    "created": "2026-11-07T11:34:31+00:00"
-  },
-  {
-    "key": "eb2b0ab000",
-    "name": "r261107_4",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_4",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_sma200_gap",
-        "mkt_vol_21",
-        "ret_10",
-        "ret_21",
-        "ret_5",
-        "rsi_14",
-        "sma200_gap",
-        "sma50_gap",
-        "xs_rank_21"
-      ],
-      "params": {
-        "C": 0.2659884402208429
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_1 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.0055039277988807285,
-      "excess_annual": 0.2773979610635887,
-      "t_stat": 1.8856947735231375,
-      "hit": 0.41,
-      "total_ret": 1.326192982422206,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.1641653961574423
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:31:43+00:00",
-    "created": "2026-11-07T11:31:43+00:00"
-  },
-  {
-    "key": "b78d4762f8",
-    "name": "r261107_9",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_9",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_sma200_gap",
-        "mkt_vol_21",
-        "ret_10",
-        "ret_21",
-        "rsi_14",
-        "sma200_gap",
-        "sma50_gap",
-        "xs_rank_21"
-      ],
-      "params": {
-        "C": 0.2659884402208429
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_4 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.005465679847842283,
-      "excess_annual": 0.27547026433125105,
-      "t_stat": 1.8766127575679927,
-      "hit": 0.41,
-      "total_ret": 1.3192346203207146,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.1741845726309711
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:32:06+00:00",
-    "created": "2026-11-07T11:32:06+00:00"
-  },
-  {
-    "key": "38cf94e109",
-    "name": "r261107_30",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_30",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_vol_21",
-        "rel_bench_21",
-        "ret_10",
-        "ret_21",
-        "ret_5",
-        "rsi_14",
-        "sma200_gap",
-        "sma50_gap",
-        "xs_rank_21"
-      ],
-      "params": {
-        "C": 0.19557340133568743
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_7 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.005441100711298897,
-      "excess_annual": 0.27423147584946445,
-      "t_stat": 1.9685869397652338,
-      "hit": 0.44,
-      "total_ret": 1.3326970236976727,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.19265066226838057
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:33:58+00:00",
-    "created": "2026-11-07T11:33:58+00:00"
-  },
-  {
-    "key": "1982879fc3",
-    "name": "r261107_13",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_13",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_sma200_gap",
-        "mkt_vol_21",
-        "ret_10",
-        "ret_21",
-        "ret_5",
-        "sma200_gap",
-        "sma50_gap",
-        "xs_rank_21",
-        "xs_rank_63"
-      ],
-      "params": {
-        "C": 0.373542146774367
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_12 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.0054116449191704205,
-      "excess_annual": 0.2727469039261892,
-      "t_stat": 1.84178046104554,
-      "hit": 0.46,
-      "total_ret": 1.3047788287649809,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.1498129349938524
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:32:42+00:00",
-    "created": "2026-11-07T11:32:42+00:00"
-  },
-  {
-    "key": "f6c41210ac",
-    "name": "r261107_77",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_77",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_sma200_gap",
-        "ret_10",
-        "ret_5",
-        "sma200_gap"
-      ],
-      "params": {
-        "C": 0.47921532827192803
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_28 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.005402149206372565,
-      "excess_annual": 0.2722683200011773,
-      "t_stat": 1.6730063799671102,
-      "hit": 0.43,
-      "total_ret": 1.279491643742174,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.238210761029781
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:37:32+00:00",
-    "created": "2026-11-07T11:37:32+00:00"
-  },
-  {
-    "key": "89d598586f",
-    "name": "r261107_100",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_100",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "mkt_sma200_gap",
-        "rel_bench_21",
-        "ret_10",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.7720366861168032
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_82 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.005365549520930947,
-      "excess_annual": 0.2704236958549197,
-      "t_stat": 1.6702690065729318,
-      "hit": 0.32,
-      "total_ret": 1.3002468842175094,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.11394550922577451
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:40:03+00:00",
-    "created": "2026-11-07T11:40:03+00:00"
-  },
-  {
-    "key": "57af26aa50",
-    "name": "r261107_47",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_47",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "mkt_vol_21",
-        "ret_10",
-        "ret_252",
-        "sma200_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.7720366861168032
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_36 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.00533843697146558,
-      "excess_annual": 0.2690572233618652,
-      "t_stat": 1.59702146034327,
-      "hit": 0.5,
-      "total_ret": 1.2509978350900712,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.15687654133198126
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:35:00+00:00",
-    "created": "2026-11-07T11:35:00+00:00"
-  },
-  {
-    "key": "a5a6725467",
-    "name": "r261107_145",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_145",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "mkt_sma200_gap",
-        "rel_bench_21",
-        "ret_10",
-        "volz_21"
-      ],
-      "params": {
-        "C": 0.7720366861168032
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_114 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.005295306815974308,
-      "excess_annual": 0.2668834635251051,
-      "t_stat": 2.2085402178902886,
-      "hit": 0.32,
-      "total_ret": 1.3203894494264388,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.07715410509054732
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:43:25+00:00",
-    "created": "2026-11-07T11:43:25+00:00"
-  },
-  {
-    "key": "f33f9a322b",
-    "name": "r261107_20",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_20",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_sma200_gap",
-        "mkt_vol_21",
-        "ret_10",
-        "ret_21",
-        "ret_5",
-        "rsi_14",
-        "sma200_gap",
-        "sma50_gap",
-        "volz_21"
-      ],
-      "params": {
-        "C": 0.2659884402208429
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_4 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.005264714774507976,
-      "excess_annual": 0.265341624635202,
-      "t_stat": 1.8416848482361332,
-      "hit": 0.4,
-      "total_ret": 1.27918308854191,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.2185514499187473
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:33:00+00:00",
-    "created": "2026-11-07T11:33:00+00:00"
-  },
-  {
-    "key": "d3e09a59f5",
-    "name": "r261107_152",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_152",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "ret_126",
-        "ret_5",
-        "ret_63",
-        "sma200_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.373542146774367
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_28 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.005254376070215054,
-      "excess_annual": 0.26482055393883874,
-      "t_stat": 1.852873308176322,
-      "hit": 0.49,
-      "total_ret": 1.2809103255063539,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.14971028857903124
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:44:20+00:00",
-    "created": "2026-11-07T11:44:20+00:00"
-  },
-  {
-    "key": "83617a9411",
-    "name": "r261107_147",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_147",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "ret_1",
-        "ret_5",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.26796851792853216
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_79 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.004974143700772453,
-      "excess_annual": 0.25069684251893165,
-      "t_stat": 1.7340551539590177,
-      "hit": 0.28,
-      "total_ret": 1.2049379379972684,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.11114956051735003
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:43:26+00:00",
-    "created": "2026-11-07T11:43:26+00:00"
-  },
-  {
-    "key": "c966814ce0",
-    "name": "r261107_45",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_45",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_vol_21",
-        "ret_5",
-        "ret_63",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.3562250986582131
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_28 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.0049176158603451885,
-      "excess_annual": 0.2478478393613975,
-      "t_stat": 1.979574703806179,
-      "hit": 0.27,
-      "total_ret": 1.2283408020607482,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.09183391516366934
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:34:58+00:00",
-    "created": "2026-11-07T11:34:58+00:00"
-  },
-  {
-    "key": "8c29157fae",
-    "name": "r261107_12",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_12",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_sma200_gap",
-        "mkt_vol_21",
-        "ret_10",
-        "ret_21",
-        "ret_5",
-        "sma200_gap",
-        "sma50_gap",
-        "xs_rank_21"
-      ],
-      "params": {
-        "C": 0.373542146774367
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_4 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.004904401451371402,
-      "excess_annual": 0.24718183314911868,
-      "t_stat": 1.807279552152391,
-      "hit": 0.43,
-      "total_ret": 1.198041292928107,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.1641653961574423
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:32:41+00:00",
-    "created": "2026-11-07T11:32:41+00:00"
-  },
-  {
-    "key": "d0faf0f6e7",
-    "name": "r261107_89",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_89",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "rel_bench_21",
-        "ret_1",
-        "ret_10"
-      ],
-      "params": {
-        "C": 0.7720366861168032
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_64 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.004829297451399189,
-      "excess_annual": 0.2433965915505191,
-      "t_stat": 1.8596191014865364,
-      "hit": 0.28,
-      "total_ret": 1.2041368761975701,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.0675422266232365
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:38:32+00:00",
-    "created": "2026-11-07T11:38:32+00:00"
-  },
-  {
-    "key": "711e120617",
-    "name": "r261107_68",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_68",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "mkt_ret_21",
-        "mkt_vol_21",
-        "ret_10",
-        "ret_5",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.4831607264591455
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_36 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.004819954679446866,
-      "excess_annual": 0.2429257158441221,
-      "t_stat": 1.9633864733394564,
-      "hit": 0.3,
-      "total_ret": 1.2188063606610227,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.12089495225263269
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:36:11+00:00",
-    "created": "2026-11-07T11:36:11+00:00"
-  },
-  {
-    "key": "e2b4ce3c22",
-    "name": "r261107_159",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261107_159",
-      "algo": "logit",
-      "features": [
-        "dd_252",
-        "ret_126",
-        "ret_5",
-        "ret_63",
-        "sma200_gap",
-        "sma50_gap"
-      ],
-      "params": {
-        "C": 0.7720366861168032
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261107_107 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.004692522982447298,
-      "excess_annual": 0.2365031583153438,
-      "t_stat": 1.672510667050474,
-      "hit": 0.49,
-      "total_ret": 1.160188817238093,
-      "bench_ret": 0.42926394777480414,
-      "max_dd_vs_bench": -0.18372634144453137
-    },
-    "data_asof": "2026-10-30",
-    "evaluated": "2026-11-07T11:44:35+00:00",
-    "created": "2026-11-07T11:44:35+00:00"
   }
 ]
