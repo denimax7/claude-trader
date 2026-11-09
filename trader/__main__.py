@@ -208,6 +208,10 @@ def phase_open(cfg: dict, date: str) -> None:
     log(text)
 
 
+def runs_today(phase: str, date: str) -> bool:
+    return (store.read_json("last_runs.json", {}) or {}).get(phase) == date
+
+
 def phase_mid(cfg: dict, date: str) -> None:
     pf = Portfolio(cfg)
     if not pf.initialized:
@@ -215,6 +219,13 @@ def phase_mid(cfg: dict, date: str) -> None:
         return
     px, fx = get_prices(cfg)
     events = pf.risk_checks(px, fx, date, "mid")
+    # Si la apertura no llegó a ejecutarse (GitHub se saltó la programación), se hace ahora.
+    tg = store.read_json("targets.json")
+    if tg and not tg.get("executed") and runs_today("open", date) is False:
+        acts = pf.rebalance(tg["weights"], tg.get("probs", {}), px, fx, date, "mid")
+        tg["executed"], tg["executed_at"] = True, now_iso()
+        store.write_json("targets.json", tg)
+        events.append("apertura tardía: " + (", ".join(acts) if acts else "sin cambios"))
     snap = pf.snapshot(px, fx, date, "mid")
     pf.save()
     if events:

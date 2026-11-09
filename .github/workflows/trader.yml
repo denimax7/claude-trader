@@ -8,9 +8,10 @@ name: trader
 
 on:
   schedule:
-    - cron: "35 13,14 * * 1-5"   # apertura  (9:35 NY)
-    - cron: "45 16,17 * * 1-5"   # media     (12:45 NY)
-    - cron: "45 19,20 * * 1-5"   # pre-cierre (15:45 NY)
+    # GitHub retrasa o se salta a veces las ejecuciones programadas. Por eso se lanza cada
+    # 10 minutos en horario de mercado: el programa decide qué fase toca (apertura, media,
+    # cierre) y no repite una fase ya hecha ese día. Si una ejecución se pierde, la siguiente cubre.
+    - cron: "3-59/10 13-21 * * 1-5"
     - cron: "17 7 * * 6"         # sábado: exploración automática de variantes del modelo
   workflow_dispatch:
     inputs:
@@ -37,6 +38,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main              # último estado real (no el del momento del disparo)
 
       - uses: actions/setup-python@v5
         with:
