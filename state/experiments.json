@@ -40,7 +40,7 @@
     "rationale": "Modelo base con todas las variables.",
     "status": "activo",
     "created": "2026-11-07T11:08:29+00:00",
-    "last_score": 0.0009
+    "last_score": 0.00035
   },
   {
     "name": "momentum_logit",
@@ -64,7 +64,7 @@
     "rationale": "Regresión logística simple de momentum: referencia robusta.",
     "status": "activo",
     "created": "2026-11-07T11:08:29+00:00",
-    "last_score": -0.00745
+    "last_score": 0.00099
   },
   {
     "name": "auto_20261107_4",
@@ -113,7 +113,8 @@
       "auc": 0.5029277808803304,
       "n_days": 126,
       "evaluated_at": "2026-11-07T11:16:24+00:00"
-    }
+    },
+    "last_score": -0.00038
   },
   {
     "name": "r261107_114",
@@ -151,7 +152,8 @@
       "total_ret": 0.0946498625843708,
       "bench_ret": 0.02925426982356205,
       "max_dd_vs_bench": -0.16247538115872773
-    }
+    },
+    "last_score": 0.00082
   },
   {
     "name": "r261107_107",
@@ -189,7 +191,8 @@
       "total_ret": 0.07075882992933669,
       "bench_ret": 0.02925426982356205,
       "max_dd_vs_bench": -0.15160591640240983
-    }
+    },
+    "last_score": 6e-05
   },
   {
     "name": "r261108_2",
@@ -206,7 +209,7 @@
     },
     "created_by": "investigación",
     "rationale": "Mutación de r261107_114 encontrada por replay histórico.",
-    "status": "activo",
+    "status": "retirado",
     "created": "2026-11-08T09:25:16+00:00",
     "research": {
       "n": 100,
@@ -244,7 +247,7 @@
     },
     "created_by": "investigación",
     "rationale": "Mutación de r261107_114 encontrada por replay histórico.",
-    "status": "activo",
+    "status": "retirado",
     "created": "2026-11-08T09:25:16+00:00",
     "research": {
       "n": 100,
@@ -282,7 +285,7 @@
     },
     "created_by": "investigación",
     "rationale": "Mutación de r261108_31 encontrada por replay histórico.",
-    "status": "activo",
+    "status": "retirado",
     "created": "2026-11-08T09:25:16+00:00",
     "research": {
       "n": 100,
