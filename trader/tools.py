@@ -24,13 +24,13 @@ from datetime import datetime, timezone
 from . import store
 
 STRATEGY_BOUNDS = {
-    "top_k": (2, 6, int),
+    "top_k": (1, 6, int),
     "min_prob": (0.50, 0.60, float),
-    "keep_rank": (2, 10, int),
     "keep_prob": (0.45, 0.55, float),
     "stop_loss_pct": (0.03, 0.15, float),
     "take_profit_pct": (0.05, 0.30, float),
-    "rebalance_tolerance": (0.02, 0.15, float),
+    "rebalance_tolerance": (0.05, 0.50, float),
+    "keep_rank": (2, 15, int),
     "no_edge_fallback": (("benchmark", "cash", "trade"), None, str),
 }
 MAX_PENDING_MODELS = 2

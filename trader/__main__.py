@@ -87,9 +87,17 @@ def train_and_signal(cfg: dict, panel: pd.DataFrame, date: str, held: list[str])
     edge = evals[champ].get("score", float("nan"))
     fb = cfg["strategy"].get("no_edge_fallback", "benchmark")
     mode = "modelo"
-    if not (edge > 0) and fb != "trade":
-        weights = {cfg["market"]["benchmark"]: 1.0} if fb == "benchmark" else {}
-        mode = f"sin ventaja demostrada (score {edge:+.4f}) → {fb}"
+    min_edge = cfg["strategy"].get("min_edge", 0.0)
+    if not (edge > min_edge) and fb != "trade":
+        if fb == "benchmark":
+            weights = target_weights(preds, held, cfg, base_ticker=cfg["market"]["benchmark"])
+        else:
+            pref = set((cfg["strategy"].get("preferred") or {}).get("tickers", []))
+            weights = {t: w for t, w in weights.items() if t in pref}
+        mode = f"sin ventaja suficiente para pagar comisiones (score {edge:+.4f} ≤ {min_edge:+.4f}) → {fb}"
+    pref = set((cfg["strategy"].get("preferred") or {}).get("tickers", []))
+    if pref & set(weights):
+        mode += " · preferencia defensa: " + ", ".join(sorted(pref & set(weights)))
     store.write_json("targets.json", {"date": preds.attrs["date"], "created": now_iso(), "model": champ, "mode": mode,
                                       "weights": weights, "probs": {t: round(probs[t], 4) for t in list(preds.index)[:12]},
                                       "executed": False})
@@ -391,6 +399,17 @@ def phase_explore(cfg: dict, date: str) -> None:
                           + (f"\n\nEntran a competir: {', '.join(kept)}." if kept else "\n\nNinguna mejora al campeón.")})
 
 
+def phase_signal(cfg: dict, date: str) -> None:
+    """Recalcula la señal (y procesa propuestas) sin operar ni valorar la cartera."""
+    pf = Portfolio(cfg)
+    panel, _ = load_panel(cfg)
+    ingest_proposals(cfg, panel, date)
+    sig = train_and_signal(cfg, panel, date, list(pf.state["positions"]) if pf.initialized else [])
+    store.append_journal({"ts": now_iso(), "kind": "señal recalculada", "author": "sistema",
+                          "text": f"Señal recalculada tras cambio de configuración: {sig['weights']} ({sig['mode']})."})
+    log(f"señal: {sig['weights']} · {sig['mode']}")
+
+
 def phase_research(cfg: dict, date: str) -> None:
     """Replay histórico nocturno: busca variantes en el pasado y examina las mejores."""
     from . import research
@@ -435,7 +454,7 @@ def _add_lessons(date: str, lessons: list[str]) -> None:
 # ─────────────────────────── main ───────────────────────────
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="trader")
-    ap.add_argument("--phase", default="auto", choices=["auto", "open", "mid", "close", "review", "explore", "research"])
+    ap.add_argument("--phase", default="auto", choices=["auto", "open", "mid", "close", "review", "explore", "research", "signal"])
     ap.add_argument("--force", action="store_true", help="ejecuta aunque ya se haya hecho hoy o el mercado esté cerrado")
     ap.add_argument("--now", help="hora simulada ISO (pruebas)")
     a = ap.parse_args(argv)
@@ -450,7 +469,7 @@ def main(argv=None) -> int:
         if phase is None:
             log(f"fuera de ventana de mercado ({now.astimezone(clock.NY):%a %H:%M} NY); nada que hacer")
             return 0
-    elif phase not in ("review", "explore", "research") and not a.force and clock.session(now, cfg["market"]["calendar"]) is None:
+    elif phase not in ("review", "explore", "research", "signal") and not a.force and clock.session(now, cfg["market"]["calendar"]) is None:
         log("hoy no hay mercado (usa --force para forzar)")
         return 0
     runs = store.read_json("last_runs.json", {}) or {}
@@ -459,8 +478,9 @@ def main(argv=None) -> int:
         return 0
     log(f"fase {phase} · {date}")
     {"open": phase_open, "mid": phase_mid, "close": phase_close, "review": phase_review,
-     "explore": phase_explore, "research": phase_research}[phase](cfg, date)
-    runs[phase] = date
+     "explore": phase_explore, "research": phase_research, "signal": phase_signal}[phase](cfg, date)
+    if phase != "signal":
+        runs[phase] = date
     runs[f"{phase}_ts"] = now_iso()
     store.write_json("last_runs.json", runs)
     dashboard.build(cfg)

@@ -27,6 +27,7 @@ from .features import ALL_FEATURES
 from .model import PARAM_BOUNDS, _xy, make_model, validate_experiment
 
 RDIR = "research"
+VER = 2  # versión del cálculo (v2: comisión fija por operación + histéresis); invalida resultados antiguos
 
 
 def _now() -> str:
@@ -87,15 +88,28 @@ def replay(panel: pd.DataFrame, exp: dict, cfg: dict, rebal_dates: list) -> pd.D
         rows.append({"date": d, "probs": p.to_dict(), "fwd": cur["fwd_ret"].to_dict(),
                      "bench": float(cur.loc[bench, "fwd_ret"])})
     cost_side = c["commission_pct"] + c["slippage_pct"] + c["fx_fee_pct"]
-    return pd.DataFrame(rows).assign(cost_side=cost_side) if rows else pd.DataFrame()
+    fixed_frac = c.get("commission_fixed_eur", 0) / cfg["capital_eur"]  # 1 € sobre ~200 € = 0,5 %
+    return pd.DataFrame(rows).assign(cost_side=cost_side, fixed_frac=fixed_frac) if rows else pd.DataFrame()
 
 
-def strategy_returns(rp: pd.DataFrame, top_k: int, min_prob: float, fallback: str = "benchmark") -> pd.DataFrame:
-    """Aplica una regla top-k sobre un replay ya calculado (barato: no reentrena)."""
+def strategy_returns(rp: pd.DataFrame, top_k: int, min_prob: float, fallback: str = "benchmark",
+                     keep_rank: int | None = None, keep_prob: float = 0.5) -> pd.DataFrame:
+    """Aplica una regla top-k (con histéresis opcional) sobre un replay ya calculado.
+
+    Costes: % por euro movido (comisión, deslizamiento, divisa) + comisión fija por operación
+    (expresada como fracción del capital)."""
     out, prev = [], set()
     for _, row in rp.iterrows():
         p = pd.Series(row["probs"]).sort_values(ascending=False)
-        picks = [t for t in p.index[:top_k] if p[t] >= min_prob]
+        rank = {t: i + 1 for i, t in enumerate(p.index)}
+        picks = []
+        if keep_rank:
+            picks = [t for t in prev if t in rank and rank[t] <= keep_rank and p[t] >= keep_prob][:top_k]
+        for t in p.index:
+            if len(picks) >= top_k:
+                break
+            if t not in picks and p[t] >= min_prob:
+                picks.append(t)
         if picks:
             gross = float(np.mean([row["fwd"][t] for t in picks]))
             hold = set(picks)
@@ -103,9 +117,13 @@ def strategy_returns(rp: pd.DataFrame, top_k: int, min_prob: float, fallback: st
             gross, hold = row["bench"], {"__bench__"}
         else:
             gross, hold = 0.0, set()
-        changed = len(hold.symmetric_difference(prev)) / max(1, 2 * max(len(hold), len(prev), 1))
-        net = gross - 2 * changed * row["cost_side"]
-        out.append({"date": row["date"], "picks": picks, "ret": net, "bench": row["bench"], "excess": net - row["bench"]})
+        sold, bought = prev - hold, hold - prev
+        n_slots = max(len(hold), len(prev), 1)
+        turnover = (len(sold) + len(bought)) / n_slots  # fracción de cartera movida (compras+ventas)
+        cost = turnover * row["cost_side"] + (len(sold) + len(bought)) * row.get("fixed_frac", 0.0)
+        net = gross - cost
+        out.append({"date": row["date"], "picks": picks, "ret": net, "bench": row["bench"],
+                    "excess": net - row["bench"], "trades": len(sold) + len(bought)})
         prev = hold
     return pd.DataFrame(out)
 
@@ -125,6 +143,7 @@ def metrics(sr: pd.DataFrame, h: int) -> dict:
         "total_ret": float((1 + sr["ret"]).prod() - 1),
         "bench_ret": float((1 + sr["bench"]).prod() - 1),
         "max_dd_vs_bench": float((cum / cum.cummax() - 1).min()),
+        "trades_per_period": float(sr["trades"].mean()) if "trades" in sr else float("nan"),
     }
 
 
@@ -162,7 +181,9 @@ def run(cfg: dict, panel: pd.DataFrame, date: str, log=print) -> dict:
     rng = np.random.default_rng(int(time.time()))
     w = windows(panel, cfg)
     data_asof = str(w["all_dates"][-1].date())
-    k, mp = cfg["strategy"]["top_k"], cfg["strategy"]["min_prob"]
+    st = cfg["strategy"]
+    k, mp = st["top_k"], st["min_prob"]
+    hyst = {"keep_rank": st.get("keep_rank"), "keep_prob": st.get("keep_prob", 0.5)}
     lb = store.read_json(f"{RDIR}/leaderboard.json", []) or []
     by_key = {e["key"]: e for e in lb}
     stats = store.read_json(f"{RDIR}/stats.json", {}) or {"trials": 0, "holdout_tests": 0, "promoted": 0}
@@ -172,14 +193,14 @@ def run(cfg: dict, panel: pd.DataFrame, date: str, log=print) -> dict:
     def evaluate(exp: dict, origin: str) -> dict | None:
         key = exp_key(exp)
         e = by_key.get(key)
-        if e and e.get("data_asof") == data_asof:
+        if e and e.get("data_asof") == data_asof and e.get("ver") == VER:
             return e
         rp = replay(panel, exp, cfg, w["research"])
         if rp.empty:
             return None
-        res = metrics(strategy_returns(rp, k, mp, cfg["strategy"].get("no_edge_fallback", "benchmark")), h)
+        res = metrics(strategy_returns(rp, k, mp, st.get("no_edge_fallback", "benchmark"), **hyst), h)
         e = {**(e or {}), "key": key, "name": exp["name"], "origin": origin, "exp": exp,
-             "research": res, "data_asof": data_asof, "evaluated": _now()}
+             "research": res, "data_asof": data_asof, "evaluated": _now(), "ver": VER}
         e.setdefault("created", _now())
         by_key[key] = e
         stats["trials"] += 1
@@ -203,7 +224,7 @@ def run(cfg: dict, panel: pd.DataFrame, date: str, log=print) -> dict:
     # 2) búsqueda evolutiva hasta agotar el tiempo (dejando margen para el examen final)
     n_new = 0
     while time.time() - t0 < budget * 0.75:
-        pool = sorted([e for e in by_key.values() if e.get("research", {}).get("n")],
+        pool = sorted([e for e in by_key.values() if e.get("research", {}).get("n") and e.get("ver") == VER],
                       key=lambda e: e["research"]["score"], reverse=True)[:5]
         parent = pool[int(rng.integers(len(pool)))] if pool and rng.random() < 0.85 else champ
         n_new += 1
@@ -212,23 +233,24 @@ def run(cfg: dict, panel: pd.DataFrame, date: str, log=print) -> dict:
 
     # 3) examen final: solo para las mejores que superan al campeón en investigación
     margin = r["promote_margin"]
-    if "holdout" not in champ or champ.get("holdout_asof") != data_asof:
+    if "holdout" not in champ or champ.get("holdout_asof") != data_asof or champ.get("holdout_ver") != VER:
         rp = replay(panel, champ["exp"], cfg, w["holdout"])
-        champ["holdout"] = metrics(strategy_returns(rp, k, mp), h)
+        champ["holdout"] = metrics(strategy_returns(rp, k, mp, **hyst), h)
         champ["holdout_asof"] = data_asof
+        champ["holdout_ver"] = VER
     cands = sorted([e for e in by_key.values() if e["origin"] != "en vivo" and not e.get("holdout")
-                    and e.get("data_asof") == data_asof
+                    and e.get("data_asof") == data_asof and e.get("ver") == VER
                     and e["research"].get("score", -1) > champ["research"]["score"] + margin
                     and e["research"].get("t_stat", 0) > r["min_t_stat"]],
                    key=lambda e: e["research"]["score"], reverse=True)[: r["max_holdout_tests"]]
     promoted = []
     # Una sola tanda de exámenes por cada día de datos nuevos: repetir búsquedas sobre los
     # mismos datos (p. ej. el fin de semana) solo aumenta la probabilidad de "ganar por suerte".
-    if stats.get("exam_asof") == data_asof:
+    if stats.get("exam_asof") == f"{data_asof}/v{VER}":
         log("  examen final ya hecho con estos datos; se omite")
         cands = []
     else:
-        stats["exam_asof"] = data_asof
+        stats["exam_asof"] = f"{data_asof}/v{VER}"
     live_sigs = {_sig(x) for x in (store.read_json("experiments.json", []) or []) if x.get("status") == "activo"}
     for e in cands:
         if _sig(e["exp"]) in live_sigs:
@@ -236,7 +258,7 @@ def run(cfg: dict, panel: pd.DataFrame, date: str, log=print) -> dict:
             log(f"  {e['name']}: mismas variables que un modelo en competición; no se examina")
             continue
         rp = replay(panel, e["exp"], cfg, w["holdout"])
-        e["holdout"] = metrics(strategy_returns(rp, k, mp), h)
+        e["holdout"] = metrics(strategy_returns(rp, k, mp, **hyst), h)
         e["holdout_asof"] = data_asof
         stats["holdout_tests"] += 1
         ok = e["holdout"]["score"] > max(0.0, champ["holdout"]["score"])
@@ -266,7 +288,7 @@ def run(cfg: dict, panel: pd.DataFrame, date: str, log=print) -> dict:
     grid = []
     for tk in r["grid_top_k"]:
         for mpp in r["grid_min_prob"]:
-            res = metrics(strategy_returns(champ_rp, tk, mpp), h)
+            res = metrics(strategy_returns(champ_rp, tk, mpp, **hyst), h)
             grid.append({"top_k": tk, "min_prob": mpp, **{x: res[x] for x in ("score", "t_stat", "hit", "n")}})
     grid.sort(key=lambda g: g["score"], reverse=True)
 

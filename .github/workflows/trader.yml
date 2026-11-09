@@ -17,7 +17,7 @@ on:
       phase:
         description: "Fase a ejecutar"
         type: choice
-        options: [auto, open, mid, close, explore, review]
+        options: [auto, open, mid, close, signal, explore, review, research]
         default: auto
       force:
         description: "Forzar aunque ya se haya ejecutado hoy o el mercado esté cerrado"

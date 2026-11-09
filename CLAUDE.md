@@ -87,6 +87,14 @@ Nunca hagas `push --force` ni edites a mano `trades.csv`, `equity.csv`, `portfol
 
 ## Principios
 
+- **Comisión real del usuario: 1 € fijo por operación** (compra o venta). Con 200 € y 2
+  posiciones de ~100 €, cambiar una posición cuesta ~2 € (≈1 % de la cartera). La rotación
+  es el mayor enemigo: valora siempre si una mejora compensa las comisiones
+  (`trades_per_period` en la investigación).
+- **Preferencia del usuario: al menos 1 posición en defensa** (`strategy.preferred`: PLTR,
+  LMT, RTX, NOC, GD, ITA). Es una decisión del usuario, no del modelo: respétala, pero
+  informa con honestidad de cómo contribuye (compárala con SPY) y no la quites tú.
+
 - El benchmark parte de ~−0,3 % porque su compra inicial simulada paga comisión,
   deslizamiento y cambio EUR→USD, igual que la cartera. Toda operación cuesta ~0,3 %
   ida y vuelta: tenlo en cuenta al juzgar la rotación.

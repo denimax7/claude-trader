@@ -48,22 +48,37 @@ universe:
   - AMZN
   - GOOGL
   - META
+  # Defensa y aeroespacial (preferencia del usuario)
+  - ITA
+  - PLTR
+  - LMT
+  - RTX
+  - NOC
+  - GD
 
 costs:
-  commission_pct: 0.001     # 0,10 % por operación
+  commission_fixed_eur: 1.0 # comisión fija del broker por operación (compra o venta)
+  commission_pct: 0.0       # comisión porcentual adicional (ninguna)
   slippage_pct: 0.0005      # 0,05 % de deslizamiento
   fx_fee_pct: 0.0015        # 0,15 % por cambio de divisa EUR<->USD
 
 strategy:
-  top_k: 4                  # máximo de posiciones simultáneas
+  top_k: 2                  # máximo de posiciones (con 1 €/operación, pocas y grandes)
   min_prob: 0.51            # probabilidad mínima para entrar (los modelos dan valores cercanos a 0,5)
+  # Preferencia del usuario: al menos N posiciones del sector defensa (la mejor valorada
+  # por el modelo dentro de la lista). Es una decisión del usuario, no del modelo.
+  preferred:
+    tickers: [PLTR, LMT, RTX, NOC, GD, ITA]
+    min_positions: 1
+  min_edge: 0.002           # ventaja mínima (exceso a 5 días) para fiarse del modelo: con 1 € por operación,
+                            # rotar una posición de 100 € cuesta ~2 €, así que la ventaja debe cubrirlo
   no_edge_fallback: benchmark  # si el campeón no demuestra ventaja (score <= 0): benchmark | cash | trade
-  keep_rank: 6              # una posición se mantiene mientras siga en el top-6
-  keep_prob: 0.50           # ...y con probabilidad >= 0,50
+  keep_rank: 8              # una posición se mantiene mientras siga en el top-8 (menos rotación = menos comisiones)
+  keep_prob: 0.48           # ...y con probabilidad >= 0,48
   stop_loss_pct: 0.06       # vende si cae un 6 % desde la entrada
   take_profit_pct: 0.12     # vende si sube un 12 % desde la entrada
-  min_trade_eur: 5          # no hace operaciones menores de 5 €
-  rebalance_tolerance: 0.05 # reequilibra si el peso se desvía > 5 puntos
+  min_trade_eur: 25         # no hace operaciones menores de 25 € (1 € de comisión sería >4 %)
+  rebalance_tolerance: 0.25 # solo reequilibra si el peso se desvía > 25 puntos
 
 model:
   horizon_days: 5           # predice si el activo batirá a la media en 5 días
@@ -85,7 +100,7 @@ research:                   # replay histórico nocturno (acelera el aprendizaje
   max_holdout_tests: 3      # exámenes finales por noche como máximo
   max_promotions: 1         # variantes promovidas por noche como máximo
   leaderboard_size: 60
-  grid_top_k: [2, 3, 4, 5, 6]
+  grid_top_k: [1, 2, 3, 4]
   grid_min_prob: [0.50, 0.51, 0.53, 0.55]
 
 claude:

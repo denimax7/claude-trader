@@ -29,7 +29,8 @@ class Portfolio:
     def init(self, prices: dict[str, float], fx: float, date: str) -> None:
         cap = float(self.cfg["capital_eur"])
         bench = self.cfg["market"]["benchmark"]
-        usd = cap * (1 - self.c["fx_fee_pct"]) * fx * (1 - self.c["commission_pct"])
+        net_eur = cap * (1 - self.c["fx_fee_pct"] - self.c["commission_pct"]) - self.c.get("commission_fixed_eur", 0)
+        usd = net_eur * fx
         bench_shares = usd / (prices[bench] * (1 + self.c["slippage_pct"]))
         self.state = {"created": now_iso(), "start_date": date, "capital_eur": cap, "cash_eur": cap,
                       "positions": {}, "bench_shares": bench_shares, "realized_pnl_eur": 0.0}
@@ -66,7 +67,9 @@ class Portfolio:
         eur = min(eur, self.state["cash_eur"])
         if eur < self.cfg["strategy"]["min_trade_eur"]:
             return
-        fees = eur * (self.c["commission_pct"] + self.c["fx_fee_pct"])
+        fees = eur * (self.c["commission_pct"] + self.c["fx_fee_pct"]) + self.c.get("commission_fixed_eur", 0)
+        if eur - fees <= 0:
+            return
         exec_px = price * (1 + self.c["slippage_pct"])
         shares = (eur - fees) * fx / exec_px
         pos = self.state["positions"].get(t)
@@ -92,7 +95,7 @@ class Portfolio:
         shares = pos["shares"] * fraction
         exec_px = price * (1 - self.c["slippage_pct"])
         gross = shares * exec_px / fx
-        fees = gross * (self.c["commission_pct"] + self.c["fx_fee_pct"])
+        fees = gross * (self.c["commission_pct"] + self.c["fx_fee_pct"]) + self.c.get("commission_fixed_eur", 0)
         net = gross - fees
         cost = pos["cost_eur"] * fraction
         pnl = net - cost
@@ -167,19 +170,47 @@ class Portfolio:
         return actions
 
 
-def target_weights(preds, held: list[str], cfg: dict) -> dict[str, float]:
-    """Top-k con histéresis: lo que ya tenemos se mantiene si sigue razonablemente arriba."""
+def target_weights(preds, held: list[str], cfg: dict, base_ticker: str | None = None) -> dict[str, float]:
+    """Top-k con histéresis: lo que ya tenemos se mantiene si sigue razonablemente arriba.
+
+    Si hay preferencia del usuario (`strategy.preferred`), se reservan `min_positions` plazas
+    para la mejor valorada de esa lista. `base_ticker` (p. ej. SPY) rellena el resto de plazas
+    cuando el modelo no tiene ventaja demostrada.
+    """
     s = cfg["strategy"]
     k = s["top_k"]
-    keep = [t for t in held if t in preds.index and preds.loc[t, "rank"] <= s["keep_rank"]
-            and preds.loc[t, "prob"] >= s["keep_prob"]]
-    chosen = list(keep)
-    for t, row in preds.iterrows():
-        if len(chosen) >= k:
+    pref = s.get("preferred") or {}
+    plist = [t for t in pref.get("tickers", []) if t in preds.index]
+    n_pref = min(int(pref.get("min_positions", 0)), k) if plist else 0
+
+    # 1) plazas reservadas: se mantiene la que ya tenemos si no se ha hundido en el ranking
+    pref_chosen = [t for t in held if t in plist and preds.loc[t, "prob"] >= s["keep_prob"] - 0.05][:n_pref]
+    for t in preds.index:  # ordenado por probabilidad
+        if len(pref_chosen) >= n_pref:
             break
-        if t not in chosen and row["prob"] >= s["min_prob"]:
-            chosen.append(t)
-    return {t: 1.0 / k for t in chosen[:k]}
+        if t in plist and t not in pref_chosen:
+            pref_chosen.append(t)
+
+    # 2) resto de plazas: modelo (o benchmark si no hay ventaja)
+    free = k - len(pref_chosen)
+    if base_ticker:
+        chosen = [base_ticker] if free > 0 else []
+    else:
+        chosen = [t for t in held if t not in pref_chosen and t in preds.index
+                  and preds.loc[t, "rank"] <= s["keep_rank"] and preds.loc[t, "prob"] >= s["keep_prob"]][:free]
+        for t, row in preds.iterrows():
+            if len(chosen) >= free:
+                break
+            if t not in chosen and t not in pref_chosen and row["prob"] >= s["min_prob"]:
+                chosen.append(t)
+    picks = pref_chosen + chosen
+    if not picks:
+        return {}
+    if base_ticker and chosen:  # el benchmark ocupa todas las plazas libres
+        w = {t: 1.0 / k for t in pref_chosen}
+        w[base_ticker] = 1.0 - sum(w.values())
+        return w
+    return {t: 1.0 / k for t in picks}  # plazas sin candidato se quedan en liquidez
 
 
 def _days_between(a: str, b: str) -> int:
