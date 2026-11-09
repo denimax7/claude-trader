@@ -13,3 +13,4 @@
 {"ts": "2026-11-09T09:02:28+00:00", "kind": "modelo", "author": "sistema", "text": "**Nuevo campeón: `momentum_logit`** — momentum_logit supera a base_lgbm (+0.0010 vs -0.0043)."}
 {"ts": "2026-11-09T09:02:30+00:00", "kind": "señal recalculada", "author": "sistema", "text": "Señal recalculada tras cambio de configuración: {'ITA': 0.5, 'SPY': 0.5} (sin ventaja suficiente para pagar comisiones (score +0.0010 ≤ +0.0020) → benchmark · preferencia defensa: ITA)."}
 {"ts": "2026-11-09T16:16:03+00:00", "kind": "apertura", "author": "sistema", "text": "Apertura: compra ITA, compra SPY. Valor 197.60 €."}
+{"ts": "2026-11-09T20:25:49+00:00", "kind": "cierre", "author": "sistema", "text": "**Resumen**: cartera 198.73 € (-0.64%) vs benchmark +1.64%.\n\n**Objetivo para mañana**: ITA (p=0.50), SPY (p=0.45)"}

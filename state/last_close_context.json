@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-09",
+  "performance": {
+    "equity_eur": 198.7281,
+    "return_pct": -0.006359499999999962,
+    "bench_eur": 203.2812,
+    "bench_return_pct": 0.016406000000000143,
+    "cash_eur": 0.0,
+    "n_positions": 2
+  },
+  "risk_events": [],
+  "positions": {
+    "ITA": {
+      "shares": 1.550824490149918,
+      "entry_price_usd": 71.42569438934326,
+      "entry_date": "2026-11-09",
+      "entry_fx": 1.1205737590789795,
+      "cost_eur": 100.0,
+      "entry_prob": 0.501,
+      "last_price_usd": 71.94999694824219
+    },
+    "SPY": {
+      "shares": 0.14763553409085886,
+      "entry_price_usd": 750.2849281311035,
+      "entry_date": "2026-11-09",
+      "entry_fx": 1.1205737590789795,
+      "cost_eur": 100.0,
+      "entry_prob": null,
+      "last_price_usd": 755.1199951171875
+    }
+  },
+  "targets": {
+    "ITA": {
+      "prob": 0.5,
+      "weight": 0.5
+    },
+    "SPY": {
+      "prob": 0.451,
+      "weight": 0.5
+    }
+  },
+  "exits_planned": [],
+  "champion_model": "momentum_logit",
+  "signal_mode": "sin ventaja suficiente para pagar comisiones (score +0.0010 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
+  "top_features": {
+    "sma200_gap": 0.27681706293040936,
+    "ret_126": 0.13628619220275057,
+    "rel_bench_63": 0.13283703213798626,
+    "ret_252": 0.10189769657350625,
+    "vol_63": 0.09164090748731929,
+    "ret_63": 0.08786410848813404,
+    "mkt_sma200_gap": 0.06224312617735523,
+    "xs_rank_63": 0.04353252186409645,
+    "ret_21": 0.034969072359417,
+    "xs_rank_126": 0.03191227977902545
+  },
+  "model_scores": {
+    "base_lgbm": {
+      "score": -0.0031706618183991305,
+      "hit": 0.43253968253968256,
+      "auc": 0.4848221507814207,
+      "n_days": 126,
+      "evaluated_at": "2026-11-09T20:25:45+00:00"
+    },
+    "momentum_logit": {
+      "score": 0.000978812306297922,
+      "hit": 0.44841269841269843,
+      "auc": 0.49197803933377027,
+      "n_days": 126,
+      "evaluated_at": "2026-11-09T20:25:46+00:00"
+    },
+    "auto_20261107_4": {
+      "score": -0.0016620191765121437,
+      "hit": 0.44841269841269843,
+      "auc": 0.4900971831069073,
+      "n_days": 126,
+      "evaluated_at": "2026-11-09T20:25:47+00:00"
+    },
+    "r261107_114": {
+      "score": -0.0003150105041524368,
+      "hit": 0.40476190476190477,
+      "auc": 0.503663001635463,
+      "n_days": 126,
+      "evaluated_at": "2026-11-09T20:25:47+00:00"
+    },
+    "r261107_107": {
+      "score": -0.00013702369376782675,
+      "hit": 0.4166666666666667,
+      "auc": 0.5019747698838645,
+      "n_days": 126,
+      "evaluated_at": "2026-11-09T20:25:48+00:00"
+    }
+  },
+  "live_metrics": {
+    "n": 0
+  },
+  "recent_closed": [],
+  "headlines": {
+    "ITA": [
+      "2026-11-09 Why Drone Maker AeroVironment’s Stock Is Rocketing on This Sub-$1 Billion Deal",
+      "2026-11-08 After the Midterms, Which of These 3 Defense ETFs Looks Strongest?",
+      "2026-11-05 Defense Stocks Sank as Democrats Took Congress and the $1.5 Trillion Budget Looks Doomed",
+      "2026-10-26 Lockheed Stock Has 40% Upside, Analyst Says. Is the Worst Over for Defense?"
+    ],
+    "SPY": [
+      "2026-11-09 Winmark Stock Is Down More Than 30% in 2026. Here’s What $1,000 Became in 10 Years",
+      "2026-11-09 Risk-On: S&P 500 Surges Out of the Gate, Adds $1 Trillion in Market Value",
+      "2026-11-09 Citigroup’s Jane Fraser Says Hedge Funds Drove the Sell-Off. Here’s Why She Doesn’t Expect It to Get Worse",
+      "2026-11-09 Exchange-Traded Funds, Equity Futures Higher Pre-Bell Monday Amid Global Market Recovery"
+    ]
+  },
+  "lessons": ""
+}
