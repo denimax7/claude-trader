@@ -1,25 +1,25 @@
 {
   "date": "2026-11-06",
-  "created": "2026-11-09T08:56:23+00:00",
-  "model": "base_lgbm",
-  "mode": "sin ventaja suficiente para pagar comisiones (score +0.0012 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
+  "created": "2026-11-09T09:02:28+00:00",
+  "model": "momentum_logit",
+  "mode": "sin ventaja suficiente para pagar comisiones (score +0.0010 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
   "weights": {
     "ITA": 0.5,
     "SPY": 0.5
   },
   "probs": {
-    "GOOGL": 0.711,
-    "SMH": 0.7018,
-    "NVDA": 0.6832,
-    "PLTR": 0.6058,
-    "META": 0.6002,
-    "XLE": 0.5983,
-    "SLV": 0.5967,
-    "XLK": 0.5862,
-    "QQQ": 0.5398,
-    "EWJ": 0.5311,
-    "EEM": 0.5306,
-    "AMZN": 0.4973
+    "SLV": 0.5619,
+    "LMT": 0.5468,
+    "NOC": 0.5367,
+    "RTX": 0.5206,
+    "SMH": 0.5165,
+    "PLTR": 0.5047,
+    "META": 0.5045,
+    "USO": 0.5018,
+    "ITA": 0.501,
+    "GOOGL": 0.4989,
+    "NVDA": 0.4954,
+    "GD": 0.492
   },
   "executed": false
 }
