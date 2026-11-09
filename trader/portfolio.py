@@ -3,6 +3,8 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
+import pandas as pd
+
 from . import store
 
 TRADE_FIELDS = ["ts", "date", "phase", "ticker", "side", "shares", "price_usd", "fx", "value_eur",
@@ -171,51 +173,49 @@ class Portfolio:
 
 
 def target_weights(preds, held: list[str], cfg: dict, base_ticker: str | None = None) -> dict[str, float]:
-    """Top-k con histéresis: lo que ya tenemos se mantiene si sigue razonablemente arriba.
+    """Elige las posiciones objetivo maximizando lo que espera el modelo.
 
-    Si hay preferencia del usuario (`strategy.preferred`), se reservan `min_positions` plazas
-    para la mejor valorada de esa lista. `base_ticker` (p. ej. SPY) rellena el resto de plazas
-    cuando el modelo no tiene ventaja demostrada.
+    - Ranking por probabilidad del campeón, con histéresis (lo que ya tenemos se mantiene
+      mientras siga razonablemente arriba: cambiar cuesta comisiones).
+    - Preferencia del usuario (`strategy.preferred`): NO reserva plazas. Solo desempata:
+      los activos de la lista reciben `tie_margin` puntos de probabilidad, de modo que se
+      eligen frente a otro solo si su previsión es parecida. Si otro sector tiene clara
+      ventaja, gana el otro sector.
+    - Sin ventaja demostrada (`base_ticker`, p. ej. SPY): las plazas van al benchmark; una
+      puede ir al ETF del sector preferido (`no_edge_ticker`) si su previsión es parecida
+      o mejor que la del benchmark.
     """
     s = cfg["strategy"]
     k = s["top_k"]
     pref = s.get("preferred") or {}
-    plist = [t for t in pref.get("tickers", []) if t in preds.index]
-    n_pref = min(int(pref.get("min_positions", 0)), k) if plist else 0
+    pset = {t for t in pref.get("tickers", []) if t in preds.index}
+    margin = float(pref.get("tie_margin", 0.0))
+    prob = preds["prob"].astype(float)
+    adj = prob + pd.Series({t: margin for t in pset}, dtype=float).reindex(prob.index).fillna(0.0)
+    order = list(adj.sort_values(ascending=False).index)
+    rank = {t: i + 1 for i, t in enumerate(order)}
 
-    # 1) plazas reservadas: se mantiene la que ya tenemos si no se ha hundido en el ranking.
-    #    Si el modelo no tiene ventaja demostrada (base_ticker), no elegimos acción concreta:
-    #    se usa la opción diversificada del sector (p. ej. el ETF ITA).
-    safe = pref.get("no_edge_ticker")
-    if base_ticker and safe in plist:
-        plist = [safe]
-    pref_chosen = [t for t in held if t in plist and preds.loc[t, "prob"] >= s["keep_prob"] - 0.05][:n_pref]
-    for t in preds.index:  # ordenado por probabilidad
-        if len(pref_chosen) >= n_pref:
-            break
-        if t in plist and t not in pref_chosen:
-            pref_chosen.append(t)
-
-    # 2) resto de plazas: modelo (o benchmark si no hay ventaja)
-    free = k - len(pref_chosen)
     if base_ticker:
-        chosen = [base_ticker] if free > 0 else []
-    else:
-        chosen = [t for t in held if t not in pref_chosen and t in preds.index
-                  and preds.loc[t, "rank"] <= s["keep_rank"] and preds.loc[t, "prob"] >= s["keep_prob"]][:free]
-        for t, row in preds.iterrows():
-            if len(chosen) >= free:
-                break
-            if t not in chosen and t not in pref_chosen and row["prob"] >= s["min_prob"]:
-                chosen.append(t)
-    picks = pref_chosen + chosen
-    if not picks:
-        return {}
-    if base_ticker and chosen:  # el benchmark ocupa todas las plazas libres
-        w = {t: 1.0 / k for t in pref_chosen}
-        w[base_ticker] = 1.0 - sum(w.values())
+        w: dict[str, float] = {}
+        safe = pref.get("no_edge_ticker")
+        if safe in prob.index and base_ticker in prob.index and k >= 1:
+            gap = prob[base_ticker] - prob[safe]
+            # si ya lo tenemos, exigimos más para cambiarlo (evitar 2 € de comisiones por ruido)
+            if gap <= margin * (2 if safe in held else 1):
+                w[safe] = 1.0 / k
+        rest = 1.0 - sum(w.values())
+        if rest > 1e-9:
+            w[base_ticker] = rest
         return w
-    return {t: 1.0 / k for t in picks}  # plazas sin candidato se quedan en liquidez
+
+    chosen = [t for t in held if t in rank and rank[t] <= s["keep_rank"] and prob[t] >= s["keep_prob"]]
+    chosen = sorted(chosen, key=lambda t: rank[t])[:k]
+    for t in order:
+        if len(chosen) >= k:
+            break
+        if t not in chosen and prob[t] >= s["min_prob"]:
+            chosen.append(t)
+    return {t: 1.0 / k for t in chosen}  # plazas sin candidato se quedan en liquidez
 
 
 def _days_between(a: str, b: str) -> int:

@@ -99,9 +99,12 @@ Nunca hagas `push --force` ni edites a mano `trades.csv`, `equity.csv`, `portfol
   posiciones de ~100 €, cambiar una posición cuesta ~2 € (≈1 % de la cartera). La rotación
   es el mayor enemigo: valora siempre si una mejora compensa las comisiones
   (`trades_per_period` en la investigación).
-- **Preferencia del usuario: al menos 1 posición en defensa** (`strategy.preferred`: PLTR,
-  LMT, RTX, NOC, GD, ITA). Es una decisión del usuario, no del modelo: respétala, pero
-  informa con honestidad de cómo contribuye (compárala con SPY) y no la quites tú.
+- **Objetivo del usuario: maximizar el beneficio esperado.** Tiene preferencia por defensa
+  (`strategy.preferred`: PLTR, LMT, RTX, NOC, GD, ITA), pero solo como **desempate**: se elige
+  defensa cuando su previsión está a menos de `tie_margin` de la mejor alternativa; si otro
+  sector tiene clara ventaja, gana el otro. Informa con honestidad de cómo contribuye defensa
+  (compárala con SPY) y no elimines la preferencia; puedes proponer ajustar `tie_margin`
+  solo con evidencia.
 
 - El benchmark parte de ~−0,3 % porque su compra inicial simulada paga comisión,
   deslizamiento y cambio EUR→USD, igual que la cartera. Toda operación cuesta ~0,3 %
