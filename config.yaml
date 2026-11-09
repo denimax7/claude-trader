@@ -70,6 +70,7 @@ strategy:
   preferred:
     tickers: [PLTR, LMT, RTX, NOC, GD, ITA]
     min_positions: 1
+    no_edge_ticker: ITA       # sin ventaja demostrada del modelo, la plaza va al ETF del sector
   min_edge: 0.002           # ventaja mínima (exceso a 5 días) para fiarse del modelo: con 1 € por operación,
                             # rotar una posición de 100 € cuesta ~2 €, así que la ventaja debe cubrirlo
   no_edge_fallback: benchmark  # si el campeón no demuestra ventaja (score <= 0): benchmark | cash | trade

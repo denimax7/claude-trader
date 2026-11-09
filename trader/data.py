@@ -28,7 +28,7 @@ def download_daily(tickers: list[str], years: int) -> dict[str, pd.DataFrame]:
 
     df = yf.download(
         tickers, period=f"{years}y", interval="1d", auto_adjust=True,
-        progress=False, threads=True, group_by="column",
+        progress=False, threads=False, group_by="column",
     )
     if df is None or df.empty:
         raise RuntimeError("yfinance no devolvió datos diarios")
@@ -49,7 +49,7 @@ def latest_prices(tickers: list[str]) -> dict[str, float]:
     prices: dict[str, float] = {}
     try:
         df = yf.download(tickers, period="2d", interval="5m", auto_adjust=True,
-                         progress=False, threads=True, group_by="column")
+                         progress=False, threads=False, group_by="column")
         if df is not None and not df.empty:
             close = df["Close"] if isinstance(df.columns, pd.MultiIndex) else df[["Close"]].set_axis(tickers[:1], axis=1)
             for t in tickers:

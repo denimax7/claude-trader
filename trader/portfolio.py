@@ -183,7 +183,12 @@ def target_weights(preds, held: list[str], cfg: dict, base_ticker: str | None = 
     plist = [t for t in pref.get("tickers", []) if t in preds.index]
     n_pref = min(int(pref.get("min_positions", 0)), k) if plist else 0
 
-    # 1) plazas reservadas: se mantiene la que ya tenemos si no se ha hundido en el ranking
+    # 1) plazas reservadas: se mantiene la que ya tenemos si no se ha hundido en el ranking.
+    #    Si el modelo no tiene ventaja demostrada (base_ticker), no elegimos acción concreta:
+    #    se usa la opción diversificada del sector (p. ej. el ETF ITA).
+    safe = pref.get("no_edge_ticker")
+    if base_ticker and safe in plist:
+        plist = [safe]
     pref_chosen = [t for t in held if t in plist and preds.loc[t, "prob"] >= s["keep_prob"] - 0.05][:n_pref]
     for t in preds.index:  # ordenado por probabilidad
         if len(pref_chosen) >= n_pref:
