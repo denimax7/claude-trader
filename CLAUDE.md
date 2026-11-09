@@ -42,6 +42,11 @@ python -m trader.tools info                      # variables y rangos permitidos
      "sin ventaja demostrada", explica por qué la cartera está en el benchmark.
    - **Post-mortem** de operaciones cerradas recientemente: ¿acierto o error?,
      ¿ruido (mala suerte) o proceso (mala decisión)?
+   - **Riesgo** de la cartera objetivo (`prevision.portfolio`: rentabilidad esperada, rango
+     90 %, probabilidad de pérdida, VaR 95 % en €) y si la calibración (`prevision.calibration`)
+     respalda las probabilidades del modelo o son poco fiables.
+   - **Focos de compra**: los activos mejor valorados con más consenso entre modelos, aunque
+     hoy no entren (por comisiones o falta de ventaja): qué haría falta para que entren.
    - **Propuestas procesadas** hoy (si las hay) y qué significan.
 3. Si hay una lección nueva y bien fundada: `python -m trader.tools lesson "..."`.
    No repitas lecciones existentes. Una lección con <10 casos es una hipótesis: dilo.
@@ -86,6 +91,9 @@ Nunca hagas `push --force` ni edites a mano `trades.csv`, `equity.csv`, `portfol
 `predictions.csv`, `models.json` o `experiments.json`: solo los toca el motor.
 
 ## Principios
+
+- **El sistema es autónomo: nunca preguntes ni esperes confirmación del usuario.** Decide,
+  ejecuta las rutinas y deja constancia en el diario.
 
 - **Comisión real del usuario: 1 € fijo por operación** (compra o venta). Con 200 € y 2
   posiciones de ~100 €, cambiar una posición cuesta ~2 € (≈1 % de la cartera). La rotación

@@ -27,6 +27,7 @@ def build(cfg: dict) -> None:
         "lessons": (store.STATE / "lessons.md").read_text(encoding="utf-8") if (store.STATE / "lessons.md").exists() else "",
         "runs": store.read_json("last_runs.json", {}),
         "research": store.read_json("research/summary.json", {}),
+        "forecast": store.read_json("forecast.json", {}),
     }
     store.DOCS.mkdir(parents=True, exist_ok=True)
     (store.DOCS / "data.json").write_text(json.dumps(data, ensure_ascii=False, default=str), encoding="utf-8")
@@ -45,8 +46,10 @@ TEMPLATE = r"""<!doctype html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
 <style>
-:root{--bg:#f6f5f1;--card:#fff;--ink:#1b1b18;--mute:#6b6a63;--line:#e4e2da;--pos:#1f7a4d;--neg:#b23a2e;--acc:#c2591d;--bench:#8a8a80}
-@media (prefers-color-scheme:dark){:root{--bg:#141412;--card:#1d1d1a;--ink:#ecebe5;--mute:#9a998f;--line:#2e2e2a;--pos:#4fbf86;--neg:#ef7d6f;--acc:#e8844a;--bench:#77776e}}
+:root{--bg:#f6f5f1;--card:#fff;--ink:#1b1b18;--mute:#6b6a63;--line:#e4e2da;--pos:#1f7a4d;--neg:#b23a2e;--acc:#c2591d;--bench:#8a8a80;
+--s1:#2a78d6;--s8:#e34948;--mid:#f0efec;--dim:#c9c7bf}
+@media (prefers-color-scheme:dark){:root{--bg:#141412;--card:#1d1d1a;--ink:#ecebe5;--mute:#9a998f;--line:#2e2e2a;--pos:#4fbf86;--neg:#ef7d6f;--acc:#e8844a;--bench:#77776e;
+--s1:#3987e5;--s8:#e66767;--mid:#383835;--dim:#55544f}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif}
 .wrap{max-width:1180px;margin:0 auto;padding:24px 16px 60px}
 header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:20px}
@@ -64,6 +67,12 @@ th{color:var(--mute);font-weight:500}td.n{font-family:"IBM Plex Mono",monospace;
 .j{border-left:3px solid var(--line);padding:2px 0 2px 12px;margin-bottom:16px}.j.claude{border-color:var(--acc)}
 .j .m{font-size:12px;color:var(--mute)}.j .b{font-size:14px}.j .b p{margin:6px 0}
 .chartbox{position:relative;height:300px}
+.fc{display:grid;grid-template-columns:3fr 1fr;gap:16px}@media(max-width:860px){.fc{grid-template-columns:1fr}}
+.risk .k{margin-bottom:10px;padding:10px 12px}.risk .k .v{font-size:20px}
+.hm td.c{font-family:"IBM Plex Mono",monospace;text-align:center;border:2px solid var(--card);border-radius:4px;min-width:58px;color:var(--ink)}
+.hm th.m{font-size:11px;text-align:center;white-space:normal;max-width:90px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:860px){.two{grid-template-columns:1fr}}
+.tag{font-size:10px;border:1px solid var(--line);border-radius:99px;padding:0 6px;color:var(--mute);margin-left:4px}
 .note{font-size:12px;color:var(--mute);margin-top:24px;text-align:center}
 .champ{color:var(--acc);font-weight:600}
 </style>
@@ -72,6 +81,15 @@ th{color:var(--mute);font-weight:500}td.n{font-family:"IBM Plex Mono",monospace;
 <header><div><h1>Claude <span>Trader</span></h1><div class="sub">Laboratorio de inversión simulada · aprende de sus errores</div></div>
 <div class="sub" id="upd"></div></header>
 <div class="kpis" id="kpis"></div>
+<div class="card"><h2>Previsión a 5 sesiones · modelo campeón</h2>
+ <div class="fc"><div><div class="chartbox" id="fcbox" style="height:420px"><canvas id="fcch"></canvas></div>
+  <div class="sub" id="fcnote" style="margin-top:8px"></div></div>
+  <div class="risk"><div class="sub" style="margin-bottom:8px">Cartera objetivo para la próxima apertura</div><div id="risk"></div></div></div>
+</div>
+<div class="two">
+ <div class="card"><h2>Consenso entre modelos</h2><div class="tw"><table class="hm" id="hm"></table></div><div class="sub" style="margin-top:8px">Probabilidad de batir a la media del universo en 5 sesiones. Azul &gt; 0,5 · rojo &lt; 0,5 · ★ campeón.</div></div>
+ <div class="card"><h2>¿Se cumplen las probabilidades?</h2><div class="chartbox" style="height:260px"><canvas id="calch"></canvas></div><div class="sub" id="calnote" style="margin-top:8px"></div></div>
+</div>
 <div class="grid">
  <div>
   <div class="card"><h2>Cartera vs benchmark (EUR)</h2><div class="chartbox"><canvas id="ch"></canvas></div></div>
@@ -123,6 +141,46 @@ const ev=(D.models.last_eval)||{};
 $("mdl").innerHTML="<tr><th>Experimento</th><th class=n>Score</th><th class=n>Acierto</th><th class=n>AUC</th></tr>"+Object.entries(ev).sort((a,b)=>b[1].score-a[1].score).map(([n,e])=>`<tr><td class="${n===D.models.champion?"champ":""}">${n===D.models.champion?"★ ":""}${n}</td><td class="n ${cls(e.score)}">${pct(e.score)}</td><td class=n>${(e.hit*100).toFixed(0)} %</td><td class=n>${(+e.auc).toFixed(3)}</td></tr>`).join("");
 $("mdlnote").textContent=(D.models.reason?"Último cambio: "+D.models.reason+". ":"")+"Score = exceso medio a 5 días de las elegidas, en datos no vistos.";
 const L=D.live||{};$("live").innerHTML=L.n?`${L.n} predicciones evaluadas · acierto ${(L.hit_rate*100).toFixed(0)} % · elegidas: acierto ${(L.sel_hit_rate*100||0).toFixed(0)} %, exceso medio ${pct(L.sel_excess)}`:"Las predicciones se evalúan 5 sesiones después de hacerse.";
+// ── Previsiones ──
+const F=D.forecast||{}, FR=(F.rows||[]).filter(r=>r.q05!=null);
+const C=n=>css.getPropertyValue(n).trim();
+if(window.Chart&&FR.length){
+ const lab=FR.map(r=>r.ticker+(r.selected?" ●":""));
+ new Chart($("fcch"),{type:"bar",data:{labels:lab,datasets:[
+  {label:"Valor central",data:FR.map(r=>[r.q50*100-0.12,r.q50*100+0.12]),backgroundColor:C("--ink"),borderColor:C("--card"),borderWidth:{left:2,right:2},borderSkipped:false,borderRadius:2,barThickness:18,grouped:false,order:0},
+  {label:"Rango probable (90 %)",data:FR.map(r=>[r.q05*100,r.q95*100]),backgroundColor:FR.map(r=>r.selected?C("--s1"):C("--dim")),borderRadius:4,borderSkipped:false,barThickness:12,grouped:false,order:1}]},
+  options:{indexAxis:"y",maintainAspectRatio:false,interaction:{mode:"index",axis:"y",intersect:false},
+   plugins:{legend:{reverse:true,labels:{color:C("--mute")}},tooltip:{callbacks:{
+    title:it=>{const r=FR[it[0].dataIndex];return r.ticker+(r.selected?" · en la cartera objetivo":"")+(r.defense?" · defensa":"")},
+    label:()=>null,
+    afterBody:it=>{const r=FR[it[0].dataIndex];return[`Prob. de batir a la media: ${(r.prob*100).toFixed(1)} % (puesto ${r.rank})`,
+      `Prob. de perder dinero: ${(r.p_loss*100).toFixed(0)} %`,`Rango 90 %: ${pct(r.q05)} a ${pct(r.q95)} · central ${pct(r.q50)}`,
+      `Riesgo (VaR 95 %) por cada 100 €: ${r.var95_100eur.toFixed(2)} €`,`Modelos a favor: ${Math.round(r.agree*100)} %`]}}}},
+   scales:{x:{ticks:{color:C("--mute"),callback:v=>v+" %"},grid:{color:c=>c.tick&&c.tick.value===0?C("--mute"):C("--line")}},
+    y:{ticks:{color:C("--ink"),font:{family:"IBM Plex Mono"}},grid:{display:false}}}}});
+ $("fcnote").textContent=`Rentabilidad posible de cada activo en las próximas ${F.horizon} sesiones según el modelo ${F.champion}, ordenado por probabilidad. Azul ●: elegido para la cartera. Los rangos salen de lo que ocurrió de verdad cuando el modelo dio probabilidades parecidas en datos no vistos. Señal del ${F.date}.`;
+}else{$("fcbox").innerHTML="<div class=sub>La previsión aparece tras el próximo cierre.</div>";}
+const PR=F.portfolio||{};
+$("risk").innerHTML=PR.sigma!=null?[["Rentabilidad esperada (5 ses.)",pct(PR.exp_ret),cls(PR.exp_ret)],["Rango probable 90 %",pct(PR.q05)+" a "+pct(PR.q95),""],
+ ["Probabilidad de pérdida",(PR.p_loss*100).toFixed(0)+" %",""],["Pérdida máx. probable (95 %)",eur(PR.var95_eur),""]].map(([l,v,c])=>`<div class="k"><div class="l">${l}</div><div class="v ${c}">${v}</div></div>`).join("")+
+ `<div class="sub">${F.mode||""}</div>`:"<div class=sub>Sin datos todavía.</div>";
+// ── Consenso ──
+if(FR.length&&F.models){const ms=F.models;
+ const cell=v=>{if(v==null)return"<td class=c>—</td>";const d=Math.min(Math.abs(v-0.5)/0.12,1),col=v>=0.5?"--s1":"--s8";
+  return `<td class=c style="background:color-mix(in oklab, var(${col}) ${Math.round(d*70)}%, var(--mid))">${v.toFixed(2)}</td>`};
+ $("hm").innerHTML="<tr><th>Activo</th>"+ms.map(m=>`<th class=m>${m===F.champion?"★ ":""}${m}</th>`).join("")+"</tr>"+
+  FR.map(r=>`<tr><td><b>${r.ticker}</b>${r.defense?"<span class=tag>defensa</span>":""}</td>`+ms.map(m=>cell(r.models[m])).join("")+"</tr>").join("");}
+// ── Calibración ──
+const CB=F.calibration||[];
+if(window.Chart&&CB.length){new Chart($("calch"),{type:"line",data:{labels:CB.map(b=>b.prob_mean.toFixed(3)),datasets:[
+ {label:"Real: bate a la media",data:CB.map(b=>b.beat_rate*100),borderColor:C("--s1"),backgroundColor:C("--s1"),borderWidth:2,pointRadius:5,pointBorderColor:C("--card"),pointBorderWidth:2},
+ {label:"Si el modelo acertara exacto",data:CB.map(b=>b.prob_mean*100),borderColor:C("--bench"),borderDash:[4,3],borderWidth:1.5,pointRadius:0}]},
+ options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{legend:{labels:{color:C("--mute")}},tooltip:{callbacks:{
+  label:c=>c.dataset.label+": "+c.parsed.y.toFixed(1)+" %",afterBody:it=>{const b=CB[it[0].dataIndex];return[`Pierde dinero: ${(b.p_loss*100).toFixed(0)} %`,`Casos: ${b.n}`]}}}},
+ scales:{x:{title:{display:true,text:"Probabilidad que da el modelo",color:C("--mute")},ticks:{color:C("--mute")},grid:{display:false}},
+  y:{ticks:{color:C("--mute"),callback:v=>v+" %"},grid:{color:C("--line")}}}}});
+ $("calnote").textContent="Fuera de muestra (últimos 6 meses). Si la línea azul sube de izquierda a derecha, las probabilidades altas aciertan más: el modelo distingue algo. Si es plana, no.";}
+else{$("calch").parentElement.innerHTML="<div class=sub>Aparece tras el próximo cierre.</div>";}
 const R=D.research||{};
 if(R.top){const st={"aprobada":"pos","en competición":"pos","suspende examen":"neg"};
 $("rs").innerHTML="<tr><th>Variante</th><th class=n>Pasado</th><th class=n>Examen</th></tr>"+R.top.slice(0,6).map(e=>`<tr><td class="${e.name===R.champion.name?"champ":""}">${e.name===R.champion.name?"★ ":""}${e.name}<div class="sub">${e.origin}${e.status?" · <span class='"+(st[e.status]||"")+"'>"+e.status+"</span>":""}</div></td><td class="n ${cls(e.research.score)}">${pct(e.research.score)}</td><td class="n ${e.holdout?cls(e.holdout.score):""}">${e.holdout?pct(e.holdout.score):"—"}</td></tr>`).join("");

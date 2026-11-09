@@ -82,14 +82,14 @@ def _xy(df: pd.DataFrame, feats: list[str]):
     return X, df["label"].astype(int)
 
 
-def walk_forward(panel: pd.DataFrame, exp: dict, cfg: dict) -> dict:
+def walk_forward(panel: pd.DataFrame, exp: dict, cfg: dict, return_oos: bool = False) -> dict:
     """Valida el experimento en los últimos `wf_folds` meses, uno a uno, sin mirar al futuro."""
     m = cfg["model"]
     k = cfg["strategy"]["top_k"]
     lab = panel[panel["label"].notna()]
     dates = lab.index.get_level_values("date").unique().sort_values()
     h, fd, nf, win = m["horizon_days"], m["fold_days"], m["wf_folds"], m["train_window_days"]
-    daily, probs, ys = [], [], []
+    daily, probs, ys, oos = [], [], [], []
     for i in range(nf, 0, -1):
         t0 = len(dates) - i * fd
         if t0 - h - 60 < 0:
@@ -107,6 +107,7 @@ def walk_forward(panel: pd.DataFrame, exp: dict, cfg: dict) -> dict:
         Xte, yte = _xy(te, exp["features"])
         p = model.predict_proba(Xte)[:, 1]
         te = te.assign(prob=p)
+        oos.append(te[["prob", "fwd_ret", "excess", "vol_21"]])
         probs.extend(p)
         ys.extend(yte)
         for _, g in te.groupby(level="date"):
@@ -115,6 +116,7 @@ def walk_forward(panel: pd.DataFrame, exp: dict, cfg: dict) -> dict:
     if not daily:
         return {"score": float("nan"), "auc": float("nan"), "hit": float("nan"), "n_days": 0}
     d = pd.DataFrame(daily)
+    oos_df = pd.concat(oos) if (return_oos and oos) else None
     auc = roc_auc_score(ys, probs) if len(set(ys)) > 1 else float("nan")
     return {
         "score": float(d["topk_excess"].mean()),  # exceso medio a 5 días de las top-k elegidas
@@ -122,6 +124,7 @@ def walk_forward(panel: pd.DataFrame, exp: dict, cfg: dict) -> dict:
         "auc": float(auc),
         "n_days": int(len(d)),
         "evaluated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        **({"_oos": oos_df} if return_oos else {}),  # predicciones fuera de muestra (no se guarda)
     }
 
 

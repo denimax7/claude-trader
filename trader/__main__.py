@@ -65,13 +65,16 @@ def train_and_signal(cfg: dict, panel: pd.DataFrame, date: str, held: list[str])
     evals = {}
     for e in exps:
         log(f"walk-forward {e['name']} …")
-        evals[e["name"]] = walk_forward(panel, e, cfg)
+        evals[e["name"]] = walk_forward(panel, e, cfg, return_oos=True)
         log(f"  score={evals[e['name']]['score']:+.4f} auc={evals[e['name']]['auc']:.3f}")
     champ, reason = choose_champion(reg, evals, cfg["model"]["promote_margin"])
     if champ != reg.get("champion"):
         store.append_journal({"ts": now_iso(), "kind": "modelo", "author": "sistema",
                               "text": f"**Nuevo campeón: `{champ}`** — {reason}."})
     exp = next(e for e in exps if e["name"] == champ)
+    champ_oos = evals[champ].get("_oos")
+    for v in evals.values():
+        v.pop("_oos", None)
     model = fit_full(panel, exp, cfg)
     preds = predict_latest(model, panel, exp)
     hist = (reg.get("history") or [])[-400:]
@@ -101,6 +104,17 @@ def train_and_signal(cfg: dict, panel: pd.DataFrame, date: str, held: list[str])
     store.write_json("targets.json", {"date": preds.attrs["date"], "created": now_iso(), "model": champ, "mode": mode,
                                       "weights": weights, "probs": {t: round(probs[t], 4) for t in list(preds.index)[:12]},
                                       "executed": False})
+    try:
+        from . import forecast
+
+        pf = Portfolio(cfg)
+        eq = None
+        if pf.initialized:
+            eq = pf.state["cash_eur"] + sum(p["shares"] * p["last_price_usd"] / (p.get("entry_fx") or 1.08)
+                                            for p in pf.state["positions"].values())
+        store.write_json("forecast.json", forecast.build(cfg, panel, exps, champ, preds, champ_oos, weights, mode, eq))
+    except Exception as e:  # noqa: BLE001  (la previsión es informativa: nunca bloquea la operativa)
+        log(f"previsión no disponible: {e}")
     eval_date = clock.add_trading_days(preds.attrs["date"], cfg["model"]["horizon_days"])
     rows = [{"date": preds.attrs["date"], "ticker": t, "prob": round(r["prob"], 4), "rank": int(r["rank"]),
              "selected": int(t in weights), "model": champ, "eval_date": eval_date} for t, r in preds.iterrows()]
