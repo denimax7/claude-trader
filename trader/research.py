@@ -38,6 +38,11 @@ def exp_key(exp: dict) -> str:
     return hashlib.sha1(json.dumps(spec, sort_keys=True).encode()).hexdigest()[:10]
 
 
+def _sig(exp: dict) -> str:
+    """Firma "de fondo" de un modelo: mismo algoritmo y mismas variables = misma idea."""
+    return exp["algo"] + ":" + ",".join(sorted(exp["features"]))
+
+
 def windows(panel: pd.DataFrame, cfg: dict) -> dict:
     """Fechas de rebalanceo de la ventana de investigación y del examen final."""
     r = cfg["research"]
@@ -217,7 +222,19 @@ def run(cfg: dict, panel: pd.DataFrame, date: str, log=print) -> dict:
                     and e["research"].get("t_stat", 0) > r["min_t_stat"]],
                    key=lambda e: e["research"]["score"], reverse=True)[: r["max_holdout_tests"]]
     promoted = []
+    # Una sola tanda de exámenes por cada día de datos nuevos: repetir búsquedas sobre los
+    # mismos datos (p. ej. el fin de semana) solo aumenta la probabilidad de "ganar por suerte".
+    if stats.get("exam_asof") == data_asof:
+        log("  examen final ya hecho con estos datos; se omite")
+        cands = []
+    else:
+        stats["exam_asof"] = data_asof
+    live_sigs = {_sig(x) for x in (store.read_json("experiments.json", []) or []) if x.get("status") == "activo"}
     for e in cands:
+        if _sig(e["exp"]) in live_sigs:
+            e["status"] = "duplicada"
+            log(f"  {e['name']}: mismas variables que un modelo en competición; no se examina")
+            continue
         rp = replay(panel, e["exp"], cfg, w["holdout"])
         e["holdout"] = metrics(strategy_returns(rp, k, mp), h)
         e["holdout_asof"] = data_asof
@@ -227,6 +244,9 @@ def run(cfg: dict, panel: pd.DataFrame, date: str, log=print) -> dict:
         log(f"  examen final {e['name']}: {e['holdout']['score']:+.4%} vs campeón {champ['holdout']['score']:+.4%} → {e['status']}")
         if ok:
             promoted.append(e)
+            live_sigs.add(_sig(e["exp"]))
+        if len(promoted) >= r.get("max_promotions", 1):
+            break
 
     # 4) las aprobadas entran a competir en vivo
     if promoted:

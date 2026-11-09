@@ -1,10 +1,10 @@
 # Investigación nocturna con replay histórico (en paralelo al trading).
-# 03:23 hora de España (02:23 UTC): el mercado de EE. UU. está cerrado.
+# 03:23 hora de España (02:23 UTC), de martes a sábado: solo tras días con datos nuevos.
 name: research
 
 on:
   schedule:
-    - cron: "23 2 * * *"
+    - cron: "23 2 * * 2-6"
   workflow_dispatch:
 
 permissions:

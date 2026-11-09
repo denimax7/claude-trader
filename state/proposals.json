@@ -1,0 +1,29 @@
+[
+  {
+    "created": "2026-11-09T08:36:30+00:00",
+    "status": "pendiente",
+    "author": "claude",
+    "type": "retire",
+    "title": "retirar r261108_2",
+    "name": "r261108_2",
+    "reason": "Duplicado de r261107_114: mismas 5 variables, solo cambia C. Fallo de la investigación ya corregido."
+  },
+  {
+    "created": "2026-11-09T08:36:30+00:00",
+    "status": "pendiente",
+    "author": "claude",
+    "type": "retire",
+    "title": "retirar r261108_31",
+    "name": "r261108_31",
+    "reason": "Duplicado de r261107_114: mismas 5 variables, solo cambia C. Fallo de la investigación ya corregido."
+  },
+  {
+    "created": "2026-11-09T08:36:30+00:00",
+    "status": "pendiente",
+    "author": "claude",
+    "type": "retire",
+    "title": "retirar r261108_175",
+    "name": "r261108_175",
+    "reason": "Duplicado de r261107_114: mismas 5 variables, solo cambia C. Fallo de la investigación ya corregido."
+  }
+]
