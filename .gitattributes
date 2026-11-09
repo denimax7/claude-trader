@@ -1,0 +1,3 @@
+state/journal.jsonl merge=union
+docs/index.html merge=ours
+docs/data.json merge=ours

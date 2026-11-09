@@ -1,3 +1,4 @@
+# Ejecución MANUAL de una fase (el trabajo diario lo hace heartbeat.yml).
 # Ejecuta el agente 3 veces por sesión de la Bolsa de Nueva York.
 # GitHub usa UTC y no sabe de horario de verano: cada fase se programa a las dos
 # horas UTC posibles y el programa decide (por hora de Nueva York) si toca o no.
@@ -7,12 +8,6 @@
 name: trader
 
 on:
-  schedule:
-    # GitHub retrasa o se salta a veces las ejecuciones programadas. Por eso se lanza cada
-    # 10 minutos en horario de mercado: el programa decide qué fase toca (apertura, media,
-    # cierre) y no repite una fase ya hecha ese día. Si una ejecución se pierde, la siguiente cubre.
-    - cron: "3-59/10 13-21 * * 1-5"
-    - cron: "17 7 * * 6"         # sábado: exploración automática de variantes del modelo
   workflow_dispatch:
     inputs:
       phase:

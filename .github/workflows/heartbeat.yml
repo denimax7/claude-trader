@@ -1,0 +1,44 @@
+# Vigilante continuo: hace el trabajo de las programaciones (que GitHub retrasa horas).
+# Un job de ~5,5 h mira cada 5 minutos qué toca y, al acabar, se relanza a sí mismo.
+name: heartbeat
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: heartbeat
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+      - name: Configurar git
+        run: |
+          git config user.name "claude-trader-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config merge.ours.driver true
+      - name: Vigilar
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m trader.loop --minutes 330 --every 5
+      - name: Relanzar el siguiente turno
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run heartbeat.yml --ref main

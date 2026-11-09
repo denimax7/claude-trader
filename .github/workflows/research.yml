@@ -1,11 +1,8 @@
-# Investigación nocturna con replay histórico (en paralelo al trading).
+# Investigación MANUAL (la nocturna la lanza heartbeat.yml).
 # 03:23 hora de España (02:23 UTC), de martes a sábado: solo tras días con datos nuevos.
 name: research
 
 on:
-  schedule:
-    - cron: "23 2 * * 2-6"
-    - cron: "53 3 * * 2-6"     # reintento por si GitHub se salta la primera (no repite si ya se hizo)
   workflow_dispatch:
 
 permissions:

@@ -81,6 +81,7 @@ python -m trader.tools info                      # variables y rangos permitidos
 ## Publicar
 
 ```bash
+git config merge.ours.driver true   # el panel se regenera; el diario se fusiona (ver .gitattributes)
 python -m trader.tools dashboard
 git add -A state docs; [ -d reviews ] && git add -A reviews
 git commit -m "claude: <nota diaria|revisión semanal> <fecha>"
