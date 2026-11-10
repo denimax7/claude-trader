@@ -307,5 +307,47 @@
       "bench_ret": 0.02925426982356205,
       "max_dd_vs_bench": -0.14526493953982478
     }
+  },
+  {
+    "name": "r261109_130",
+    "algo": "logit",
+    "features": [
+      "dd_252",
+      "mkt_ret_21",
+      "ret_1",
+      "ret_10",
+      "sma200_gap",
+      "vol_21",
+      "volz_21"
+    ],
+    "params": {
+      "C": 1.3130888787655464
+    },
+    "created_by": "investigación",
+    "rationale": "Mutación de r261109_47 encontrada por replay histórico.",
+    "status": "activo",
+    "created": "2026-11-10T02:16:25+00:00",
+    "research": {
+      "n": 100,
+      "score": 0.017245346019407245,
+      "excess_annual": 0.8691654393781251,
+      "t_stat": 2.614624754800345,
+      "hit": 0.67,
+      "total_ret": 5.370513353487316,
+      "bench_ret": 0.452045291215486,
+      "max_dd_vs_bench": -0.2672412609165655,
+      "trades_per_period": 0.14
+    },
+    "holdout": {
+      "n": 26,
+      "score": 0.00037493554194043937,
+      "excess_annual": 0.018896751313798144,
+      "t_stat": 0.029642722169788777,
+      "hit": 0.38461538461538464,
+      "total_ret": -0.024275558817432707,
+      "bench_ret": 0.021063053975008073,
+      "max_dd_vs_bench": -0.28429088852555473,
+      "trades_per_period": 0.23076923076923078
+    }
   }
 ]
