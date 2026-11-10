@@ -1,0 +1,1 @@
+- **2026-11-10** · Hipótesis (4 días, 4 cambios de campeón): el ranking walk-forward en vivo de 126 días cambia de campeón con diferencias de ±0,001-0,003, del orden del ruido. Un cambio de campeón no es por sí solo evidencia de ventaja: hay que contrastarlo con el replay (p. ej. auto_20261107_4 fue campeón el 10-nov con t=-0,64 en el replay).
