@@ -1,10 +1,10 @@
 {
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "performance": {
-    "equity_eur": 198.7281,
-    "return_pct": -0.006359499999999962,
-    "bench_eur": 203.2812,
-    "bench_return_pct": 0.016406000000000143,
+    "equity_eur": 199.5812,
+    "return_pct": -0.0020940000000000403,
+    "bench_eur": 202.783,
+    "bench_return_pct": 0.0139149999999999,
     "cash_eur": 0.0,
     "n_positions": 2
   },
@@ -17,7 +17,7 @@
       "entry_fx": 1.1205737590789795,
       "cost_eur": 100.0,
       "entry_prob": 0.501,
-      "last_price_usd": 71.94999694824219
+      "last_price_usd": 72.37000274658203
     },
     "SPY": {
       "shares": 0.14763553409085886,
@@ -26,69 +26,79 @@
       "entry_fx": 1.1205737590789795,
       "cost_eur": 100.0,
       "entry_prob": null,
-      "last_price_usd": 755.1199951171875
+      "last_price_usd": 749.4000244140625
     }
   },
   "targets": {
-    "ITA": {
-      "prob": 0.5,
+    "NVDA": {
+      "prob": 0.757,
       "weight": 0.5
     },
-    "SPY": {
-      "prob": 0.451,
+    "GOOGL": {
+      "prob": 0.746,
       "weight": 0.5
     }
   },
-  "exits_planned": [],
-  "champion_model": "momentum_logit",
-  "signal_mode": "sin ventaja suficiente para pagar comisiones (score +0.0010 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
+  "exits_planned": [
+    "ITA",
+    "SPY"
+  ],
+  "champion_model": "auto_20261107_4",
+  "signal_mode": "modelo",
   "top_features": {
-    "sma200_gap": 0.27681706293040936,
-    "ret_126": 0.13628619220275057,
-    "rel_bench_63": 0.13283703213798626,
-    "ret_252": 0.10189769657350625,
-    "vol_63": 0.09164090748731929,
-    "ret_63": 0.08786410848813404,
-    "mkt_sma200_gap": 0.06224312617735523,
-    "xs_rank_63": 0.04353252186409645,
-    "ret_21": 0.034969072359417,
-    "xs_rank_126": 0.03191227977902545
+    "mkt_vol_21": 0.08381006864988558,
+    "vol_63": 0.08152173913043478,
+    "mkt_sma200_gap": 0.08152173913043478,
+    "mkt_ret_21": 0.07036613272311212,
+    "ret_252": 0.07008009153318077,
+    "vol_21": 0.062070938215102976,
+    "rel_bench_21": 0.05406178489702517,
+    "rel_bench_63": 0.05234553775743707,
+    "sma200_gap": 0.04891304347826087,
+    "sma50_gap": 0.04576659038901602
   },
   "model_scores": {
     "base_lgbm": {
-      "score": -0.0031706618183991305,
-      "hit": 0.43253968253968256,
-      "auc": 0.4848221507814207,
+      "score": -0.0029648728175034654,
+      "hit": 0.4365079365079365,
+      "auc": 0.48567635143408916,
       "n_days": 126,
-      "evaluated_at": "2026-11-09T20:25:45+00:00"
+      "evaluated_at": "2026-11-10T20:29:41+00:00"
     },
     "momentum_logit": {
-      "score": 0.000978812306297922,
-      "hit": 0.44841269841269843,
-      "auc": 0.49197803933377027,
+      "score": 0.0003296842599403897,
+      "hit": 0.4523809523809524,
+      "auc": 0.4901518403934985,
       "n_days": 126,
-      "evaluated_at": "2026-11-09T20:25:46+00:00"
+      "evaluated_at": "2026-11-10T20:29:41+00:00"
     },
     "auto_20261107_4": {
-      "score": -0.0016620191765121437,
-      "hit": 0.44841269841269843,
-      "auc": 0.4900971831069073,
+      "score": 0.002853272741442242,
+      "hit": 0.47619047619047616,
+      "auc": 0.4905566325424119,
       "n_days": 126,
-      "evaluated_at": "2026-11-09T20:25:47+00:00"
+      "evaluated_at": "2026-11-10T20:29:44+00:00"
     },
     "r261107_114": {
-      "score": -0.0003150105041524368,
-      "hit": 0.40476190476190477,
-      "auc": 0.503663001635463,
+      "score": -0.0007340973827245578,
+      "hit": 0.4087301587301587,
+      "auc": 0.5022690490206059,
       "n_days": 126,
-      "evaluated_at": "2026-11-09T20:25:47+00:00"
+      "evaluated_at": "2026-11-10T20:29:44+00:00"
     },
     "r261107_107": {
-      "score": -0.00013702369376782675,
-      "hit": 0.4166666666666667,
-      "auc": 0.5019747698838645,
+      "score": -0.0005551598930954461,
+      "hit": 0.42063492063492064,
+      "auc": 0.5016597400183236,
       "n_days": 126,
-      "evaluated_at": "2026-11-09T20:25:48+00:00"
+      "evaluated_at": "2026-11-10T20:29:44+00:00"
+    },
+    "r261109_130": {
+      "score": -0.004537138335554834,
+      "hit": 0.4087301587301587,
+      "auc": 0.4895163443820383,
+      "n_days": 126,
+      "evaluated_at": "2026-11-10T20:29:44+00:00"
     }
   },
   "live_metrics": {
@@ -96,17 +106,29 @@
   },
   "recent_closed": [],
   "headlines": {
+    "GOOGL": [
+      "2026-11-10 Google's SpaceX investment takes an unexpected turn",
+      "2026-11-10 Nvidia’s 70% to 80% Margins Are “Like Throwing Chum in the Water,” Says Its Biographer",
+      "2026-11-10 Microsoft Stock Falls On Anthropic Challenge To Office Software",
+      "2026-11-10 AMD Gains 25% Against NVDA in 2 Days: Chip Analyst Says Lisa Su Is ‘at Her Best’"
+    ],
     "ITA": [
       "2026-11-09 Why Drone Maker AeroVironment’s Stock Is Rocketing on This Sub-$1 Billion Deal",
       "2026-11-08 After the Midterms, Which of These 3 Defense ETFs Looks Strongest?",
       "2026-11-05 Defense Stocks Sank as Democrats Took Congress and the $1.5 Trillion Budget Looks Doomed",
       "2026-10-26 Lockheed Stock Has 40% Upside, Analyst Says. Is the Worst Over for Defense?"
     ],
+    "NVDA": [
+      "2026-11-10 Chip stocks' slide nears $5 trillion as Nvidia hits most extreme selling level since 2019",
+      "2026-11-10 Nvidia in the hot seat, Anthropic to test the IPO market, hotter-than-expected US inflation",
+      "2026-11-10 Alleged plot to spy on Jensen Huang: Why it's bullish for AI.",
+      "2026-11-10 Top strategist: Nvidia CEO Jensen Huang's affair highlights key risk for tech companies"
+    ],
     "SPY": [
-      "2026-11-09 Winmark Stock Is Down More Than 30% in 2026. Here’s What $1,000 Became in 10 Years",
-      "2026-11-09 Risk-On: S&P 500 Surges Out of the Gate, Adds $1 Trillion in Market Value",
-      "2026-11-09 Citigroup’s Jane Fraser Says Hedge Funds Drove the Sell-Off. Here’s Why She Doesn’t Expect It to Get Worse",
-      "2026-11-09 Exchange-Traded Funds, Equity Futures Higher Pre-Bell Monday Amid Global Market Recovery"
+      "2026-11-10 Cathie Wood Is Buying Nvidia Again, Adding 90,443 Shares During the Huang Selloff",
+      "2026-11-10 Fed’s Goolsbee Says AI Data Centers Look Like ‘Old-Fashioned Overheating’",
+      "2026-11-10 Stock Market Today: Hotter CPI Reading Hasn’t Deterred Stocks From Rising",
+      "2026-11-10 Pre-Markets Drop on Warmer CPI Numbers: +0.4% Month over Month"
     ]
   },
   "lessons": ""
