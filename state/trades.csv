@@ -1,3 +1,7 @@
 ts,date,phase,ticker,side,shares,price_usd,fx,value_eur,fees_eur,reason,prob,pnl_eur,pnl_pct,hold_days,entry_date
 2026-11-09T16:16:03+00:00,2026-11-09,open,ITA,BUY,1.550824,71.4257,1.12057,100.0,1.15,entrada por señal,0.501,,,,
 2026-11-09T16:16:03+00:00,2026-11-09,open,SPY,BUY,0.147636,750.2849,1.12057,100.0,1.15,entrada por señal,,,,,
+2026-11-11T14:26:41+00:00,2026-11-11,open,ITA,SELL,1.550824,72.3538,1.10902,100.0262,1.1518,sale del objetivo del modelo,0.501,0.0262,0.00026,2,2026-11-09
+2026-11-11T14:26:41+00:00,2026-11-11,open,SPY,SELL,0.147636,749.565,1.10902,98.6346,1.1497,sale del objetivo del modelo,,-1.3654,-0.01365,2,2026-11-09
+2026-11-11T14:26:41+00:00,2026-11-11,open,NVDA,BUY,0.644768,168.8744,1.10902,99.3304,1.149,entrada por señal,0.7568,,,,
+2026-11-11T14:26:41+00:00,2026-11-11,open,GOOGL,BUY,0.378699,287.5237,1.10902,99.3304,1.149,entrada por señal,0.7456,,,,

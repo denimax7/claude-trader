@@ -4,25 +4,25 @@
   "capital_eur": 200.0,
   "cash_eur": 0.0,
   "positions": {
-    "ITA": {
-      "shares": 1.550824490149918,
-      "entry_price_usd": 71.42569438934326,
-      "entry_date": "2026-11-09",
-      "entry_fx": 1.1205737590789795,
-      "cost_eur": 100.0,
-      "entry_prob": 0.501,
-      "last_price_usd": 72.37000274658203
+    "NVDA": {
+      "shares": 0.6447681018164062,
+      "entry_price_usd": 168.87438828277587,
+      "entry_date": "2026-11-11",
+      "entry_fx": 1.1090162992477417,
+      "cost_eur": 99.33043703955879,
+      "entry_prob": 0.7568,
+      "last_price_usd": 168.7899932861328
     },
-    "SPY": {
-      "shares": 0.14763553409085886,
-      "entry_price_usd": 750.2849281311035,
-      "entry_date": "2026-11-09",
-      "entry_fx": 1.1205737590789795,
-      "cost_eur": 100.0,
-      "entry_prob": null,
-      "last_price_usd": 749.4000244140625
+    "GOOGL": {
+      "shares": 0.37869859324792804,
+      "entry_price_usd": 287.5236948852539,
+      "entry_date": "2026-11-11",
+      "entry_fx": 1.1090162992477417,
+      "cost_eur": 99.33043703955879,
+      "entry_prob": 0.7456,
+      "last_price_usd": 287.3800048828125
     }
   },
   "bench_shares": 0.3021705881954889,
-  "realized_pnl_eur": 0.0
+  "realized_pnl_eur": -1.3391259208824238
 }
