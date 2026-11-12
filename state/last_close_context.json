@@ -1,104 +1,101 @@
 {
-  "date": "2026-11-11",
+  "date": "2026-11-12",
   "performance": {
-    "equity_eur": 202.0285,
-    "return_pct": 0.010142499999999943,
-    "bench_eur": 207.012,
-    "bench_return_pct": 0.03506000000000009,
+    "equity_eur": 195.2406,
+    "return_pct": -0.023796999999999957,
+    "bench_eur": 207.0044,
+    "bench_return_pct": 0.03502200000000011,
     "cash_eur": 0.0,
     "n_positions": 2
   },
   "risk_events": [],
   "positions": {
-    "NVDA": {
-      "shares": 0.6447681018164062,
-      "entry_price_usd": 168.87438828277587,
-      "entry_date": "2026-11-11",
-      "entry_fx": 1.1090162992477417,
-      "cost_eur": 99.33043703955879,
-      "entry_prob": 0.7568,
-      "last_price_usd": 174.93800354003906
+    "ITA": {
+      "shares": 1.4872732160292932,
+      "entry_price_usd": 73.30663164138794,
+      "entry_date": "2026-11-12",
+      "entry_fx": 1.1100010871887207,
+      "cost_eur": 99.3714743387674,
+      "entry_prob": 0.5052,
+      "last_price_usd": 72.12000274658203
     },
-    "GOOGL": {
-      "shares": 0.37869859324792804,
-      "entry_price_usd": 287.5236948852539,
-      "entry_date": "2026-11-11",
-      "entry_fx": 1.1090162992477417,
-      "cost_eur": 99.33043703955879,
-      "entry_prob": 0.7456,
-      "last_price_usd": 294.1199951171875
+    "SPY": {
+      "shares": 0.1434245076892382,
+      "entry_price_usd": 760.1698730163574,
+      "entry_date": "2026-11-12",
+      "entry_fx": 1.1100010871887207,
+      "cost_eur": 99.3714743387674,
+      "entry_prob": null,
+      "last_price_usd": 757.6400146484375
     }
   },
   "targets": {
     "ITA": {
-      "prob": 0.505,
+      "prob": 0.506,
       "weight": 0.5
     },
     "SPY": {
-      "prob": 0.452,
+      "prob": 0.451,
       "weight": 0.5
     }
   },
-  "exits_planned": [
-    "NVDA",
-    "GOOGL"
-  ],
+  "exits_planned": [],
   "champion_model": "momentum_logit",
-  "signal_mode": "sin ventaja suficiente para pagar comisiones (score +0.0001 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
+  "signal_mode": "sin ventaja suficiente para pagar comisiones (score -0.0009 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
   "top_features": {
-    "sma200_gap": 0.2821684510716917,
-    "ret_126": 0.14143421702590908,
-    "rel_bench_63": 0.13122680557135075,
-    "ret_252": 0.10118959691195543,
-    "vol_63": 0.0930667143899325,
-    "ret_63": 0.08830999932420015,
-    "mkt_sma200_gap": 0.061752678054634226,
-    "xs_rank_63": 0.037592984379030955,
-    "ret_21": 0.03750081171525959,
-    "xs_rank_126": 0.025757741556035784
+    "sma200_gap": 0.27515181346609835,
+    "rel_bench_63": 0.1388138459087777,
+    "ret_126": 0.1371556130615183,
+    "ret_252": 0.09886396385866755,
+    "ret_63": 0.09646384576632769,
+    "vol_63": 0.09410338003540404,
+    "mkt_sma200_gap": 0.06307036535347363,
+    "xs_rank_63": 0.03705551707910056,
+    "ret_21": 0.03570136907474263,
+    "xs_rank_126": 0.023620286395889402
   },
   "model_scores": {
     "base_lgbm": {
-      "score": -0.0008447406226875989,
-      "hit": 0.4523809523809524,
-      "auc": 0.4894644097900922,
+      "score": -0.0030609459931144876,
+      "hit": 0.4444444444444444,
+      "auc": 0.48924812052250805,
       "n_days": 126,
-      "evaluated_at": "2026-11-11T20:27:27+00:00"
+      "evaluated_at": "2026-11-12T20:25:15+00:00"
     },
     "momentum_logit": {
-      "score": 6.668059723080164e-05,
-      "hit": 0.45634920634920634,
-      "auc": 0.4932105244523647,
+      "score": -0.0009464206005505871,
+      "hit": 0.44841269841269843,
+      "auc": 0.4960203962755525,
       "n_days": 126,
-      "evaluated_at": "2026-11-11T20:27:28+00:00"
+      "evaluated_at": "2026-11-12T20:25:16+00:00"
     },
     "auto_20261107_4": {
-      "score": -0.000596067667034089,
-      "hit": 0.45634920634920634,
-      "auc": 0.4936322504790749,
+      "score": -0.004626739675326015,
+      "hit": 0.4087301587301587,
+      "auc": 0.4902302562695948,
       "n_days": 126,
-      "evaluated_at": "2026-11-11T20:27:30+00:00"
+      "evaluated_at": "2026-11-12T20:25:18+00:00"
     },
     "r261107_114": {
-      "score": -0.0012732158153986785,
+      "score": -0.0011734613454688668,
       "hit": 0.40476190476190477,
-      "auc": 0.5038886569528921,
+      "auc": 0.5058826760692154,
       "n_days": 126,
-      "evaluated_at": "2026-11-11T20:27:31+00:00"
+      "evaluated_at": "2026-11-12T20:25:19+00:00"
     },
     "r261107_107": {
-      "score": -0.0005622677067799266,
+      "score": -0.0007268565783610223,
       "hit": 0.42063492063492064,
-      "auc": 0.5023557280241463,
+      "auc": 0.5018066652509754,
       "n_days": 126,
-      "evaluated_at": "2026-11-11T20:27:31+00:00"
+      "evaluated_at": "2026-11-12T20:25:19+00:00"
     },
     "r261109_130": {
-      "score": -0.004901391413596312,
-      "hit": 0.4126984126984127,
-      "auc": 0.49053762600148404,
+      "score": -0.0056871281684632595,
+      "hit": 0.4007936507936508,
+      "auc": 0.4923884479600775,
       "n_days": 126,
-      "evaluated_at": "2026-11-11T20:27:31+00:00"
+      "evaluated_at": "2026-11-12T20:25:19+00:00"
     }
   },
   "live_metrics": {
@@ -140,33 +137,57 @@
       "pnl_pct": "-0.01365",
       "hold_days": "2",
       "entry_date": "2026-11-09"
+    },
+    {
+      "ts": "2026-11-12T14:29:32+00:00",
+      "date": "2026-11-12",
+      "phase": "open",
+      "ticker": "NVDA",
+      "side": "SELL",
+      "shares": "0.644768",
+      "price_usd": "173.7631",
+      "fx": "1.11",
+      "value_eur": "99.7826",
+      "fees_eur": "1.1514",
+      "reason": "sale del objetivo del modelo",
+      "prob": "0.7568",
+      "pnl_eur": "0.4522",
+      "pnl_pct": "0.00455",
+      "hold_days": "1",
+      "entry_date": "2026-11-11"
+    },
+    {
+      "ts": "2026-11-12T14:29:32+00:00",
+      "date": "2026-11-12",
+      "phase": "open",
+      "ticker": "GOOGL",
+      "side": "SELL",
+      "shares": "0.378699",
+      "price_usd": "293.4332",
+      "fx": "1.11",
+      "value_eur": "98.9603",
+      "fees_eur": "1.1502",
+      "reason": "sale del objetivo del modelo",
+      "prob": "0.7456",
+      "pnl_eur": "-0.3701",
+      "pnl_pct": "-0.00373",
+      "hold_days": "1",
+      "entry_date": "2026-11-11"
     }
   ],
   "headlines": {
-    "GOOGL": [
-      "2026-11-11 Google rolls out Gemini AI voice assistant to Apple CarPlay dashboards",
-      "2026-11-11 Anthropic Says Its Revenue Run Rate Jumped to an $81 Billion Run Rate",
-      "2026-11-11 Booking Holdings vs. Target: Which Consumer Stock Is a Better Buy for 2027?",
-      "2026-11-11 Why This Legendary Investor Says to Look Beyond Tech—and the U. S.—for Values"
-    ],
     "ITA": [
       "2026-11-09 Why Drone Maker AeroVironment’s Stock Is Rocketing on This Sub-$1 Billion Deal",
       "2026-11-08 After the Midterms, Which of These 3 Defense ETFs Looks Strongest?",
       "2026-11-05 Defense Stocks Sank as Democrats Took Congress and the $1.5 Trillion Budget Looks Doomed",
       "2026-10-26 Lockheed Stock Has 40% Upside, Analyst Says. Is the Worst Over for Defense?"
     ],
-    "NVDA": [
-      "2026-11-11 Nvidia stock is pricing in 2 major risks as CEO Jensen Huang's affair fallout plays out",
-      "2026-11-11 Market rally offers a much-needed boost for investors, CoreWeave beats third-quarter estimates",
-      "2026-11-11 CoreWeave surges, but bigger tests loom for the AI trade",
-      "2026-11-11 Jensen Huang espionage controversy will cast a long shadow over Nvidia, veteran tech strategist warns"
-    ],
     "SPY": [
-      "2026-11-11 Home Equity Borrowing Jumps the Most Since 2005 as Household Debt Passes $19 Trillion",
-      "2026-11-11 Tractor Supply Turned $1,000 Into Over $3,200 in 10 Years. Then Came 2026",
-      "2026-11-11 Cramer Says Apple Investors Who Sold After Steve Jobs Missed Years Of Gains. The Stock Is Up Nearly 3,000% Since. Now He’s Asking If Nvidia Needs Jensen Huang",
-      "2026-11-11 Exchange-Traded Funds, Equity Futures Higher Pre-Bell Wednesday as Nvidia Stock Recovers"
+      "2026-11-12 NVIDIA’s Leadership Crisis Is Dragging the S&P 500 Lower. Here’s What Else Is Moving",
+      "2026-11-12 Jensen Huang Resigns from NVIDIA, Shares -10%",
+      "2026-11-12 Exchange-Traded Funds, Equity Futures Lower Pre-Bell Thursday Amid Nvidia Leadership Uncertainty",
+      "2026-11-12 Seagate’s Legitimacy as a Play on AI Hardware Demand is About To Be Tested"
     ]
   },
-  "lessons": "- **2026-11-10** · Hipótesis (4 días, 4 cambios de campeón): el ranking walk-forward en vivo de 126 días cambia de campeón con diferencias de ±0,001-0,003, del orden del ruido. Un cambio de campeón no es por sí solo evidencia de ventaja: hay que contrastarlo con el replay (p. ej. auto_20261107_4 fue campeón el 10-nov con t=-0,64 en el replay).\n"
+  "lessons": "- **2026-11-11** · Hipótesis (1 caso, 11-nov): un campeón que supera min_edge un solo día dispara una rotación completa de ida y vuelta (8 operaciones, ~9 € ≈4,6 % de la cartera en 2 días), con un modelo que el replay suspendía (t=-0,70). Sin histéresis en el cambio de modo o campeón, el ruido del ranking se convierte en comisiones.\n- **2026-11-10** · Hipótesis (4 días, 4 cambios de campeón): el ranking walk-forward en vivo de 126 días cambia de campeón con diferencias de ±0,001-0,003, del orden del ruido. Un cambio de campeón no es por sí solo evidencia de ventaja: hay que contrastarlo con el replay (p. ej. auto_20261107_4 fue campeón el 10-nov con t=-0,64 en el replay).\n"
 }

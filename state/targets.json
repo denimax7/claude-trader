@@ -1,26 +1,25 @@
 {
-  "date": "2026-11-11",
-  "created": "2026-11-11T20:27:31+00:00",
+  "date": "2026-11-12",
+  "created": "2026-11-12T20:25:19+00:00",
   "model": "momentum_logit",
-  "mode": "sin ventaja suficiente para pagar comisiones (score +0.0001 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
+  "mode": "sin ventaja suficiente para pagar comisiones (score -0.0009 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
   "weights": {
     "ITA": 0.5,
     "SPY": 0.5
   },
   "probs": {
-    "SLV": 0.554,
-    "NOC": 0.5439,
-    "LMT": 0.5421,
-    "RTX": 0.5217,
-    "SMH": 0.5174,
-    "NVDA": 0.5063,
-    "GLD": 0.5056,
-    "ITA": 0.5052,
-    "META": 0.5,
-    "PLTR": 0.4991,
-    "GOOGL": 0.4978,
-    "USO": 0.4945
+    "SLV": 0.5654,
+    "NOC": 0.5356,
+    "LMT": 0.5347,
+    "SMH": 0.5264,
+    "RTX": 0.5183,
+    "NVDA": 0.5147,
+    "GLD": 0.5107,
+    "ITA": 0.5058,
+    "META": 0.5043,
+    "GOOGL": 0.4985,
+    "PLTR": 0.4955,
+    "USO": 0.4933
   },
-  "executed": true,
-  "executed_at": "2026-11-12T14:29:32+00:00"
+  "executed": false
 }
