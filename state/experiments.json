@@ -40,7 +40,7 @@
     "rationale": "Modelo base con todas las variables.",
     "status": "activo",
     "created": "2026-11-07T11:08:29+00:00",
-    "last_score": -0.00306
+    "last_score": -0.00372
   },
   {
     "name": "momentum_logit",
@@ -64,7 +64,7 @@
     "rationale": "Regresión logística simple de momentum: referencia robusta.",
     "status": "activo",
     "created": "2026-11-07T11:08:29+00:00",
-    "last_score": -0.00095
+    "last_score": -0.00138
   },
   {
     "name": "auto_20261107_4",
@@ -114,7 +114,7 @@
       "n_days": 126,
       "evaluated_at": "2026-11-07T11:16:24+00:00"
     },
-    "last_score": -0.00463
+    "last_score": 0.00141
   },
   {
     "name": "r261107_114",
@@ -153,7 +153,7 @@
       "bench_ret": 0.02925426982356205,
       "max_dd_vs_bench": -0.16247538115872773
     },
-    "last_score": -0.00117
+    "last_score": -0.00119
   },
   {
     "name": "r261107_107",
@@ -192,7 +192,7 @@
       "bench_ret": 0.02925426982356205,
       "max_dd_vs_bench": -0.15160591640240983
     },
-    "last_score": -0.00073
+    "last_score": -0.00115
   },
   {
     "name": "r261108_2",
@@ -349,6 +349,6 @@
       "max_dd_vs_bench": -0.28429088852555473,
       "trades_per_period": 0.23076923076923078
     },
-    "last_score": -0.00569
+    "last_score": -0.00483
   }
 ]

@@ -1,10 +1,10 @@
 {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "performance": {
-    "equity_eur": 195.2406,
-    "return_pct": -0.023796999999999957,
-    "bench_eur": 207.0044,
-    "bench_return_pct": 0.03502200000000011,
+    "equity_eur": 194.2262,
+    "return_pct": -0.028868999999999923,
+    "bench_eur": 206.4656,
+    "bench_return_pct": 0.03232799999999991,
     "cash_eur": 0.0,
     "n_positions": 2
   },
@@ -17,7 +17,7 @@
       "entry_fx": 1.1100010871887207,
       "cost_eur": 99.3714743387674,
       "entry_prob": 0.5052,
-      "last_price_usd": 72.12000274658203
+      "last_price_usd": 71.33499908447266
     },
     "SPY": {
       "shares": 0.1434245076892382,
@@ -26,80 +26,100 @@
       "entry_fx": 1.1100010871887207,
       "cost_eur": 99.3714743387674,
       "entry_prob": null,
-      "last_price_usd": 757.6400146484375
+      "last_price_usd": 753.3350219726562
     }
   },
   "targets": {
-    "ITA": {
-      "prob": 0.506,
-      "weight": 0.5
-    },
     "SPY": {
-      "prob": 0.451,
-      "weight": 0.5
+      "prob": 0.598,
+      "weight": 1.0
     }
   },
-  "exits_planned": [],
-  "champion_model": "momentum_logit",
-  "signal_mode": "sin ventaja suficiente para pagar comisiones (score -0.0009 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
+  "exits_planned": [
+    "ITA"
+  ],
+  "champion_model": "auto_20261107_4",
+  "signal_mode": "sin ventaja suficiente para pagar comisiones (score +0.0014 ≤ +0.0020) → benchmark",
   "top_features": {
-    "sma200_gap": 0.27515181346609835,
-    "rel_bench_63": 0.1388138459087777,
-    "ret_126": 0.1371556130615183,
-    "ret_252": 0.09886396385866755,
-    "ret_63": 0.09646384576632769,
-    "vol_63": 0.09410338003540404,
-    "mkt_sma200_gap": 0.06307036535347363,
-    "xs_rank_63": 0.03705551707910056,
-    "ret_21": 0.03570136907474263,
-    "xs_rank_126": 0.023620286395889402
+    "mkt_sma200_gap": 0.08209382151029748,
+    "mkt_vol_21": 0.08152173913043478,
+    "vol_63": 0.07837528604118993,
+    "ret_252": 0.06922196796338673,
+    "mkt_ret_21": 0.06493135011441648,
+    "vol_21": 0.057208237986270026,
+    "rel_bench_21": 0.04948512585812357,
+    "sma200_gap": 0.04662471395881007,
+    "ret_63": 0.04548054919908467,
+    "ret_126": 0.04548054919908467
   },
   "model_scores": {
     "base_lgbm": {
-      "score": -0.0030609459931144876,
-      "hit": 0.4444444444444444,
-      "auc": 0.48924812052250805,
+      "score": -0.0037205645970294957,
+      "hit": 0.44841269841269843,
+      "auc": 0.4939072196310373,
       "n_days": 126,
-      "evaluated_at": "2026-11-12T20:25:15+00:00"
+      "evaluated_at": "2026-11-13T20:28:29+00:00"
     },
     "momentum_logit": {
-      "score": -0.0009464206005505871,
+      "score": -0.0013775002824419076,
       "hit": 0.44841269841269843,
-      "auc": 0.4960203962755525,
+      "auc": 0.4965095010079856,
       "n_days": 126,
-      "evaluated_at": "2026-11-12T20:25:16+00:00"
+      "evaluated_at": "2026-11-13T20:28:29+00:00"
     },
     "auto_20261107_4": {
-      "score": -0.004626739675326015,
-      "hit": 0.4087301587301587,
-      "auc": 0.4902302562695948,
+      "score": 0.0014117717707799137,
+      "hit": 0.49603174603174605,
+      "auc": 0.504146274636039,
       "n_days": 126,
-      "evaluated_at": "2026-11-12T20:25:18+00:00"
+      "evaluated_at": "2026-11-13T20:28:32+00:00"
     },
     "r261107_114": {
-      "score": -0.0011734613454688668,
-      "hit": 0.40476190476190477,
-      "auc": 0.5058826760692154,
+      "score": -0.0011877162979183674,
+      "hit": 0.4087301587301587,
+      "auc": 0.5058228418136113,
       "n_days": 126,
-      "evaluated_at": "2026-11-12T20:25:19+00:00"
+      "evaluated_at": "2026-11-13T20:28:33+00:00"
     },
     "r261107_107": {
-      "score": -0.0007268565783610223,
+      "score": -0.001154183883602997,
       "hit": 0.42063492063492064,
-      "auc": 0.5018066652509754,
+      "auc": 0.5008287021520091,
       "n_days": 126,
-      "evaluated_at": "2026-11-12T20:25:19+00:00"
+      "evaluated_at": "2026-11-13T20:28:33+00:00"
     },
     "r261109_130": {
-      "score": -0.0056871281684632595,
-      "hit": 0.4007936507936508,
-      "auc": 0.4923884479600775,
+      "score": -0.004829806599050712,
+      "hit": 0.4087301587301587,
+      "auc": 0.49357021101824694,
       "n_days": 126,
-      "evaluated_at": "2026-11-12T20:25:19+00:00"
+      "evaluated_at": "2026-11-13T20:28:33+00:00"
     }
   },
   "live_metrics": {
-    "n": 0
+    "n": 37,
+    "hit_rate": 0.40540540540540543,
+    "calibration": {
+      "(0.0, 0.45]": {
+        "n": 6,
+        "beat_rate": 0.5
+      },
+      "(0.45, 0.5]": {
+        "n": 22,
+        "beat_rate": 0.773
+      },
+      "(0.5, 0.55]": {
+        "n": 8,
+        "beat_rate": 0.875
+      },
+      "(0.55, 0.6]": {
+        "n": 1,
+        "beat_rate": 0.0
+      }
+    },
+    "sel_n": 2,
+    "sel_hit_rate": 1.0,
+    "sel_excess": 0.01292
   },
   "recent_closed": [
     {
@@ -177,16 +197,16 @@
   ],
   "headlines": {
     "ITA": [
+      "2026-11-13 Trump Wants $350 Billion for the Military “IMMEDIATELY”",
       "2026-11-09 Why Drone Maker AeroVironment’s Stock Is Rocketing on This Sub-$1 Billion Deal",
       "2026-11-08 After the Midterms, Which of These 3 Defense ETFs Looks Strongest?",
-      "2026-11-05 Defense Stocks Sank as Democrats Took Congress and the $1.5 Trillion Budget Looks Doomed",
-      "2026-10-26 Lockheed Stock Has 40% Upside, Analyst Says. Is the Worst Over for Defense?"
+      "2026-11-05 Defense Stocks Sank as Democrats Took Congress and the $1.5 Trillion Budget Looks Doomed"
     ],
     "SPY": [
-      "2026-11-12 NVIDIA’s Leadership Crisis Is Dragging the S&P 500 Lower. Here’s What Else Is Moving",
-      "2026-11-12 Jensen Huang Resigns from NVIDIA, Shares -10%",
-      "2026-11-12 Exchange-Traded Funds, Equity Futures Lower Pre-Bell Thursday Amid Nvidia Leadership Uncertainty",
-      "2026-11-12 Seagate’s Legitimacy as a Play on AI Hardware Demand is About To Be Tested"
+      "2026-11-13 Intel attracts $79 million in ETF buying despite warning",
+      "2026-11-13 Kevin Warsh’s Fed Will Vote on Rates Only 7 Times in 2027",
+      "2026-11-13 The S&P 500 Has a “Pure Value” Version. RPV Gives Its Cheapest Stocks the Biggest Weights",
+      "2026-11-13 Nvidia Is 6.1% Of Your S&P 500 Fund. What Is Your Number?"
     ]
   },
   "lessons": "- **2026-11-11** · Hipótesis (1 caso, 11-nov): un campeón que supera min_edge un solo día dispara una rotación completa de ida y vuelta (8 operaciones, ~9 € ≈4,6 % de la cartera en 2 días), con un modelo que el replay suspendía (t=-0,70). Sin histéresis en el cambio de modo o campeón, el ruido del ranking se convierte en comisiones.\n- **2026-11-10** · Hipótesis (4 días, 4 cambios de campeón): el ranking walk-forward en vivo de 126 días cambia de campeón con diferencias de ±0,001-0,003, del orden del ruido. Un cambio de campeón no es por sí solo evidencia de ventaja: hay que contrastarlo con el replay (p. ej. auto_20261107_4 fue campeón el 10-nov con t=-0,64 en el replay).\n"
