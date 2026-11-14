@@ -31,5 +31,59 @@
     "reason": "Duplicado de r261107_114: mismas 5 variables, solo cambia C. Fallo de la investigación ya corregido.",
     "result": "retirado",
     "processed": "2026-11-09T08:47:05+00:00"
+  },
+  {
+    "created": "2026-11-14T10:25:06+00:00",
+    "status": "pendiente",
+    "author": "claude",
+    "type": "model",
+    "title": "Familia dd_252 sin variables de régimen (logit C=0,2)",
+    "experiment": {
+      "name": "claude_ddvol_xs",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "ret_10",
+        "sma200_gap",
+        "volz_21",
+        "vol_63"
+      ],
+      "params": {
+        "C": 0.2
+      },
+      "created_by": "claude",
+      "rationale": "Replay 14-nov: las variantes que aprueban el examen final (r261107_114, r261108_2, r261107_107) comparten dd_252+sma200_gap+ret_10(+volz_21) con C bajo (~0,8). Las 7 que suspenden comparten mkt_sma200_gap+mkt_vol_21+xs_rank_126 con C alto (~4,4): variables de régimen iguales para todos los activos que sólo sirven para sobreajustar el momento. Este modelo es la familia que aprueba SIN ninguna variable mkt_*, con vol_63 como control de riesgo y más regularización (C=0,2) para reducir rotación."
+    }
+  },
+  {
+    "created": "2026-11-14T10:25:07+00:00",
+    "status": "pendiente",
+    "author": "claude",
+    "type": "model",
+    "title": "lgbm poco profundo sobre variables que aprueban el examen",
+    "experiment": {
+      "name": "claude_lgbm_shallow_dd",
+      "algo": "lgbm",
+      "features": [
+        "dd_252",
+        "ret_10",
+        "sma200_gap",
+        "volz_21",
+        "vol_21",
+        "mkt_ret_21"
+      ],
+      "params": {
+        "n_estimators": 150,
+        "learning_rate": 0.02,
+        "num_leaves": 4,
+        "max_depth": 2,
+        "min_child_samples": 300,
+        "subsample": 0.7,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 20.0
+      },
+      "created_by": "claude",
+      "rationale": "Todos los lgbm del replay suspenden (base_lgbm t=-0,60; campeón auto_20261107_4 t=-1,70 y examen t=-2,02) y rotan mucho (1,2-1,6 operaciones/periodo), pero usan 22-23 variables y árboles profundos. Prueba controlada: ¿aporta algo la no linealidad si se limita a las 6 variables de la familia que aprueba el examen (r261107_114/r261109_130) con árboles de profundidad 2 y regularización fuerte? Si no mejora a r261107_114, descartamos lgbm como dirección."
+    }
   }
 ]
