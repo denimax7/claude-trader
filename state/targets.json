@@ -1,25 +1,25 @@
 {
-  "date": "2026-11-13",
-  "created": "2026-11-13T20:28:34+00:00",
-  "model": "auto_20261107_4",
-  "mode": "sin ventaja suficiente para pagar comisiones (score +0.0014 ≤ +0.0020) → benchmark",
+  "date": "2026-11-16",
+  "created": "2026-11-16T20:26:28+00:00",
+  "model": "claude_lgbm_shallow_dd",
+  "mode": "modelo",
   "weights": {
-    "SPY": 1.0
+    "SMH": 0.5,
+    "SLV": 0.5
   },
   "probs": {
-    "NVDA": 0.8463,
-    "SLV": 0.6867,
-    "GLD": 0.6752,
-    "GOOGL": 0.6524,
-    "EFA": 0.6273,
-    "PLTR": 0.6042,
-    "SPY": 0.5984,
-    "XLE": 0.5951,
-    "VGK": 0.5903,
-    "LMT": 0.5834,
-    "SMH": 0.5803,
-    "TLT": 0.5713
+    "SMH": 0.603,
+    "SLV": 0.5502,
+    "NVDA": 0.5502,
+    "GOOGL": 0.5477,
+    "GLD": 0.5409,
+    "XLK": 0.5189,
+    "PLTR": 0.5188,
+    "LMT": 0.5179,
+    "QQQ": 0.5177,
+    "META": 0.5172,
+    "EEM": 0.5167,
+    "AMZN": 0.5151
   },
-  "executed": true,
-  "executed_at": "2026-11-16T14:25:35+00:00"
+  "executed": false
 }
