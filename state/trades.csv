@@ -9,3 +9,5 @@ ts,date,phase,ticker,side,shares,price_usd,fx,value_eur,fees_eur,reason,prob,pnl
 2026-11-12T14:29:32+00:00,2026-11-12,open,GOOGL,SELL,0.378699,293.4332,1.11,98.9603,1.1502,sale del objetivo del modelo,0.7456,-0.3701,-0.00373,1,2026-11-11
 2026-11-12T14:29:32+00:00,2026-11-12,open,ITA,BUY,1.487273,73.3066,1.11,99.3715,1.1491,entrada por señal,0.5052,,,,
 2026-11-12T14:29:32+00:00,2026-11-12,open,SPY,BUY,0.143425,760.1699,1.11,99.3715,1.1491,entrada por señal,,,,,
+2026-11-16T14:25:35+00:00,2026-11-16,open,ITA,SELL,1.487273,71.4543,1.10108,95.3715,1.1448,sale del objetivo del modelo,0.5052,-4.0,-0.04025,4,2026-11-12
+2026-11-16T14:25:35+00:00,2026-11-16,open,SPY,BUY,0.137489,754.6271,1.10108,95.3715,1.1431,reequilibrio (infraponderada),0.5984,,,,
