@@ -841,6 +841,42 @@
     "created": "2026-11-17T02:13:11+00:00"
   },
   {
+    "key": "c44be0c379",
+    "name": "r261117_7",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261117_7",
+      "algo": "logit",
+      "features": [
+        "mkt_ret_21",
+        "mkt_sma200_gap",
+        "mkt_vol_21",
+        "ret_1",
+        "sma200_gap"
+      ],
+      "params": {
+        "C": 7.206619845447993
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261116_79 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.018937682826098007,
+      "excess_annual": 0.9544592144353394,
+      "t_stat": 2.2325443236010147,
+      "hit": 0.57,
+      "total_ret": 5.40298147909391,
+      "bench_ret": 0.4535506363894013,
+      "max_dd_vs_bench": -0.31533154990095735,
+      "trades_per_period": 0.14
+    },
+    "data_asof": "2026-11-09",
+    "evaluated": "2026-11-17T05:03:05+00:00",
+    "ver": 2,
+    "created": "2026-11-17T05:03:05+00:00"
+  },
+  {
     "key": "a907daa43c",
     "name": "r261113_116",
     "origin": "búsqueda",
@@ -1149,6 +1185,42 @@
     "evaluated": "2026-11-14T05:18:12+00:00",
     "ver": 2,
     "created": "2026-11-14T05:18:12+00:00"
+  },
+  {
+    "key": "1a9dbdb91a",
+    "name": "r261117_27",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261117_27",
+      "algo": "logit",
+      "features": [
+        "mkt_ret_21",
+        "mkt_sma200_gap",
+        "ret_1",
+        "sma200_gap",
+        "sma20_gap"
+      ],
+      "params": {
+        "C": 2.268586038518876
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261116_114 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.018230378506893186,
+      "excess_annual": 0.9188110767474166,
+      "t_stat": 2.0738920840601724,
+      "hit": 0.53,
+      "total_ret": 4.861965154240523,
+      "bench_ret": 0.4535506363894013,
+      "max_dd_vs_bench": -0.31109034282958115,
+      "trades_per_period": 0.18
+    },
+    "data_asof": "2026-11-09",
+    "evaluated": "2026-11-17T05:04:59+00:00",
+    "ver": 2,
+    "created": "2026-11-17T05:04:59+00:00"
   },
   {
     "key": "298f5c7726",
@@ -1869,6 +1941,43 @@
     "created": "2026-11-13T05:12:36+00:00"
   },
   {
+    "key": "5682acf284",
+    "name": "r261117_142",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261117_142",
+      "algo": "logit",
+      "features": [
+        "mkt_ret_21",
+        "mkt_sma200_gap",
+        "mkt_vol_21",
+        "ret_1",
+        "ret_10",
+        "sma200_gap"
+      ],
+      "params": {
+        "C": 5.476085097707111
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261116_79 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.017474064128809374,
+      "excess_annual": 0.8806928320919925,
+      "t_stat": 2.0803334243616676,
+      "hit": 0.55,
+      "total_ret": 4.619479219834407,
+      "bench_ret": 0.4535506363894013,
+      "max_dd_vs_bench": -0.31109034282958126,
+      "trades_per_period": 0.14
+    },
+    "data_asof": "2026-11-09",
+    "evaluated": "2026-11-17T05:14:14+00:00",
+    "ver": 2,
+    "created": "2026-11-17T05:14:14+00:00"
+  },
+  {
     "key": "4025363821",
     "name": "r261114_1",
     "origin": "búsqueda",
@@ -2015,6 +2124,44 @@
     "evaluated": "2026-11-14T05:05:10+00:00",
     "ver": 2,
     "created": "2026-11-14T05:05:10+00:00"
+  },
+  {
+    "key": "446ef3d031",
+    "name": "r261117_172",
+    "origin": "búsqueda",
+    "exp": {
+      "name": "r261117_172",
+      "algo": "logit",
+      "features": [
+        "mkt_ret_21",
+        "mkt_sma200_gap",
+        "mkt_vol_21",
+        "ret_1",
+        "sma200_gap",
+        "sma50_gap",
+        "xs_rank_126"
+      ],
+      "params": {
+        "C": 4.408787964299754
+      },
+      "created_by": "investigación",
+      "rationale": "Mutación de r261113_142 encontrada por replay histórico."
+    },
+    "research": {
+      "n": 100,
+      "score": 0.017363906565635606,
+      "excess_annual": 0.8751408909080345,
+      "t_stat": 2.12223786623528,
+      "hit": 0.6,
+      "total_ret": 4.638825157055767,
+      "bench_ret": 0.4535506363894013,
+      "max_dd_vs_bench": -0.31109034282958126,
+      "trades_per_period": 0.18
+    },
+    "data_asof": "2026-11-09",
+    "evaluated": "2026-11-17T05:16:15+00:00",
+    "ver": 2,
+    "created": "2026-11-17T05:16:15+00:00"
   },
   {
     "key": "d8042ccf18",
@@ -2347,153 +2494,5 @@
     "evaluated": "2026-11-14T05:15:33+00:00",
     "ver": 2,
     "created": "2026-11-14T05:15:33+00:00"
-  },
-  {
-    "key": "ecc66d66ff",
-    "name": "r261110_337",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261110_337",
-      "algo": "logit",
-      "features": [
-        "mkt_sma200_gap",
-        "ret_1",
-        "ret_10",
-        "ret_5",
-        "sma200_gap",
-        "volz_21"
-      ],
-      "params": {
-        "C": 2.1827348686813486
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261110_219 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.017086119958149314,
-      "excess_annual": 0.8611404458907254,
-      "t_stat": 2.043730702725303,
-      "hit": 0.55,
-      "total_ret": 4.458285751239535,
-      "bench_ret": 0.4520453820981829,
-      "max_dd_vs_bench": -0.3110905601789049,
-      "trades_per_period": 0.31
-    },
-    "data_asof": "2026-11-02",
-    "evaluated": "2026-11-10T05:15:36+00:00",
-    "ver": 2,
-    "created": "2026-11-10T05:15:36+00:00"
-  },
-  {
-    "key": "b6766b4efb",
-    "name": "r261110_139",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261110_139",
-      "algo": "logit",
-      "features": [
-        "mkt_ret_21",
-        "mkt_sma200_gap",
-        "ret_1",
-        "ret_10",
-        "sma200_gap",
-        "sma50_gap",
-        "volz_21"
-      ],
-      "params": {
-        "C": 1.6342846712909858
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261110_124 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.01703618592111779,
-      "excess_annual": 0.8586237704243365,
-      "t_stat": 2.112934347376508,
-      "hit": 0.58,
-      "total_ret": 4.496879271674917,
-      "bench_ret": 0.4520453820981829,
-      "max_dd_vs_bench": -0.3110905601789048,
-      "trades_per_period": 0.24
-    },
-    "data_asof": "2026-11-02",
-    "evaluated": "2026-11-10T05:07:29+00:00",
-    "ver": 2,
-    "created": "2026-11-10T05:07:29+00:00"
-  },
-  {
-    "key": "7f8a8bf46b",
-    "name": "r261114_132",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261114_132",
-      "algo": "logit",
-      "features": [
-        "mkt_ret_21",
-        "mkt_sma200_gap",
-        "mkt_vol_21",
-        "sma200_gap"
-      ],
-      "params": {
-        "C": 4.408787964299754
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261114_96 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.017024018004464393,
-      "excess_annual": 0.8580105074250055,
-      "t_stat": 2.052707437362058,
-      "hit": 0.54,
-      "total_ret": 4.415178409268506,
-      "bench_ret": 0.4352059062200695,
-      "max_dd_vs_bench": -0.30284762437772217,
-      "trades_per_period": 0.14
-    },
-    "data_asof": "2026-11-06",
-    "evaluated": "2026-11-14T05:14:59+00:00",
-    "ver": 2,
-    "created": "2026-11-14T05:14:59+00:00"
-  },
-  {
-    "key": "e0c440bbfc",
-    "name": "r261114_189",
-    "origin": "búsqueda",
-    "exp": {
-      "name": "r261114_189",
-      "algo": "logit",
-      "features": [
-        "mkt_ret_21",
-        "mkt_sma200_gap",
-        "mkt_vol_21",
-        "ret_1",
-        "sma200_gap",
-        "xs_rank_126",
-        "xs_rank_21"
-      ],
-      "params": {
-        "C": 3.5404157083771897
-      },
-      "created_by": "investigación",
-      "rationale": "Mutación de r261113_209 encontrada por replay histórico."
-    },
-    "research": {
-      "n": 100,
-      "score": 0.016971827208557336,
-      "excess_annual": 0.8553800913112898,
-      "t_stat": 2.0754455586289327,
-      "hit": 0.56,
-      "total_ret": 4.411741587700958,
-      "bench_ret": 0.4352059062200695,
-      "max_dd_vs_bench": -0.3028476243777223,
-      "trades_per_period": 0.24
-    },
-    "data_asof": "2026-11-06",
-    "evaluated": "2026-11-14T05:18:10+00:00",
-    "ver": 2,
-    "created": "2026-11-14T05:18:10+00:00"
   }
 ]
