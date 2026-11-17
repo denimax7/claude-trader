@@ -1,26 +1,25 @@
 {
-  "date": "2026-11-16",
-  "created": "2026-11-16T20:26:28+00:00",
+  "date": "2026-11-17",
+  "created": "2026-11-17T20:29:57+00:00",
   "model": "claude_lgbm_shallow_dd",
-  "mode": "modelo",
+  "mode": "sin ventaja suficiente para pagar comisiones (score +0.0011 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
   "weights": {
-    "SMH": 0.5,
-    "SLV": 0.5
+    "ITA": 0.5,
+    "SPY": 0.5
   },
   "probs": {
-    "SMH": 0.603,
-    "SLV": 0.5502,
-    "NVDA": 0.5502,
-    "GOOGL": 0.5477,
-    "GLD": 0.5409,
-    "XLK": 0.5189,
-    "PLTR": 0.5188,
-    "LMT": 0.5179,
-    "QQQ": 0.5177,
-    "META": 0.5172,
-    "EEM": 0.5167,
-    "AMZN": 0.5151
+    "SMH": 0.6002,
+    "NVDA": 0.5429,
+    "SLV": 0.5419,
+    "GOOGL": 0.541,
+    "GLD": 0.5368,
+    "QQQ": 0.515,
+    "META": 0.5142,
+    "PLTR": 0.5135,
+    "XLK": 0.5135,
+    "EEM": 0.5134,
+    "AMZN": 0.5094,
+    "XLI": 0.5092
   },
-  "executed": true,
-  "executed_at": "2026-11-17T14:29:07+00:00"
+  "executed": false
 }

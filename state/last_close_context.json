@@ -1,130 +1,144 @@
 {
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "performance": {
-    "equity_eur": 188.6557,
-    "return_pct": -0.05672149999999998,
-    "bench_eur": 202.9315,
-    "bench_return_pct": 0.01465749999999999,
+    "equity_eur": 184.1422,
+    "return_pct": -0.07928899999999994,
+    "bench_eur": 200.4173,
+    "bench_return_pct": 0.002086500000000102,
     "cash_eur": 0.0,
-    "n_positions": 1
+    "n_positions": 2
   },
   "risk_events": [],
   "positions": {
-    "SPY": {
-      "shares": 0.28091348706314445,
-      "entry_price_usd": 757.457056427653,
-      "entry_date": "2026-11-12",
-      "entry_fx": 1.1100010871887207,
-      "cost_eur": 194.7429333382429,
-      "entry_prob": null,
-      "last_price_usd": 739.0549926757812
+    "SMH": {
+      "shares": 0.2206146216781623,
+      "entry_price_usd": 462.04090255737304,
+      "entry_date": "2026-11-17",
+      "entry_fx": 1.0996261835098267,
+      "cost_eur": 93.83860417997192,
+      "entry_prob": 0.603,
+      "last_price_usd": 454.3599853515625
+    },
+    "SLV": {
+      "shares": 2.4040121597645165,
+      "entry_price_usd": 42.40119106864929,
+      "entry_date": "2026-11-17",
+      "entry_fx": 1.0996261835098267,
+      "cost_eur": 93.83860417997192,
+      "entry_prob": 0.5502,
+      "last_price_usd": 42.634700775146484
     }
   },
   "targets": {
-    "SMH": {
-      "prob": 0.603,
+    "ITA": {
+      "prob": 0.507,
       "weight": 0.5
     },
-    "SLV": {
-      "prob": 0.55,
+    "SPY": {
+      "prob": 0.479,
       "weight": 0.5
     }
   },
   "exits_planned": [
-    "SPY"
+    "SMH",
+    "SLV"
   ],
   "champion_model": "claude_lgbm_shallow_dd",
-  "signal_mode": "modelo",
+  "signal_mode": "sin ventaja suficiente para pagar comisiones (score +0.0011 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
   "top_features": {
-    "vol_21": 0.36682242990654207,
-    "mkt_ret_21": 0.2266355140186916,
-    "sma200_gap": 0.13551401869158877,
-    "dd_252": 0.13317757009345793,
-    "ret_10": 0.102803738317757,
-    "volz_21": 0.035046728971962614
+    "vol_21": 0.38497652582159625,
+    "mkt_ret_21": 0.22535211267605634,
+    "sma200_gap": 0.14788732394366197,
+    "dd_252": 0.12910798122065728,
+    "ret_10": 0.07511737089201878,
+    "volz_21": 0.03755868544600939
   },
   "model_scores": {
     "base_lgbm": {
-      "score": -0.0035511273712810093,
-      "hit": 0.4246031746031746,
-      "auc": 0.48926223520818113,
+      "score": -0.003936947536216738,
+      "hit": 0.4087301587301587,
+      "auc": 0.4806989942125077,
       "n_days": 126,
-      "evaluated_at": "2026-11-16T20:26:22+00:00"
+      "evaluated_at": "2026-11-17T20:29:53+00:00"
     },
     "momentum_logit": {
-      "score": -0.0012722612628295472,
-      "hit": 0.4523809523809524,
-      "auc": 0.4962542038306327,
+      "score": -0.0010911583469746773,
+      "hit": 0.44841269841269843,
+      "auc": 0.4936284159146365,
       "n_days": 126,
-      "evaluated_at": "2026-11-16T20:26:23+00:00"
+      "evaluated_at": "2026-11-17T20:29:53+00:00"
     },
     "auto_20261107_4": {
-      "score": -0.0010942412961522392,
-      "hit": 0.4603174603174603,
-      "auc": 0.4902585350082027,
+      "score": 0.0003048359458792244,
+      "hit": 0.4444444444444444,
+      "auc": 0.49904948061793436,
       "n_days": 126,
-      "evaluated_at": "2026-11-16T20:26:25+00:00"
+      "evaluated_at": "2026-11-17T20:29:55+00:00"
     },
     "r261107_114": {
-      "score": -0.0010132066580961657,
+      "score": -0.0005609730499655029,
       "hit": 0.4126984126984127,
-      "auc": 0.503884334898956,
+      "auc": 0.5003363064506174,
       "n_days": 126,
-      "evaluated_at": "2026-11-16T20:26:26+00:00"
+      "evaluated_at": "2026-11-17T20:29:55+00:00"
     },
     "r261107_107": {
-      "score": -0.001218473206839863,
+      "score": -0.0007662395987092002,
       "hit": 0.42063492063492064,
-      "auc": 0.4999254801647358,
+      "auc": 0.4972832960427112,
       "n_days": 126,
-      "evaluated_at": "2026-11-16T20:26:26+00:00"
+      "evaluated_at": "2026-11-17T20:29:56+00:00"
     },
     "r261109_130": {
-      "score": -0.004490691134020322,
+      "score": -0.003959665990589181,
       "hit": 0.4126984126984127,
-      "auc": 0.49303981054091817,
+      "auc": 0.489994169214373,
       "n_days": 126,
-      "evaluated_at": "2026-11-16T20:26:26+00:00"
+      "evaluated_at": "2026-11-17T20:29:56+00:00"
     },
     "claude_ddvol_xs": {
-      "score": -0.0031308922588785633,
-      "hit": 0.4365079365079365,
-      "auc": 0.48596862429383475,
+      "score": -0.004542402827756812,
+      "hit": 0.4246031746031746,
+      "auc": 0.48342002750509616,
       "n_days": 126,
-      "evaluated_at": "2026-11-16T20:26:27+00:00"
+      "evaluated_at": "2026-11-17T20:29:56+00:00"
     },
     "claude_lgbm_shallow_dd": {
-      "score": 0.0020996286596165403,
-      "hit": 0.4444444444444444,
-      "auc": 0.49299964904750015,
+      "score": 0.0011310164338595675,
+      "hit": 0.42857142857142855,
+      "auc": 0.4917308774641517,
       "n_days": 126,
-      "evaluated_at": "2026-11-16T20:26:28+00:00"
+      "evaluated_at": "2026-11-17T20:29:57+00:00"
     }
   },
   "live_metrics": {
-    "n": 74,
-    "hit_rate": 0.4189189189189189,
+    "n": 111,
+    "hit_rate": 0.43243243243243246,
     "calibration": {
       "(0.0, 0.45]": {
-        "n": 10,
+        "n": 20,
         "beat_rate": 0.5
       },
       "(0.45, 0.5]": {
-        "n": 46,
-        "beat_rate": 0.696
+        "n": 54,
+        "beat_rate": 0.685
       },
       "(0.5, 0.55]": {
-        "n": 16,
-        "beat_rate": 0.75
+        "n": 25,
+        "beat_rate": 0.72
       },
       "(0.55, 0.6]": {
-        "n": 2,
-        "beat_rate": 0.0
+        "n": 7,
+        "beat_rate": 0.143
+      },
+      "(0.6, 1.0]": {
+        "n": 5,
+        "beat_rate": 0.4
       }
     },
-    "sel_n": 4,
-    "sel_hit_rate": 0.75,
-    "sel_excess": 0.00682
+    "sel_n": 6,
+    "sel_hit_rate": 0.6666666666666666,
+    "sel_excess": -0.005230000000000001
   },
   "recent_closed": [
     {
@@ -216,26 +230,50 @@
       "pnl_pct": "-0.04025",
       "hold_days": "4",
       "entry_date": "2026-11-12"
+    },
+    {
+      "ts": "2026-11-17T14:29:07+00:00",
+      "date": "2026-11-17",
+      "phase": "open",
+      "ticker": "SPY",
+      "side": "SELL",
+      "shares": "0.280913",
+      "price_usd": "739.68",
+      "fx": "1.09963",
+      "value_eur": "187.6772",
+      "fees_eur": "1.2834",
+      "reason": "sale del objetivo del modelo",
+      "prob": "",
+      "pnl_eur": "-7.0657",
+      "pnl_pct": "-0.03628",
+      "hold_days": "5",
+      "entry_date": "2026-11-12"
     }
   ],
   "headlines": {
+    "ITA": [
+      "2026-11-16 What iShares Aerospace & Defense ETF (ITA) Bought: FTAI Leads on Nov. 12",
+      "2026-11-13 Trump Wants $350 Billion for the Military “IMMEDIATELY”",
+      "2026-11-09 Why Drone Maker AeroVironment’s Stock Is Rocketing on This Sub-$1 Billion Deal",
+      "2026-11-08 After the Midterms, Which of These 3 Defense ETFs Looks Strongest?"
+    ],
     "SLV": [
+      "2026-11-17 Silver Crashes 61% From All-Time High: One Wall Street Bull Sees A Buy Signal, Another Critic Says Wait",
       "2026-11-16 SLV’s $149,842 Gain on a $300,000 Sale Could Be Taxed as a Collectible, Not a Stock",
       "2026-11-12 Silver ETF vs. Silver Miners ETF: Which Has Held Up Better This Year?",
-      "2026-11-12 What $10,000 in Silver on Jan. 1 Is Worth Today",
-      "2026-11-11 Is the iShares Silver Trust a Buy After Falling Nearly 60% From Its High?"
+      "2026-11-12 What $10,000 in Silver on Jan. 1 Is Worth Today"
     ],
     "SMH": [
-      "2026-11-16 Why AMD Stock Was Sliding Today",
-      "2026-11-16 Time to Buy the Dip in NVIDIA Despite Leadership Turmoil? ETFs in Focus",
-      "2026-11-16 Nvidia Jitters Caution Wall Street Pre-Bell; Asia Off, Europe Up",
-      "2026-11-16 “Behold the Bull-Trap”: Michael Burry Doubles His Nasdaq 100 Puts, Compares October High to March 2000"
+      "2026-11-17 Jensen Huang Offered to Come Back and Nvidia Gained $90 Billion in 10 Minutes. Here’s What the Stock Did the Last Four Times a Board Took the Boss Back",
+      "2026-11-17 Nvidia Has Fallen 18% Since the Jensen Huang Scandal Broke and the Biggest Chip ETF Barely Moved. Here’s What Tonight’s Report Does to SMH, SOXX, SOXL and NVDL",
+      "2026-11-17 Michael Burry Makes Bold Bet on Beaten-Down AI Software Stock",
+      "2026-11-17 Is SMH A Great Dip Buy At 31% Off?"
     ],
     "SPY": [
-      "2026-11-16 Stock Market Today: Nasdaq-100 Sinks 1% as Nvidia Faces Its First Earnings Without Jensen Huang",
-      "2026-11-16 Exchange-Traded Funds, Equity Futures Lower Pre-Bell Monday Amid Weakness in AI-Linked Stocks",
-      "2026-11-16 Hedge Funds Are Dumping Leverage at a Pace Last Seen in March 2020. A 63-Year-Old Who Moved His 401(k) to Cash Then Would Have Missed a 51.5% Rally. Here’s the Math",
-      "2026-11-16 Pre-Markets Lower as Puzzle Pieces Sorted"
+      "2026-11-17 Bill Ackman Cut His Microsoft Stake. Your S&P 500 Fund Can’t.",
+      "2026-11-17 Exchange-Traded Funds, Equity Futures Mixed Pre-Bell Tuesday as Investors Await Nvidia Earnings",
+      "2026-11-17 Cathie Wood and Jim Cramer Agree on These 10 Stocks: Latest 13F",
+      "2026-11-17 Cathie Wood and Jim Cramer Agree on These 5 Stocks"
     ]
   },
   "lessons": "- **2026-11-14** · Hipótesis (replay 14-nov, 10 exámenes): las variantes que ganan la búsqueda apoyándose en variables de régimen (mkt_sma200_gap, mkt_vol_21) más xs_rank_126 con C alto (~4,4) suspenden el examen final 7 de 7 veces (t entre −0,2 y −2,1). Las que lo aprueban (3 familias distintas) se basan en dd_252, sma200_gap y ret_10 con C≈0,8. Un t>2 en la búsqueda no basta: mirar qué variables lo sostienen.\n- **2026-11-14** · Hecho (semana 9-13 nov): 10 operaciones en 4 sesiones costaron 11,50 € de comisiones (5,75 % de la cartera) y explican ~94 % de los 12,2 € de distancia con SPY. Las decisiones de precio fueron casi neutras (P&L realizado bruto ≈ −1,3 €). Con 1 € fijo por operación, el control de la rotación pesa más que la calidad de la señal.\n- **2026-11-11** · Hipótesis (1 caso, 11-nov): un campeón que supera min_edge un solo día dispara una rotación completa de ida y vuelta (8 operaciones, ~9 € ≈4,6 % de la cartera en 2 días), con un modelo que el replay suspendía (t=-0,70). Sin histéresis en el cambio de modo o campeón, el ruido del ranking se convierte en comisiones.\n- **2026-11-10** · Hipótesis (4 días, 4 cambios de campeón): el ranking walk-forward en vivo de 126 días cambia de campeón con diferencias de ±0,001-0,003, del orden del ruido. Un cambio de campeón no es por sí solo evidencia de ventaja: hay que contrastarlo con el replay (p. ej. auto_20261107_4 fue campeón el 10-nov con t=-0,64 en el replay).\n"
