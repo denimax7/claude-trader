@@ -11,7 +11,7 @@
       "entry_fx": 1.0970927476882935,
       "cost_eur": 91.80902183091935,
       "entry_prob": null,
-      "last_price_usd": 69.62999725341797
+      "last_price_usd": 68.95999908447266
     },
     "SPY": {
       "shares": 0.13575433881900065,
@@ -20,7 +20,7 @@
       "entry_fx": 1.0970927476882935,
       "cost_eur": 91.80902183091935,
       "entry_prob": null,
-      "last_price_usd": 732.3900146484375
+      "last_price_usd": 729.0150146484375
     }
   },
   "bench_shares": 0.3021705881954889,
