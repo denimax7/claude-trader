@@ -1,10 +1,10 @@
 {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "performance": {
-    "equity_eur": 180.5964,
-    "return_pct": -0.09701800000000005,
-    "bench_eur": 201.0819,
-    "bench_return_pct": 0.005409499999999845,
+    "equity_eur": 177.4952,
+    "return_pct": -0.11252399999999996,
+    "bench_eur": 197.5449,
+    "bench_return_pct": -0.012275499999999884,
     "cash_eur": 0.0,
     "n_positions": 2
   },
@@ -17,7 +17,7 @@
       "entry_fx": 1.0970927476882935,
       "cost_eur": 91.80902183091935,
       "entry_prob": null,
-      "last_price_usd": 69.38500213623047
+      "last_price_usd": 68.2300033569336
     },
     "SPY": {
       "shares": 0.13575433881900065,
@@ -26,115 +26,115 @@
       "entry_fx": 1.0970927476882935,
       "cost_eur": 91.80902183091935,
       "entry_prob": null,
-      "last_price_usd": 730.469970703125
+      "last_price_usd": 717.7000122070312
     }
   },
   "targets": {
     "ITA": {
-      "prob": 0.491,
+      "prob": 0.5,
       "weight": 0.5
     },
     "SPY": {
-      "prob": 0.457,
+      "prob": 0.468,
       "weight": 0.5
     }
   },
   "exits_planned": [],
   "champion_model": "r261107_114",
-  "signal_mode": "sin ventaja suficiente para pagar comisiones (score -0.0004 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
+  "signal_mode": "sin ventaja suficiente para pagar comisiones (score -0.0001 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
   "top_features": {
-    "dd_252": 0.5467799421806768,
-    "sma200_gap": 0.26528379761482834,
-    "ret_10": 0.13159514265321562,
-    "volz_21": 0.0522497043424862,
-    "mkt_ret_21": 0.00409141320879302
+    "dd_252": 0.5436960602981454,
+    "sma200_gap": 0.2605266868976247,
+    "ret_10": 0.13625400879254984,
+    "volz_21": 0.05150675348996263,
+    "mkt_ret_21": 0.008016490521717387
   },
   "model_scores": {
     "base_lgbm": {
-      "score": -0.0046752231017566205,
-      "hit": 0.4126984126984127,
-      "auc": 0.4857305288351713,
+      "score": -0.003508040098259387,
+      "hit": 0.4523809523809524,
+      "auc": 0.4897784393575266,
       "n_days": 126,
-      "evaluated_at": "2026-11-18T20:27:32+00:00"
+      "evaluated_at": "2026-11-19T20:26:03+00:00"
     },
     "momentum_logit": {
-      "score": -0.000965032197606161,
-      "hit": 0.44841269841269843,
-      "auc": 0.49230467673452427,
+      "score": 0.00012836124819571036,
+      "hit": 0.45634920634920634,
+      "auc": 0.4898488140845252,
       "n_days": 126,
-      "evaluated_at": "2026-11-18T20:27:32+00:00"
+      "evaluated_at": "2026-11-19T20:26:04+00:00"
     },
     "auto_20261107_4": {
-      "score": -0.009432073362661893,
-      "hit": 0.373015873015873,
-      "auc": 0.49539334354169096,
+      "score": -0.006747887827673003,
+      "hit": 0.4007936507936508,
+      "auc": 0.49221613147178056,
       "n_days": 126,
-      "evaluated_at": "2026-11-18T20:27:35+00:00"
+      "evaluated_at": "2026-11-19T20:26:07+00:00"
     },
     "r261107_114": {
-      "score": -0.0003721610828874062,
-      "hit": 0.4166666666666667,
-      "auc": 0.4989781203161545,
+      "score": -7.637457762399152e-05,
+      "hit": 0.4126984126984127,
+      "auc": 0.496855705096733,
       "n_days": 126,
-      "evaluated_at": "2026-11-18T20:27:36+00:00"
+      "evaluated_at": "2026-11-19T20:26:07+00:00"
     },
     "r261107_107": {
-      "score": -0.0007531280624946254,
+      "score": -0.0007282204674809586,
       "hit": 0.42063492063492064,
-      "auc": 0.49684464481252827,
+      "auc": 0.4950731243154814,
       "n_days": 126,
-      "evaluated_at": "2026-11-18T20:27:36+00:00"
+      "evaluated_at": "2026-11-19T20:26:07+00:00"
     },
     "r261109_130": {
-      "score": -0.0031739029370585737,
-      "hit": 0.4166666666666667,
-      "auc": 0.4889404137479754,
+      "score": -0.003044219415718144,
+      "hit": 0.4126984126984127,
+      "auc": 0.48660991859928504,
       "n_days": 126,
-      "evaluated_at": "2026-11-18T20:27:36+00:00"
+      "evaluated_at": "2026-11-19T20:26:08+00:00"
     },
     "claude_ddvol_xs": {
-      "score": -0.004345586131441118,
-      "hit": 0.4246031746031746,
-      "auc": 0.4829810148129262,
+      "score": -0.005136785935092962,
+      "hit": 0.42063492063492064,
+      "auc": 0.4813568689510205,
       "n_days": 126,
-      "evaluated_at": "2026-11-18T20:27:37+00:00"
+      "evaluated_at": "2026-11-19T20:26:08+00:00"
     },
     "claude_lgbm_shallow_dd": {
-      "score": -0.0013261864325600648,
-      "hit": 0.4126984126984127,
-      "auc": 0.4907740678732966,
+      "score": -0.0005892781578196298,
+      "hit": 0.4087301587301587,
+      "auc": 0.49046873805402824,
       "n_days": 126,
-      "evaluated_at": "2026-11-18T20:27:37+00:00"
+      "evaluated_at": "2026-11-19T20:26:09+00:00"
     }
   },
   "live_metrics": {
-    "n": 148,
-    "hit_rate": 0.41216216216216217,
+    "n": 185,
+    "hit_rate": 0.41081081081081083,
     "calibration": {
       "(0.0, 0.45]": {
-        "n": 24,
-        "beat_rate": 0.583
+        "n": 27,
+        "beat_rate": 0.63
       },
       "(0.45, 0.5]": {
-        "n": 79,
-        "beat_rate": 0.658
+        "n": 104,
+        "beat_rate": 0.635
       },
       "(0.5, 0.55]": {
-        "n": 32,
-        "beat_rate": 0.625
+        "n": 40,
+        "beat_rate": 0.6
       },
       "(0.55, 0.6]": {
-        "n": 8,
-        "beat_rate": 0.125
+        "n": 9,
+        "beat_rate": 0.111
       },
       "(0.6, 1.0]": {
         "n": 5,
         "beat_rate": 0.4
       }
     },
-    "sel_n": 8,
-    "sel_hit_rate": 0.625,
-    "sel_excess": -0.004950000000000001
+    "sel_n": 10,
+    "sel_hit_rate": 0.6,
+    "sel_excess": -0.004162000000000001
   },
   "recent_closed": [
     {
@@ -284,17 +284,17 @@
   ],
   "headlines": {
     "ITA": [
+      "2026-11-19 3 Aerospace And Defense ETFs For The 45 Day China Free Magnet Scramble",
       "2026-11-18 Which ETFs Give You General Dynamics Without Going All In?",
       "2026-11-16 What iShares Aerospace & Defense ETF (ITA) Bought: FTAI Leads on Nov. 12",
-      "2026-11-13 Trump Wants $350 Billion for the Military “IMMEDIATELY”",
-      "2026-11-09 Why Drone Maker AeroVironment’s Stock Is Rocketing on This Sub-$1 Billion Deal"
+      "2026-11-13 Trump Wants $350 Billion for the Military “IMMEDIATELY”"
     ],
     "SPY": [
-      "2026-11-18 Take-Two Is Surging on GTA VI’s Launch, and Your Index Fund Might Be Along for the Ride Without You Knowing It",
-      "2026-11-18 ARKK Is Down, But These 10 Cathie Wood Stocks Have Soared Up to 285% in 2026",
-      "2026-11-18 Cathie Wood Was Right About These 5 Stocks",
-      "2026-11-18 SCHD Is Having Its Best Year Since 2013. What Happens Next Year?"
+      "2026-11-19 $1,000 Invested in Eli Lilly 10 Years Ago Would Be Worth a Fortune Today",
+      "2026-11-19 If You Have $1,000 to Invest Right Now, Here's the 1 ETF I'd Buy Without a Second Thought",
+      "2026-11-19 Do Nvidia, Alphabet, Meta Drops Hurt Your Index Fund?",
+      "2026-11-19 How a 68-Year-Old Collects $5,225 a Month From Just Three Tickers: VYM, DIVO, and ARCC"
     ]
   },
-  "lessons": "- **2026-11-14** · Hipótesis (replay 14-nov, 10 exámenes): las variantes que ganan la búsqueda apoyándose en variables de régimen (mkt_sma200_gap, mkt_vol_21) más xs_rank_126 con C alto (~4,4) suspenden el examen final 7 de 7 veces (t entre −0,2 y −2,1). Las que lo aprueban (3 familias distintas) se basan en dd_252, sma200_gap y ret_10 con C≈0,8. Un t>2 en la búsqueda no basta: mirar qué variables lo sostienen.\n- **2026-11-14** · Hecho (semana 9-13 nov): 10 operaciones en 4 sesiones costaron 11,50 € de comisiones (5,75 % de la cartera) y explican ~94 % de los 12,2 € de distancia con SPY. Las decisiones de precio fueron casi neutras (P&L realizado bruto ≈ −1,3 €). Con 1 € fijo por operación, el control de la rotación pesa más que la calidad de la señal.\n- **2026-11-11** · Hipótesis (1 caso, 11-nov): un campeón que supera min_edge un solo día dispara una rotación completa de ida y vuelta (8 operaciones, ~9 € ≈4,6 % de la cartera en 2 días), con un modelo que el replay suspendía (t=-0,70). Sin histéresis en el cambio de modo o campeón, el ruido del ranking se convierte en comisiones.\n- **2026-11-10** · Hipótesis (4 días, 4 cambios de campeón): el ranking walk-forward en vivo de 126 días cambia de campeón con diferencias de ±0,001-0,003, del orden del ruido. Un cambio de campeón no es por sí solo evidencia de ventaja: hay que contrastarlo con el replay (p. ej. auto_20261107_4 fue campeón el 10-nov con t=-0,64 en el replay).\n"
+  "lessons": "- **2026-11-18** · Hecho (7-18 nov): 19 operaciones en 8 sesiones costaron 21,91 € de comisiones (11 % del capital), más que toda la distancia con SPY (20,5 €). Segundo caso de ida y vuelta por cruzar min_edge un solo día (17→18 nov: SMH y SLV, 4 operaciones). Agravante: en modo benchmark no se aplican keep_rank/keep_prob, así que se venden activos que siguen en el top del ranking. La hipótesis del 11-nov (falta de histéresis en el cambio de modo) pasa a 2 casos.\n- **2026-11-14** · Hipótesis (replay 14-nov, 10 exámenes): las variantes que ganan la búsqueda apoyándose en variables de régimen (mkt_sma200_gap, mkt_vol_21) más xs_rank_126 con C alto (~4,4) suspenden el examen final 7 de 7 veces (t entre −0,2 y −2,1). Las que lo aprueban (3 familias distintas) se basan en dd_252, sma200_gap y ret_10 con C≈0,8. Un t>2 en la búsqueda no basta: mirar qué variables lo sostienen.\n- **2026-11-14** · Hecho (semana 9-13 nov): 10 operaciones en 4 sesiones costaron 11,50 € de comisiones (5,75 % de la cartera) y explican ~94 % de los 12,2 € de distancia con SPY. Las decisiones de precio fueron casi neutras (P&L realizado bruto ≈ −1,3 €). Con 1 € fijo por operación, el control de la rotación pesa más que la calidad de la señal.\n- **2026-11-11** · Hipótesis (1 caso, 11-nov): un campeón que supera min_edge un solo día dispara una rotación completa de ida y vuelta (8 operaciones, ~9 € ≈4,6 % de la cartera en 2 días), con un modelo que el replay suspendía (t=-0,70). Sin histéresis en el cambio de modo o campeón, el ruido del ranking se convierte en comisiones.\n- **2026-11-10** · Hipótesis (4 días, 4 cambios de campeón): el ranking walk-forward en vivo de 126 días cambia de campeón con diferencias de ±0,001-0,003, del orden del ruido. Un cambio de campeón no es por sí solo evidencia de ventaja: hay que contrastarlo con el replay (p. ej. auto_20261107_4 fue campeón el 10-nov con t=-0,64 en el replay).\n"
 }
