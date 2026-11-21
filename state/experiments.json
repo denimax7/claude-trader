@@ -410,5 +410,35 @@
       "evaluated_at": "2026-11-16T20:26:20+00:00"
     },
     "last_score": -0.00214
+  },
+  {
+    "name": "auto_20261121_1",
+    "algo": "logit",
+    "features": [
+      "ret_21",
+      "ret_63",
+      "ret_126",
+      "ret_252",
+      "xs_rank_63",
+      "xs_rank_126",
+      "rel_bench_63",
+      "vol_63",
+      "sma200_gap",
+      "mkt_sma200_gap"
+    ],
+    "params": {
+      "C": 0.1
+    },
+    "created_by": "exploración",
+    "rationale": "Variante aleatoria de momentum_logit.",
+    "status": "activo",
+    "created": "2026-11-21T07:00:11+00:00",
+    "first_eval": {
+      "score": 0.0012742928353287445,
+      "hit": 0.4603174603174603,
+      "auc": 0.4883618068531349,
+      "n_days": 126,
+      "evaluated_at": "2026-11-21T07:00:11+00:00"
+    }
   }
 ]
