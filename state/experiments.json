@@ -38,9 +38,9 @@
     },
     "created_by": "sistema",
     "rationale": "Modelo base con todas las variables.",
-    "status": "activo",
+    "status": "retirado",
     "created": "2026-11-07T11:08:29+00:00",
-    "last_score": -0.00373
+    "last_score": -0.00441
   },
   {
     "name": "momentum_logit",
@@ -64,7 +64,7 @@
     "rationale": "Regresión logística simple de momentum: referencia robusta.",
     "status": "activo",
     "created": "2026-11-07T11:08:29+00:00",
-    "last_score": 0.00127
+    "last_score": 0.00224
   },
   {
     "name": "auto_20261107_4",
@@ -114,7 +114,7 @@
       "n_days": 126,
       "evaluated_at": "2026-11-07T11:16:24+00:00"
     },
-    "last_score": -0.00237
+    "last_score": -0.00206
   },
   {
     "name": "r261107_114",
@@ -153,7 +153,7 @@
       "bench_ret": 0.02925426982356205,
       "max_dd_vs_bench": -0.16247538115872773
     },
-    "last_score": -0.00029
+    "last_score": -0.00035
   },
   {
     "name": "r261107_107",
@@ -192,7 +192,7 @@
       "bench_ret": 0.02925426982356205,
       "max_dd_vs_bench": -0.15160591640240983
     },
-    "last_score": -0.00081
+    "last_score": -0.00092
   },
   {
     "name": "r261108_2",
@@ -349,7 +349,7 @@
       "max_dd_vs_bench": -0.28429088852555473,
       "trades_per_period": 0.23076923076923078
     },
-    "last_score": -0.00385
+    "last_score": -0.00349
   },
   {
     "name": "claude_ddvol_xs",
@@ -366,7 +366,7 @@
     },
     "created_by": "claude",
     "rationale": "Replay 14-nov: las variantes que aprueban el examen final (r261107_114, r261108_2, r261107_107) comparten dd_252+sma200_gap+ret_10(+volz_21) con C bajo (~0,8). Las 7 que suspenden comparten mkt_sma200_gap+mkt_vol_21+xs_rank_126 con C alto (~4,4): variables de régimen iguales para todos los activos que sólo sirven para sobreajustar el momento. Este modelo es la familia que aprueba SIN ninguna variable mkt_*, con vol_63 como control de riesgo y más regularización (C=0,2) para reducir rotación.",
-    "status": "activo",
+    "status": "retirado",
     "created": "2026-11-16T20:26:19+00:00",
     "first_eval": {
       "score": -0.0031308922588785633,
@@ -375,7 +375,7 @@
       "n_days": 126,
       "evaluated_at": "2026-11-16T20:26:19+00:00"
     },
-    "last_score": -0.00526
+    "last_score": -0.00461
   },
   {
     "name": "claude_lgbm_shallow_dd",
@@ -409,7 +409,7 @@
       "n_days": 126,
       "evaluated_at": "2026-11-16T20:26:20+00:00"
     },
-    "last_score": -0.00214
+    "last_score": -0.00244
   },
   {
     "name": "auto_20261121_1",
@@ -431,7 +431,7 @@
     },
     "created_by": "exploración",
     "rationale": "Variante aleatoria de momentum_logit.",
-    "status": "activo",
+    "status": "retirado",
     "created": "2026-11-21T07:00:11+00:00",
     "first_eval": {
       "score": 0.0012742928353287445,
@@ -440,5 +440,66 @@
       "n_days": 126,
       "evaluated_at": "2026-11-21T07:00:11+00:00"
     }
+  },
+  {
+    "name": "claude_dd_reversal_logit",
+    "algo": "logit",
+    "features": [
+      "dd_252",
+      "sma200_gap",
+      "ret_10",
+      "rsi_14",
+      "sma20_gap",
+      "ret_5"
+    ],
+    "params": {
+      "C": 0.3
+    },
+    "created_by": "claude",
+    "rationale": "Replay 21-nov: el núcleo dd_252+sma200_gap+ret_10 sigue en todas las variantes que aprueban el examen (r261107_114, r261107_107, claude_lgbm_shallow_dd), y momentum_logit (10 variables de momentum de medio/largo plazo + mkt_sma200_gap) vuelve a suspenderlo (t=-1,29). En vivo la calibración está invertida (p>0,60 bate al índice el 18 %, n=11; p<=0,45 el 71 %, n=35), lo que apunta a reversión a corto plazo. Este modelo mantiene el núcleo robusto, añade señales de reversión de corto plazo (rsi_14, sma20_gap, ret_5) y no usa ninguna variable mkt_*. C=0,3 para limitar rotación. Si su examen y su sc",
+    "status": "activo",
+    "created": "2026-11-23T20:26:54+00:00",
+    "first_eval": {
+      "score": 0.0006801104389984628,
+      "hit": 0.4365079365079365,
+      "auc": 0.49442390824756793,
+      "n_days": 126,
+      "evaluated_at": "2026-11-23T20:26:54+00:00"
+    },
+    "last_score": 0.00068
+  },
+  {
+    "name": "claude_lgbm_shallow_nomkt",
+    "algo": "lgbm",
+    "features": [
+      "dd_252",
+      "ret_10",
+      "sma200_gap",
+      "volz_21",
+      "vol_63",
+      "rsi_14"
+    ],
+    "params": {
+      "n_estimators": 200,
+      "learning_rate": 0.02,
+      "num_leaves": 4,
+      "max_depth": 2,
+      "min_child_samples": 400,
+      "subsample": 0.7,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 30.0
+    },
+    "created_by": "claude",
+    "rationale": "claude_lgbm_shallow_dd es el primer lgbm que aprueba el examen final (+0,41 %/semana, t=+0,36) frente a todos los lgbm profundos que suspenden, pero rota más que los logit (0,38 operaciones/periodo en el examen) y depende de mkt_ret_21, una variable de régimen. Variante controlada: mismo árbol de profundidad 2, sin mkt_ret_21 (se sustituye por vol_63, control de riesgo por activo), con rsi_14 para captar no linealidad de sobrecompra/sobreventa y más regularización (min_child_samples 400, lambda 30) para bajar la rotación. Espero trades_per_period < 0,3 y examen aprobado; si suspende, la ventaj",
+    "status": "activo",
+    "created": "2026-11-23T20:26:55+00:00",
+    "first_eval": {
+      "score": -0.0019926489624925254,
+      "hit": 0.42857142857142855,
+      "auc": 0.47512363936821184,
+      "n_days": 126,
+      "evaluated_at": "2026-11-23T20:26:55+00:00"
+    },
+    "last_score": -0.00199
   }
 ]

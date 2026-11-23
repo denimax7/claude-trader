@@ -92,7 +92,7 @@
   },
   {
     "created": "2026-11-21T10:24:24+00:00",
-    "status": "pendiente",
+    "status": "aplicada",
     "author": "claude",
     "type": "model",
     "title": "Logit núcleo dd_252 + reversión de corto plazo, sin mkt_*",
@@ -112,11 +112,13 @@
       },
       "created_by": "claude",
       "rationale": "Replay 21-nov: el núcleo dd_252+sma200_gap+ret_10 sigue en todas las variantes que aprueban el examen (r261107_114, r261107_107, claude_lgbm_shallow_dd), y momentum_logit (10 variables de momentum de medio/largo plazo + mkt_sma200_gap) vuelve a suspenderlo (t=-1,29). En vivo la calibración está invertida (p>0,60 bate al índice el 18 %, n=11; p<=0,45 el 71 %, n=35), lo que apunta a reversión a corto plazo. Este modelo mantiene el núcleo robusto, añade señales de reversión de corto plazo (rsi_14, sma20_gap, ret_5) y no usa ninguna variable mkt_*. C=0,3 para limitar rotación. Si su examen y su sc"
-    }
+    },
+    "result": "en competición · primer score +0.0007 (campeón +0.0013)",
+    "processed": "2026-11-23T20:26:54+00:00"
   },
   {
     "created": "2026-11-21T10:24:26+00:00",
-    "status": "pendiente",
+    "status": "aplicada",
     "author": "claude",
     "type": "model",
     "title": "lgbm poco profundo sin variables de régimen y menos rotación",
@@ -143,15 +145,19 @@
       },
       "created_by": "claude",
       "rationale": "claude_lgbm_shallow_dd es el primer lgbm que aprueba el examen final (+0,41 %/semana, t=+0,36) frente a todos los lgbm profundos que suspenden, pero rota más que los logit (0,38 operaciones/periodo en el examen) y depende de mkt_ret_21, una variable de régimen. Variante controlada: mismo árbol de profundidad 2, sin mkt_ret_21 (se sustituye por vol_63, control de riesgo por activo), con rsi_14 para captar no linealidad de sobrecompra/sobreventa y más regularización (min_child_samples 400, lambda 30) para bajar la rotación. Espero trades_per_period < 0,3 y examen aprobado; si suspende, la ventaj"
-    }
+    },
+    "result": "en competición · primer score -0.0020 (campeón +0.0013)",
+    "processed": "2026-11-23T20:26:55+00:00"
   },
   {
     "created": "2026-11-21T10:24:26+00:00",
-    "status": "pendiente",
+    "status": "aplicada",
     "author": "claude",
     "type": "retire",
     "title": "retirar auto_20261121_1",
     "name": "auto_20261121_1",
-    "reason": "Duplicado exacto del campeón momentum_logit: mismas 10 variables y mismo C=0,1 (score +0,0012743 vs +0,0012741). La exploración del 21-nov no mutó nada; no aporta información y duplica señales."
+    "reason": "Duplicado exacto del campeón momentum_logit: mismas 10 variables y mismo C=0,1 (score +0,0012743 vs +0,0012741). La exploración del 21-nov no mutó nada; no aporta información y duplica señales.",
+    "result": "retirado",
+    "processed": "2026-11-23T20:26:55+00:00"
   }
 ]
