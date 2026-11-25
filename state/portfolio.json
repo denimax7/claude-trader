@@ -2,7 +2,7 @@
   "created": "2026-11-07T11:08:28+00:00",
   "start_date": "2026-11-07",
   "capital_eur": 200.0,
-  "cash_eur": 78.7525867837497,
+  "cash_eur": 0.0,
   "positions": {
     "ITA": {
       "shares": 1.4279064500660497,
@@ -11,7 +11,16 @@
       "entry_fx": 1.0970927476882935,
       "cost_eur": 91.80902183091935,
       "entry_prob": null,
-      "last_price_usd": 68.16999816894531
+      "last_price_usd": 68.08999633789062
+    },
+    "SPY": {
+      "shares": 0.11820122675015213,
+      "entry_price_usd": 719.1493730163573,
+      "entry_date": "2026-11-25",
+      "entry_fx": 1.0949305295944214,
+      "cost_eur": 78.7525867837497,
+      "entry_prob": null,
+      "last_price_usd": 718.7899780273438
     }
   },
   "bench_shares": 0.3021705881954889,
