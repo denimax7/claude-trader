@@ -501,5 +501,46 @@
       "evaluated_at": "2026-11-23T20:26:55+00:00"
     },
     "last_score": -0.00424
+  },
+  {
+    "name": "r261125_123",
+    "algo": "logit",
+    "features": [
+      "mkt_ret_21",
+      "mkt_sma200_gap",
+      "mkt_vol_21",
+      "ret_1",
+      "ret_126",
+      "ret_5"
+    ],
+    "params": {
+      "C": 2.8874793104874747
+    },
+    "created_by": "investigación",
+    "rationale": "Mutación de r261124_123 encontrada por replay histórico.",
+    "status": "activo",
+    "created": "2026-11-25T05:16:42+00:00",
+    "research": {
+      "n": 100,
+      "score": 0.01697592977906593,
+      "excess_annual": 0.8555868608649229,
+      "t_stat": 2.4752013693326207,
+      "hit": 0.55,
+      "total_ret": 4.982502124947416,
+      "bench_ret": 0.4465969681823554,
+      "max_dd_vs_bench": -0.25225385783077026,
+      "trades_per_period": 0.18
+    },
+    "holdout": {
+      "n": 26,
+      "score": 0.0008105605853506384,
+      "excess_annual": 0.040852253501672174,
+      "t_stat": 0.08785852589122703,
+      "hit": 0.3076923076923077,
+      "total_ret": -0.025828166095303917,
+      "bench_ret": -0.025401320337352096,
+      "max_dd_vs_bench": -0.14273216329953964,
+      "trades_per_period": 0.34615384615384615
+    }
   }
 ]

@@ -1,34 +1,63 @@
 {
-  "date": "2026-11-24",
-  "data_asof": "2026-11-16",
-  "trials_this_run": 194,
-  "minutes": 15.1,
+  "date": "2026-11-25",
+  "data_asof": "2026-11-17",
+  "trials_this_run": 207,
+  "minutes": 15.4,
   "champion": {
     "name": "momentum_logit",
     "research": {
       "n": 100,
-      "score": 0.006466045373054727,
-      "excess_annual": 0.32588868680195826,
-      "t_stat": 1.3627864456196412,
+      "score": 0.007293407174290444,
+      "excess_annual": 0.36758772158423836,
+      "t_stat": 1.6722815324977658,
       "hit": 0.55,
-      "total_ret": 1.3825512389792518,
-      "bench_ret": 0.45303963234241396,
-      "max_dd_vs_bench": -0.293312431299975,
-      "trades_per_period": 0.16
+      "total_ret": 1.6528203582369239,
+      "bench_ret": 0.4465969681823554,
+      "max_dd_vs_bench": -0.2532419174579478,
+      "trades_per_period": 0.26
     },
     "holdout": {
       "n": 26,
-      "score": -0.0027378390943170014,
-      "excess_annual": -0.13798709035357687,
-      "t_stat": -0.20823101750886144,
+      "score": -0.005378569796685293,
+      "excess_annual": -0.27107991775293877,
+      "t_stat": -0.42612644457573046,
       "hit": 0.38461538461538464,
-      "total_ret": -0.1808501771129547,
-      "bench_ret": -0.05509595855341631,
-      "max_dd_vs_bench": -0.20797203649362184,
+      "total_ret": -0.20317638846685715,
+      "bench_ret": -0.025401320337352096,
+      "max_dd_vs_bench": -0.2205674890013083,
       "trades_per_period": 0.15384615384615385
     }
   },
   "top": [
+    {
+      "name": "r261125_123",
+      "origin": "búsqueda",
+      "algo": "logit",
+      "n_features": 6,
+      "research": {
+        "n": 100,
+        "score": 0.01697592977906593,
+        "excess_annual": 0.8555868608649229,
+        "t_stat": 2.4752013693326207,
+        "hit": 0.55,
+        "total_ret": 4.982502124947416,
+        "bench_ret": 0.4465969681823554,
+        "max_dd_vs_bench": -0.25225385783077026,
+        "trades_per_period": 0.18
+      },
+      "holdout": {
+        "n": 26,
+        "score": 0.0008105605853506384,
+        "excess_annual": 0.040852253501672174,
+        "t_stat": 0.08785852589122703,
+        "hit": 0.3076923076923077,
+        "total_ret": -0.025828166095303917,
+        "bench_ret": -0.025401320337352096,
+        "max_dd_vs_bench": -0.14273216329953964,
+        "trades_per_period": 0.34615384615384615
+      },
+      "status": "en competición"
+    },
     {
       "name": "claude_ddvol_xs",
       "origin": "en vivo",
@@ -44,6 +73,25 @@
         "bench_ret": 0.4515851758689844,
         "max_dd_vs_bench": -0.26765607569889616,
         "trades_per_period": 0.06
+      },
+      "holdout": null,
+      "status": ""
+    },
+    {
+      "name": "claude_lgbm_shallow_nomkt",
+      "origin": "en vivo",
+      "algo": "lgbm",
+      "n_features": 6,
+      "research": {
+        "n": 100,
+        "score": 0.009655763182304176,
+        "excess_annual": 0.4866504643881305,
+        "t_stat": 2.0732016938248843,
+        "hit": 0.58,
+        "total_ret": 2.3169636143784316,
+        "bench_ret": 0.4465969681823554,
+        "max_dd_vs_bench": -0.26850311768900714,
+        "trades_per_period": 0.32
       },
       "holdout": null,
       "status": ""
@@ -130,20 +178,96 @@
       "status": "en competición"
     },
     {
+      "name": "claude_dd_reversal_logit",
+      "origin": "en vivo",
+      "algo": "logit",
+      "n_features": 6,
+      "research": {
+        "n": 100,
+        "score": 0.00935191513448615,
+        "excess_annual": 0.47133652277810195,
+        "t_stat": 1.7772622354678915,
+        "hit": 0.57,
+        "total_ret": 2.169645615592895,
+        "bench_ret": 0.4465969681823554,
+        "max_dd_vs_bench": -0.24837054975383388,
+        "trades_per_period": 0.2
+      },
+      "holdout": null,
+      "status": ""
+    },
+    {
+      "name": "r261107_107",
+      "origin": "en vivo",
+      "algo": "logit",
+      "n_features": 5,
+      "research": {
+        "n": 100,
+        "score": 0.008422204981061537,
+        "excess_annual": 0.4244791310455015,
+        "t_stat": 1.826579187218961,
+        "hit": 0.58,
+        "total_ret": 1.9470899619950752,
+        "bench_ret": 0.4465969681823554,
+        "max_dd_vs_bench": -0.22685102601540008,
+        "trades_per_period": 0.14
+      },
+      "holdout": {
+        "n": 26,
+        "score": 0.0020670957499343045,
+        "excess_annual": 0.10418162579668895,
+        "t_stat": 0.33730546205918055,
+        "hit": 0.5769230769230769,
+        "total_ret": 0.07075882992933669,
+        "bench_ret": 0.02925426982356205,
+        "max_dd_vs_bench": -0.15160591640240983
+      },
+      "status": "en competición"
+    },
+    {
+      "name": "momentum_logit",
+      "origin": "en vivo",
+      "algo": "logit",
+      "n_features": 10,
+      "research": {
+        "n": 100,
+        "score": 0.007293407174290444,
+        "excess_annual": 0.36758772158423836,
+        "t_stat": 1.6722815324977658,
+        "hit": 0.55,
+        "total_ret": 1.6528203582369239,
+        "bench_ret": 0.4465969681823554,
+        "max_dd_vs_bench": -0.2532419174579478,
+        "trades_per_period": 0.26
+      },
+      "holdout": {
+        "n": 26,
+        "score": -0.005378569796685293,
+        "excess_annual": -0.27107991775293877,
+        "t_stat": -0.42612644457573046,
+        "hit": 0.38461538461538464,
+        "total_ret": -0.20317638846685715,
+        "bench_ret": -0.025401320337352096,
+        "max_dd_vs_bench": -0.2205674890013083,
+        "trades_per_period": 0.15384615384615385
+      },
+      "status": ""
+    },
+    {
       "name": "r261109_130",
       "origin": "en vivo",
       "algo": "logit",
       "n_features": 7,
       "research": {
         "n": 100,
-        "score": 0.008908458357889679,
-        "excess_annual": 0.44898630123763983,
-        "t_stat": 1.5262962167655996,
-        "hit": 0.61,
-        "total_ret": 1.8702304361139692,
-        "bench_ret": 0.45303963234241396,
-        "max_dd_vs_bench": -0.27123734482670236,
-        "trades_per_period": 0.16
+        "score": 0.005891757240969946,
+        "excess_annual": 0.2969445649448853,
+        "t_stat": 1.3900442242949866,
+        "hit": 0.54,
+        "total_ret": 1.340483254470176,
+        "bench_ret": 0.4465969681823554,
+        "max_dd_vs_bench": -0.2194318017683724,
+        "trades_per_period": 0.2
       },
       "holdout": {
         "n": 26,
@@ -157,229 +281,106 @@
         "trades_per_period": 0.23076923076923078
       },
       "status": "en competición"
-    },
-    {
-      "name": "claude_dd_reversal_logit",
-      "origin": "en vivo",
-      "algo": "logit",
-      "n_features": 6,
-      "research": {
-        "n": 100,
-        "score": 0.008653843129357925,
-        "excess_annual": 0.4361536937196394,
-        "t_stat": 1.4145206185195853,
-        "hit": 0.58,
-        "total_ret": 1.7400070989690208,
-        "bench_ret": 0.45303963234241396,
-        "max_dd_vs_bench": -0.27123734482670236,
-        "trades_per_period": 0.14
-      },
-      "holdout": null,
-      "status": ""
-    },
-    {
-      "name": "claude_lgbm_shallow_nomkt",
-      "origin": "en vivo",
-      "algo": "lgbm",
-      "n_features": 6,
-      "research": {
-        "n": 100,
-        "score": 0.008201984665271668,
-        "excess_annual": 0.4133800271296921,
-        "t_stat": 1.3765681079606942,
-        "hit": 0.59,
-        "total_ret": 1.6528989913162095,
-        "bench_ret": 0.45303963234241396,
-        "max_dd_vs_bench": -0.2712373448267025,
-        "trades_per_period": 0.4
-      },
-      "holdout": null,
-      "status": ""
-    },
-    {
-      "name": "r261107_114",
-      "origin": "en vivo",
-      "algo": "logit",
-      "n_features": 5,
-      "research": {
-        "n": 100,
-        "score": 0.007299720992652281,
-        "excess_annual": 0.3679059380296749,
-        "t_stat": 1.2486857614655467,
-        "hit": 0.58,
-        "total_ret": 1.445608413665381,
-        "bench_ret": 0.45303963234241396,
-        "max_dd_vs_bench": -0.27123734482670236,
-        "trades_per_period": 0.1
-      },
-      "holdout": {
-        "n": 26,
-        "score": 4.615197663618394e-05,
-        "excess_annual": 0.0023260596224636706,
-        "t_stat": 0.004704631048915334,
-        "hit": 0.4230769230769231,
-        "total_ret": -0.06555914414009578,
-        "bench_ret": -0.02661574680022538,
-        "max_dd_vs_bench": -0.2317004298741301,
-        "trades_per_period": 0.15384615384615385
-      },
-      "status": "en competición"
-    },
-    {
-      "name": "claude_lgbm_shallow_dd",
-      "origin": "en vivo",
-      "algo": "lgbm",
-      "n_features": 6,
-      "research": {
-        "n": 100,
-        "score": 0.0070921395918819696,
-        "excess_annual": 0.35744383543085123,
-        "t_stat": 1.2788347082305473,
-        "hit": 0.57,
-        "total_ret": 1.4465504888004141,
-        "bench_ret": 0.45303963234241396,
-        "max_dd_vs_bench": -0.2712373448267025,
-        "trades_per_period": 0.38
-      },
-      "holdout": {
-        "n": 26,
-        "score": 0.00406261790996495,
-        "excess_annual": 0.2047559426622335,
-        "t_stat": 0.35843525638026325,
-        "hit": 0.46153846153846156,
-        "total_ret": 0.04908678757877882,
-        "bench_ret": -0.008297862265402967,
-        "max_dd_vs_bench": -0.18169228743770327,
-        "trades_per_period": 0.38461538461538464
-      },
-      "status": ""
-    },
-    {
-      "name": "momentum_logit",
-      "origin": "en vivo",
-      "algo": "logit",
-      "n_features": 10,
-      "research": {
-        "n": 100,
-        "score": 0.006466045373054727,
-        "excess_annual": 0.32588868680195826,
-        "t_stat": 1.3627864456196412,
-        "hit": 0.55,
-        "total_ret": 1.3825512389792518,
-        "bench_ret": 0.45303963234241396,
-        "max_dd_vs_bench": -0.293312431299975,
-        "trades_per_period": 0.16
-      },
-      "holdout": {
-        "n": 26,
-        "score": -0.0027378390943170014,
-        "excess_annual": -0.13798709035357687,
-        "t_stat": -0.20823101750886144,
-        "hit": 0.38461538461538464,
-        "total_ret": -0.1808501771129547,
-        "bench_ret": -0.05509595855341631,
-        "max_dd_vs_bench": -0.20797203649362184,
-        "trades_per_period": 0.15384615384615385
-      },
-      "status": ""
     }
   ],
-  "promoted": [],
+  "promoted": [
+    "r261125_123"
+  ],
   "strategy_grid": [
     {
       "top_k": 1,
       "min_prob": 0.5,
-      "score": 0.010446914428379599,
-      "t_stat": 1.2865020578161364,
-      "hit": 0.53,
+      "score": 0.011377266031056689,
+      "t_stat": 1.5627203397399745,
+      "hit": 0.55,
       "n": 100
     },
     {
       "top_k": 1,
       "min_prob": 0.51,
-      "score": 0.010446914428379599,
-      "t_stat": 1.2865020578161364,
-      "hit": 0.53,
+      "score": 0.011377266031056689,
+      "t_stat": 1.5627203397399745,
+      "hit": 0.55,
       "n": 100
     },
     {
       "top_k": 1,
       "min_prob": 0.53,
-      "score": 0.010446914428379599,
-      "t_stat": 1.2865020578161364,
-      "hit": 0.53,
+      "score": 0.011377266031056689,
+      "t_stat": 1.5627203397399745,
+      "hit": 0.55,
       "n": 100
     },
     {
       "top_k": 1,
       "min_prob": 0.55,
-      "score": 0.010446914428379599,
-      "t_stat": 1.2865020578161364,
-      "hit": 0.53,
+      "score": 0.011212061375188423,
+      "t_stat": 1.5847545802713805,
+      "hit": 0.55,
       "n": 100
     },
     {
       "top_k": 2,
       "min_prob": 0.55,
-      "score": 0.008307295361753253,
-      "t_stat": 1.443507410366704,
-      "hit": 0.53,
+      "score": 0.009706286971269563,
+      "t_stat": 1.8274173682129111,
+      "hit": 0.55,
       "n": 100
     },
     {
       "top_k": 3,
       "min_prob": 0.55,
-      "score": 0.0075890778628811785,
-      "t_stat": 1.4563476506419781,
-      "hit": 0.54,
+      "score": 0.007605910864527179,
+      "t_stat": 1.6036994508881262,
+      "hit": 0.55,
+      "n": 100
+    },
+    {
+      "top_k": 2,
+      "min_prob": 0.53,
+      "score": 0.007476774940057421,
+      "t_stat": 1.4460451144745652,
+      "hit": 0.56,
+      "n": 100
+    },
+    {
+      "top_k": 2,
+      "min_prob": 0.5,
+      "score": 0.007293407174290444,
+      "t_stat": 1.6722815324977658,
+      "hit": 0.55,
+      "n": 100
+    },
+    {
+      "top_k": 2,
+      "min_prob": 0.51,
+      "score": 0.007293407174290444,
+      "t_stat": 1.6722815324977658,
+      "hit": 0.55,
       "n": 100
     },
     {
       "top_k": 4,
       "min_prob": 0.55,
-      "score": 0.006983000643620733,
-      "t_stat": 1.3931942253386107,
-      "hit": 0.58,
-      "n": 100
-    },
-    {
-      "top_k": 2,
-      "min_prob": 0.53,
-      "score": 0.0069440181532004815,
-      "t_stat": 1.2033546913485447,
-      "hit": 0.53,
-      "n": 100
-    },
-    {
-      "top_k": 2,
-      "min_prob": 0.5,
-      "score": 0.006466045507771248,
-      "t_stat": 1.3627865921814277,
+      "score": 0.0067209500949848315,
+      "t_stat": 1.4272750089902897,
       "hit": 0.55,
       "n": 100
     },
     {
-      "top_k": 2,
-      "min_prob": 0.51,
-      "score": 0.006466045507771248,
-      "t_stat": 1.3627865921814277,
-      "hit": 0.55,
-      "n": 100
-    },
-    {
-      "top_k": 3,
+      "top_k": 4,
       "min_prob": 0.53,
-      "score": 0.004751320315320104,
-      "t_stat": 0.9991368855320765,
-      "hit": 0.54,
-      "n": 100
-    },
-    {
-      "top_k": 3,
-      "min_prob": 0.51,
-      "score": 0.004235975202964768,
-      "t_stat": 1.158659754070087,
+      "score": 0.005224157953157194,
+      "t_stat": 1.2618200358671858,
       "hit": 0.56,
+      "n": 100
+    },
+    {
+      "top_k": 3,
+      "min_prob": 0.5,
+      "score": 0.004437050878593163,
+      "t_stat": 1.3580176608023355,
+      "hit": 0.52,
       "n": 100
     }
   ],
@@ -388,19 +389,19 @@
     "min_prob": 0.51
   },
   "totals": {
-    "trials": 3285,
-    "holdout_tests": 37,
-    "promoted": 6,
-    "last_run": "2026-11-24T05:18:24+00:00",
-    "data_asof": "2026-11-16",
+    "trials": 3496,
+    "holdout_tests": 38,
+    "promoted": 7,
+    "last_run": "2026-11-25T05:16:43+00:00",
+    "data_asof": "2026-11-17",
     "research_window": [
-      "2024-05-14",
-      "2026-05-06"
+      "2024-05-15",
+      "2026-05-07"
     ],
     "holdout_window": [
-      "2026-05-19",
-      "2026-11-16"
+      "2026-05-20",
+      "2026-11-17"
     ],
-    "exam_asof": "2026-11-16/v2"
+    "exam_asof": "2026-11-17/v2"
   }
 }
