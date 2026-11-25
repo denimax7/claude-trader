@@ -1,12 +1,12 @@
 {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "performance": {
-    "equity_eur": 167.4881,
-    "return_pct": -0.16255949999999997,
-    "bench_eur": 197.2532,
-    "bench_return_pct": -0.013734000000000024,
-    "cash_eur": 78.7526,
-    "n_positions": 1
+    "equity_eur": 166.3706,
+    "return_pct": -0.16814700000000005,
+    "bench_eur": 196.996,
+    "bench_return_pct": -0.015019999999999922,
+    "cash_eur": 0.0,
+    "n_positions": 2
   },
   "risk_events": [],
   "positions": {
@@ -17,12 +17,21 @@
       "entry_fx": 1.0970927476882935,
       "cost_eur": 91.80902183091935,
       "entry_prob": null,
-      "last_price_usd": 68.16999816894531
+      "last_price_usd": 68.69499969482422
+    },
+    "SPY": {
+      "shares": 0.11820122675015213,
+      "entry_price_usd": 719.1493730163573,
+      "entry_date": "2026-11-25",
+      "entry_fx": 1.0949305295944214,
+      "cost_eur": 78.7525867837497,
+      "entry_prob": null,
+      "last_price_usd": 716.02001953125
     }
   },
   "targets": {
     "ITA": {
-      "prob": 0.504,
+      "prob": 0.5,
       "weight": 0.5
     },
     "SPY": {
@@ -32,105 +41,112 @@
   },
   "exits_planned": [],
   "champion_model": "momentum_logit",
-  "signal_mode": "sin ventaja suficiente para pagar comisiones (score +0.0016 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
+  "signal_mode": "sin ventaja suficiente para pagar comisiones (score +0.0011 ≤ +0.0020) → benchmark · preferencia defensa: ITA",
   "top_features": {
-    "sma200_gap": 0.2910459773593188,
-    "ret_126": 0.14902586662156161,
-    "rel_bench_63": 0.13791151124072804,
-    "ret_63": 0.09679665776448816,
-    "ret_252": 0.08993498302199253,
-    "vol_63": 0.08664965867499697,
-    "mkt_sma200_gap": 0.05556217752613827,
-    "ret_21": 0.04954605166758064,
-    "xs_rank_63": 0.024927675153992555,
-    "xs_rank_126": 0.018599440969202352
+    "sma200_gap": 0.28237368914595323,
+    "rel_bench_63": 0.14487671348686254,
+    "ret_126": 0.14222113701948208,
+    "ret_63": 0.10379386408958813,
+    "ret_252": 0.08688452584643369,
+    "vol_63": 0.08671528973335645,
+    "mkt_sma200_gap": 0.05776343684559671,
+    "ret_21": 0.04867270895471684,
+    "xs_rank_63": 0.02583331082378016,
+    "xs_rank_126": 0.020865324054230017
   },
   "model_scores": {
     "momentum_logit": {
-      "score": 0.001576625109184636,
-      "hit": 0.4642857142857143,
-      "auc": 0.49141354773259116,
+      "score": 0.0010705168306999412,
+      "hit": 0.46825396825396826,
+      "auc": 0.4887937960093781,
       "n_days": 126,
-      "evaluated_at": "2026-11-24T20:30:00+00:00"
+      "evaluated_at": "2026-11-25T20:28:56+00:00"
     },
     "auto_20261107_4": {
-      "score": -0.0035299925180865594,
-      "hit": 0.4365079365079365,
-      "auc": 0.48606904052537253,
+      "score": -0.002776262381993503,
+      "hit": 0.4603174603174603,
+      "auc": 0.48383282885473866,
       "n_days": 126,
-      "evaluated_at": "2026-11-24T20:30:03+00:00"
+      "evaluated_at": "2026-11-25T20:29:00+00:00"
     },
     "r261107_114": {
-      "score": -0.0008550594658023876,
-      "hit": 0.4166666666666667,
-      "auc": 0.49903847872025103,
+      "score": -0.0014026380036397796,
+      "hit": 0.4126984126984127,
+      "auc": 0.4971071463901642,
       "n_days": 126,
-      "evaluated_at": "2026-11-24T20:30:03+00:00"
+      "evaluated_at": "2026-11-25T20:29:00+00:00"
     },
     "r261107_107": {
-      "score": -0.0011204381966814204,
+      "score": -0.0013594043351743078,
       "hit": 0.42857142857142855,
-      "auc": 0.499890851353913,
+      "auc": 0.49708301394689425,
       "n_days": 126,
-      "evaluated_at": "2026-11-24T20:30:03+00:00"
+      "evaluated_at": "2026-11-25T20:29:00+00:00"
     },
     "r261109_130": {
-      "score": -0.002956386919356568,
-      "hit": 0.42063492063492064,
-      "auc": 0.48830506797888207,
+      "score": -0.003912133892146172,
+      "hit": 0.4126984126984127,
+      "auc": 0.4852680644693616,
       "n_days": 126,
-      "evaluated_at": "2026-11-24T20:30:04+00:00"
+      "evaluated_at": "2026-11-25T20:29:01+00:00"
     },
     "claude_lgbm_shallow_dd": {
-      "score": -0.0009319631449075176,
-      "hit": 0.42857142857142855,
-      "auc": 0.4896014038818601,
+      "score": 0.0004791184817681547,
+      "hit": 0.4246031746031746,
+      "auc": 0.48823847348848465,
       "n_days": 126,
-      "evaluated_at": "2026-11-24T20:30:05+00:00"
+      "evaluated_at": "2026-11-25T20:29:01+00:00"
     },
     "claude_dd_reversal_logit": {
-      "score": -6.44185273005032e-05,
-      "hit": 0.4365079365079365,
-      "auc": 0.4962085352583286,
+      "score": -0.0006720617828159913,
+      "hit": 0.42857142857142855,
+      "auc": 0.49413682947960325,
       "n_days": 126,
-      "evaluated_at": "2026-11-24T20:30:05+00:00"
+      "evaluated_at": "2026-11-25T20:29:02+00:00"
     },
     "claude_lgbm_shallow_nomkt": {
-      "score": -0.004240010439192013,
-      "hit": 0.4087301587301587,
-      "auc": 0.4732584896001144,
+      "score": -0.0046454526626160154,
+      "hit": 0.39285714285714285,
+      "auc": 0.47259871596980085,
       "n_days": 126,
-      "evaluated_at": "2026-11-24T20:30:06+00:00"
+      "evaluated_at": "2026-11-25T20:29:03+00:00"
+    },
+    "r261125_123": {
+      "score": -0.005758483086492641,
+      "hit": 0.46825396825396826,
+      "auc": 0.4903196664491063,
+      "n_days": 126,
+      "evaluated_at": "2026-11-25T20:29:03+00:00"
     }
   },
   "live_metrics": {
-    "n": 296,
-    "hit_rate": 0.41216216216216217,
+    "n": 333,
+    "hit_rate": 0.40540540540540543,
     "calibration": {
       "(0.0, 0.45]": {
         "n": 40,
         "beat_rate": 0.75
       },
       "(0.45, 0.5]": {
-        "n": 135,
-        "beat_rate": 0.615
+        "n": 163,
+        "beat_rate": 0.62
       },
       "(0.5, 0.55]": {
-        "n": 89,
-        "beat_rate": 0.551
+        "n": 97,
+        "beat_rate": 0.536
       },
       "(0.55, 0.6]": {
         "n": 19,
         "beat_rate": 0.368
       },
       "(0.6, 1.0]": {
-        "n": 13,
-        "beat_rate": 0.231
+        "n": 14,
+        "beat_rate": 0.214
       }
     },
-    "sel_n": 15,
-    "sel_hit_rate": 0.5333333333333333,
-    "sel_excess": -0.005994
+    "sel_n": 17,
+    "sel_hit_rate": 0.5294117647058824,
+    "sel_excess": -0.00581529411764706
   },
   "recent_closed": [
     {
@@ -280,17 +296,17 @@
   ],
   "headlines": {
     "ITA": [
+      "2026-11-25 Why Boeing Through ETFs Could Make Sense After Its New Jet Order",
       "2026-11-24 Should You Invest in the iShares U.S. Aerospace & Defense ETF (ITA)?",
       "2026-11-23 How Much RTX Do You Really Get Through 3 ETFs?",
-      "2026-11-19 3 Aerospace And Defense ETFs For The 45 Day China Free Magnet Scramble",
-      "2026-11-18 Which ETFs Give You General Dynamics Without Going All In?"
+      "2026-11-19 3 Aerospace And Defense ETFs For The 45 Day China Free Magnet Scramble"
     ],
     "SPY": [
-      "2026-11-24 Here’s How Quickly NVIDIA Could Reach $200 Following Jensen Huang’s Reinstatement as CEO",
-      "2026-11-24 Hashed and Nurihaus Bring U.S. Beauty Investors to Brooklyn for K-Beauty Investor Day",
-      "2026-11-24 Stock Market Today: Jensen’s Return to Nvidia Is Causing Index Indigestion",
-      "2026-11-24 Bessent Warns the Fed Could Be Making a “Policy Mistake” if It Over-Tightens"
+      "2026-11-25 Nvidia is cheap on paper, so why won't the market buy it?",
+      "2026-11-25 Berkshire Hathaway Is Up 15% in 2026 and Easily Beating the S&P 500. Is Berkshire Stock Better Than an Index Fund Now?",
+      "2026-11-25 SPYD and SCHD Hold No Nvidia. Here’s What You Give Up and What You Get",
+      "2026-11-25 JPMorgan Says the Biggest Risk to Stocks in 2027 Is the Fed"
     ]
   },
-  "lessons": "- **2026-11-21** · Hecho (16-20 nov): la exploración semanal puede generar una 'variante' idéntica al campeón (auto_20261121_1 = momentum_logit, mismas variables y C). Revisar cada sábado que las variantes nuevas difieran del original antes de dejarlas competir.\n- **2026-11-21** · Matiza la lección del 14-nov sobre lgbm (1 caso, hipótesis): claude_lgbm_shallow_dd, un lgbm de profundidad 2 sobre 6 variables robustas, aprueba el examen (+0,41 %/sem, t=+0,36), mientras todos los lgbm profundos con 22-23 variables suspenden. El problema no era el algoritmo sino la profundidad y el número de variables; aun así rota el doble que los logit (0,38 vs ~0,15 operaciones/periodo).\n- **2026-11-21** · Hipótesis (replay 20→21-nov): la mejor celda de la rejilla de estrategia depende del campeón con el que se calcula. Con r261107_114 salía top_k=4/min_prob=0,53 (t=+2,41); un día después, con momentum_logit (que suspende el examen, t=−1,29), sale top_k=1/min_prob=0,53 (t=+1,92). Mientras el campeón cambie por ruido, la rejilla no es evidencia estable para ajustar la estrategia: exigir que la misma celda gane con ≥2 campeones distintos.\n- **2026-11-20** · Hipótesis (20-nov, 222 predicciones en vivo pero muy correlacionadas: 2 semanas, un solo régimen): durante la corrección por la venta de IA la calibración en vivo se ha invertido. Con p>0,60 se bate al índice el 18 % de las veces (n=11) y con p≤0,45 el 71 % (n=35). Las probabilidades altas del momentum no son fiables cuando el mercado castiga a los líderes; hay que revisar si se mantiene al salir de la corrección.\n- **2026-11-18** · Hecho (7-18 nov): 19 operaciones en 8 sesiones costaron 21,91 € de comisiones (11 % del capital), más que toda la distancia con SPY (20,5 €). Segundo caso de ida y vuelta por cruzar min_edge un solo día (17→18 nov: SMH y SLV, 4 operaciones). Agravante: en modo benchmark no se aplican keep_rank/keep_prob, así que se venden activos que siguen en el top del ranking. La hipótesis del 11-nov (falta de histéresis en el cambio de modo) pasa a 2 casos.\n- **2026-11-14** · Hipótesis (replay 14-nov, 10 exámenes): las variantes que ganan la búsqueda apoyándose en variables de régimen (mkt_sma200_gap, mkt_vol_21) más xs_rank_126 con C alto (~4,4) suspenden el examen final 7 de 7 veces (t entre −0,2 y −2,1). Las que lo aprueban (3 familias distintas) se basan en dd_252, sma200_gap y ret_10 con C≈0,8. Un t>2 en la búsqueda no basta: mirar qué variables lo sostienen.\n- **2026-11-14** · Hecho (semana 9-13 nov): 10 operaciones en 4 sesiones costaron 11,50 € de comisiones (5,75 % de la cartera) y explican ~94 % de los 12,2 € de distancia con SPY. Las decisiones de precio fueron casi neutras (P&L realizado bruto ≈ −1,3 €). Con 1 € fijo por operación, el control de la rotación pesa más que la calidad de la señal.\n- **2026-11-11** · Hipótesis (1 caso, 11-nov): un campeón que supera min_edge un solo día dispara una rotación completa de ida y vuelta (8 operaciones, ~9 € ≈4,6 % de la cartera en 2 días), con un modelo que el replay suspendía (t=-0,70). Sin histéresis en el cambio de modo o campeón, el ruido del ranking se convierte en comisiones.\n- **2026-11-10** · Hipótesis (4 días, 4 cambios de campeón): el ranking walk-forward en vivo de 126 días cambia de campeón con diferencias de ±0,001-0,003, del orden del ruido. Un cambio de campeón no es por sí solo evidencia de ventaja: hay que contrastarlo con el replay (p. ej. auto_20261107_4 fue campeón el 10-nov con t=-0,64 en el replay).\n"
+  "lessons": "- **2026-11-24** · Hecho (3 casos: 11-nov, 17-nov, 23/24-nov): cada vez que el campeón cruza min_edge por ≤0,0003 se dispara una ida y vuelta benchmark→señal→benchmark en 1-2 días. El 24-nov costó 4 operaciones (~4,5 €) más −9,4 € por un stop de NVDA ejecutado al −8,2 % (el stop del 6 % solo se revisa 3 veces al día). Sin histéresis, el cambio de modo convierte el ruido del score en pérdidas.\n- **2026-11-21** · Hecho (16-20 nov): la exploración semanal puede generar una 'variante' idéntica al campeón (auto_20261121_1 = momentum_logit, mismas variables y C). Revisar cada sábado que las variantes nuevas difieran del original antes de dejarlas competir.\n- **2026-11-21** · Matiza la lección del 14-nov sobre lgbm (1 caso, hipótesis): claude_lgbm_shallow_dd, un lgbm de profundidad 2 sobre 6 variables robustas, aprueba el examen (+0,41 %/sem, t=+0,36), mientras todos los lgbm profundos con 22-23 variables suspenden. El problema no era el algoritmo sino la profundidad y el número de variables; aun así rota el doble que los logit (0,38 vs ~0,15 operaciones/periodo).\n- **2026-11-21** · Hipótesis (replay 20→21-nov): la mejor celda de la rejilla de estrategia depende del campeón con el que se calcula. Con r261107_114 salía top_k=4/min_prob=0,53 (t=+2,41); un día después, con momentum_logit (que suspende el examen, t=−1,29), sale top_k=1/min_prob=0,53 (t=+1,92). Mientras el campeón cambie por ruido, la rejilla no es evidencia estable para ajustar la estrategia: exigir que la misma celda gane con ≥2 campeones distintos.\n- **2026-11-20** · Hipótesis (20-nov, 222 predicciones en vivo pero muy correlacionadas: 2 semanas, un solo régimen): durante la corrección por la venta de IA la calibración en vivo se ha invertido. Con p>0,60 se bate al índice el 18 % de las veces (n=11) y con p≤0,45 el 71 % (n=35). Las probabilidades altas del momentum no son fiables cuando el mercado castiga a los líderes; hay que revisar si se mantiene al salir de la corrección.\n- **2026-11-18** · Hecho (7-18 nov): 19 operaciones en 8 sesiones costaron 21,91 € de comisiones (11 % del capital), más que toda la distancia con SPY (20,5 €). Segundo caso de ida y vuelta por cruzar min_edge un solo día (17→18 nov: SMH y SLV, 4 operaciones). Agravante: en modo benchmark no se aplican keep_rank/keep_prob, así que se venden activos que siguen en el top del ranking. La hipótesis del 11-nov (falta de histéresis en el cambio de modo) pasa a 2 casos.\n- **2026-11-14** · Hipótesis (replay 14-nov, 10 exámenes): las variantes que ganan la búsqueda apoyándose en variables de régimen (mkt_sma200_gap, mkt_vol_21) más xs_rank_126 con C alto (~4,4) suspenden el examen final 7 de 7 veces (t entre −0,2 y −2,1). Las que lo aprueban (3 familias distintas) se basan en dd_252, sma200_gap y ret_10 con C≈0,8. Un t>2 en la búsqueda no basta: mirar qué variables lo sostienen.\n- **2026-11-14** · Hecho (semana 9-13 nov): 10 operaciones en 4 sesiones costaron 11,50 € de comisiones (5,75 % de la cartera) y explican ~94 % de los 12,2 € de distancia con SPY. Las decisiones de precio fueron casi neutras (P&L realizado bruto ≈ −1,3 €). Con 1 € fijo por operación, el control de la rotación pesa más que la calidad de la señal.\n- **2026-11-11** · Hipótesis (1 caso, 11-nov): un campeón que supera min_edge un solo día dispara una rotación completa de ida y vuelta (8 operaciones, ~9 € ≈4,6 % de la cartera en 2 días), con un modelo que el replay suspendía (t=-0,70). Sin histéresis en el cambio de modo o campeón, el ruido del ranking se convierte en comisiones.\n- **2026-11-10** · Hipótesis (4 días, 4 cambios de campeón): el ranking walk-forward en vivo de 126 días cambia de campeón con diferencias de ±0,001-0,003, del orden del ruido. Un cambio de campeón no es por sí solo evidencia de ventaja: hay que contrastarlo con el replay (p. ej. auto_20261107_4 fue campeón el 10-nov con t=-0,64 en el replay).\n"
 }
