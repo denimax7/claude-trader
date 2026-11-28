@@ -159,5 +159,61 @@
     "reason": "Duplicado exacto del campeón momentum_logit: mismas 10 variables y mismo C=0,1 (score +0,0012743 vs +0,0012741). La exploración del 21-nov no mutó nada; no aporta información y duplica señales.",
     "result": "retirado",
     "processed": "2026-11-23T20:26:55+00:00"
+  },
+  {
+    "created": "2026-11-28T10:26:15+00:00",
+    "status": "pendiente",
+    "author": "claude",
+    "type": "retire",
+    "title": "retirar auto_20261107_4",
+    "name": "auto_20261107_4",
+    "reason": "3 semanas en vivo claramente por debajo: score −0,0076 (el peor junto a claude_lgbm_shallow_nomkt), negativo en 12 de 14 cierres. Suspende el replay (t=−1,77) y el examen (t=−2,02), y rota 1,46 operaciones/periodo."
+  },
+  {
+    "created": "2026-11-28T10:26:16+00:00",
+    "status": "pendiente",
+    "author": "claude",
+    "type": "model",
+    "title": "Logit unión de las dos familias que aprueban el examen, sin mkt_*",
+    "experiment": {
+      "name": "claude_core_union_logit",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "ret_10",
+        "sma200_gap",
+        "volz_21",
+        "ret_5",
+        "sma50_gap"
+      ],
+      "params": {
+        "C": 0.8
+      },
+      "created_by": "claude",
+      "rationale": "Replay 28-nov: las dos familias logit que mejor aprueban el examen son r261108_2/r261107_114 (dd_252, ret_10, sma200_gap, volz_21, mkt_ret_21; examen t=+0,58) y r261107_107 (dd_252, ret_10, sma200_gap, ret_5, sma50_gap; t=+0,34). Este modelo une sus variables propias SIN mkt_ret_21 (mkt_* aprueba el examen 6/23 y mkt_sma200_gap 1/19), con el mismo C≈0,8. Esta combinación no está en el ranking. Hipótesis: el núcleo común más volz_21 y ret_5/sma50_gap generaliza mejor que cada familia por separado, rotando poco (≈0,1-0,16 operaciones/periodo)."
+    }
+  },
+  {
+    "created": "2026-11-28T10:26:17+00:00",
+    "status": "pendiente",
+    "author": "claude",
+    "type": "model",
+    "title": "Logit núcleo dd_252 con vol_21 lineal (contra el sesgo a alta volatilidad)",
+    "experiment": {
+      "name": "claude_core_vol_logit",
+      "algo": "logit",
+      "features": [
+        "dd_252",
+        "ret_10",
+        "sma200_gap",
+        "sma50_gap",
+        "vol_21"
+      ],
+      "params": {
+        "C": 0.5
+      },
+      "created_by": "claude",
+      "rationale": "La calibración en vivo está invertida de forma monótona (n=370: p>0,60 bate al índice el 20 %, p≤0,45 el 75 %). Las probabilidades altas recaen en activos muy volátiles (NVDA, SMH), y vol_21 es la variable más importante del campeón lgbm (38 %), que suspende el examen. Prueba controlada: la familia r261107_107, que aprueba el examen (t=+0,34), cambiando ret_5 por vol_21 en un logit (efecto lineal y monótono de la volatilidad en lugar de cortes de árbol). Si el modelo aprende un coeficiente negativo para vol_21 y mejora a r261107_107 en vivo y en el examen, el problema era el sesgo hacia la alt"
+    }
   }
 ]
