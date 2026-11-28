@@ -543,5 +543,38 @@
       "trades_per_period": 0.34615384615384615
     },
     "last_score": -0.00576
+  },
+  {
+    "name": "auto_20261128_2",
+    "algo": "lgbm",
+    "features": [
+      "dd_252",
+      "ret_10",
+      "sma200_gap",
+      "volz_21",
+      "mkt_ret_21",
+      "mkt_vol_21"
+    ],
+    "params": {
+      "n_estimators": 150,
+      "learning_rate": 0.012185655743381974,
+      "num_leaves": 4,
+      "max_depth": 2,
+      "min_child_samples": 300,
+      "subsample": 0.5492703658724837,
+      "colsample_bytree": 0.6182670087852995,
+      "reg_lambda": 20.0
+    },
+    "created_by": "exploración",
+    "rationale": "Variante aleatoria de claude_lgbm_shallow_dd.",
+    "status": "activo",
+    "created": "2026-11-28T07:00:50+00:00",
+    "first_eval": {
+      "score": 0.0017627911426788168,
+      "hit": 0.44841269841269843,
+      "auc": 0.48210510704972376,
+      "n_days": 126,
+      "evaluated_at": "2026-11-28T07:00:50+00:00"
+    }
   }
 ]
